@@ -1,0 +1,45 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+    <div class="panel panel-default {{ settings.class }}">
+        {% if settings.title is not empty %}
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    {% if settings.icon %}
+                        <i class="{{ settings.icon }}" aria-hidden="true"></i>
+                    {% endif %}
+                    {% if settings.translation_domain %}
+                        {{ settings.title|trans({}, settings.translation_domain) }}
+                    {% else %}
+                        {{ settings.title }}
+                    {% endif %}
+                </h4>
+            </div>
+        {% endif %}
+
+        <div class="panel-body">
+            {% if data is empty %}
+                <p>{{ 'no_statistic_found'|trans({}, 'Core23MatomoBundle') }}</p>
+            {% else %}
+                <div data-matomo>
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th data-format="%b&nbsp;%#d">{{ 'statistic_table_date'|trans({}, 'Core23MatomoBundle') }}</th>
+                            <th>{{ 'statistic_table_value'|trans({}, 'Core23MatomoBundle') }}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for key, value in data %}
+                            <tr>
+                                <td>{{ key|format_date }}</td>
+                                <td>{{ value }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

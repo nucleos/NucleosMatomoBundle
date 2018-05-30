@@ -1,0 +1,74 @@
+{
+    "name": "core23/matomo-bundle",
+    "type": "symfony-bundle",
+    "description": "This bundle provides a block service for using Matomo inside the sonata-project.",
+    "keywords": [
+        "symfony",
+        "piwik",
+        "matomo",
+        "statistic",
+        "sonata",
+        "block",
+        "widget",
+        "bundle"
+    ],
+    "homepage": "https://core23.de",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christian Gripp",
+            "email": "mail@core23.de"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "php-http/httplug-bundle": "^1.1",
+        "psr/log": "^1.0",
+        "sonata-project/block-bundle": "^3.9",
+        "sonata-project/core-bundle": "^3.9",
+        "symfony/dependency-injection": "^3.4 || ^4.0",
+        "symfony/expression-language": "^3.4 || ^4.0",
+        "symfony/form": "^3.4 || ^4.0",
+        "symfony/framework-bundle": "^3.4 || ^4.0",
+        "symfony/options-resolver": "^3.4 || ^4.0",
+        "symfony/templating": "^3.4 || ^4.0"
+    },
+    "require-dev": {
+        "bamarni/composer-bin-plugin": "^1.2",
+        "matthiasnoback/symfony-dependency-injection-test": "^2.3",
+        "php-http/mock-client": "^0.3",
+        "sllh/composer-lint": "^1.0",
+        "sonata-project/admin-bundle": "^3.35",
+        "symfony/phpunit-bridge": "^4.0"
+    },
+    "suggest": {
+        "php-http/buzz-adapter": "Buzz HTTP client implementation",
+        "php-http/guzzle6-adapter": "Guzzle HTTP client implementation"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Core23\\MatomoBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Core23\\MatomoBundle\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "@composer bin all install --ansi"
+        ],
+        "post-update-cmd": [
+            "@composer bin all update --ansi"
+        ]
+    }
+}

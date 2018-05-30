@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="core23_matomo.block.statistic">
+        <source>core23_matomo.block.statistic</source>
+        <target>Matomo - Besucherstatistik</target>
+      </trans-unit>
+      <trans-unit id="core23_matomo.block.tracker">
+        <source>core23_matomo.block.tracker</source>
+        <target>Matomo - Tracking Script</target>
+      </trans-unit>
+      <trans-unit id="form.choice_1_month">
+        <source>form.choice_1_month</source>
+        <target>Ein Monat</target>
+      </trans-unit>
+      <trans-unit id="form.choice_1_week">
+        <source>form.choice_1_week</source>
+        <target>Eine Woche</target>
+      </trans-unit>
+      <trans-unit id="form.choice_1_year">
+        <source>form.choice_1_year</source>
+        <target>Ein Jahr</target>
+      </trans-unit>
+      <trans-unit id="form.choice_2_weeks">
+        <source>form.choice_2_weeks</source>
+        <target>Zwei Woche</target>
+      </trans-unit>
+      <trans-unit id="form.choice_3_months">
+        <source>form.choice_3_months</source>
+        <target>Drei Monate</target>
+      </trans-unit>
+      <trans-unit id="form.choice_6_months">
+        <source>form.choice_6_months</source>
+        <target>Sechs Monate</target>
+      </trans-unit>
+      <trans-unit id="form.choice_day">
+        <source>form.choice_day</source>
+        <target>Tag</target>
+      </trans-unit>
+      <trans-unit id="form.choice_hits">
+        <source>form.choice_hits</source>
+        <target>Aufrufe</target>
+      </trans-unit>
+      <trans-unit id="form.choice_month">
+        <source>form.choice_month</source>
+        <target>Monat</target>
+      </trans-unit>
+      <trans-unit id="form.choice_today">
+        <source>form.choice_today</source>
+        <target>Heute</target>
+      </trans-unit>
+      <trans-unit id="form.choice_unique_visitors">
+        <source>form.choice_unique_visitors</source>
+        <target>Einzigartige Besucher</target>
+      </trans-unit>
+      <trans-unit id="form.choice_visitors">
+        <source>form.choice_visitors</source>
+        <target>Besucher</target>
+      </trans-unit>
+      <trans-unit id="form.choice_week">
+        <source>form.choice_week</source>
+        <target>Woche</target>
+      </trans-unit>
+      <trans-unit id="form.choice_year">
+        <source>form.choice_year</source>
+        <target>Jahr</target>
+      </trans-unit>
+      <trans-unit id="form.label_date">
+        <source>form.label_date</source>
+        <target>Datum</target>
+      </trans-unit>
+      <trans-unit id="form.label_domaintitle">
+        <source>form.label_domaintitle</source>
+        <target>Domain Titel vorrausstellen</target>
+      </trans-unit>
+      <trans-unit id="form.label_donottrack">
+        <source>form.label_donottrack</source>
+        <target>Clientseitiges Do Not Track</target>
+      </trans-unit>
+      <trans-unit id="form.label_host">
+        <source>form.label_host</source>
+        <target>Matomo Host</target>
+      </trans-unit>
+      <trans-unit id="form.label_method">
+        <source>form.label_method</source>
+        <target>Ansicht</target>
+      </trans-unit>
+      <trans-unit id="form.label_nocookies">
+        <source>form.label_nocookies</source>
+        <target>Alle Tracking Cookies deaktivieren</target>
+      </trans-unit>
+      <trans-unit id="form.label_period">
+        <source>form.label_period</source>
+        <target>Zeitraum</target>
+      </trans-unit>
+      <trans-unit id="form.label_site">
+        <source>form.label_site</source>
+        <target>Site Id</target>
+      </trans-unit>
+      <trans-unit id="form.label_title">
+        <source>form.label_title</source>
+        <target>Titel</target>
+      </trans-unit>
+      <trans-unit id="form.label_token">
+        <source>form.label_token</source>
+        <target>Matomo Token</target>
+      </trans-unit>
+      <trans-unit id="no_statistic_found">
+        <source>no_statistic_found</source>
+        <target>Statistik konnte nicht vom Server abgerufen werden.</target>
+      </trans-unit>
+      <trans-unit id="statistic_table_date">
+        <source>statistic_table_date</source>
+        <target>Datum</target>
+      </trans-unit>
+      <trans-unit id="statistic_table_value">
+        <source>statistic_table_value</source>
+        <target>Wert</target>
+      </trans-unit>
+      <trans-unit id="form.label_translation_domain">
+        <source>form.label_translation_domain</source>
+        <target>Übersetzungsdatei</target>
+      </trans-unit>
+      <trans-unit id="form.label_icon">
+        <source>form.label_icon</source>
+        <target>Icon</target>
+      </trans-unit>
+      <trans-unit id="form.label_class">
+        <source>form.label_class</source>
+        <target>CSS Klasse</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

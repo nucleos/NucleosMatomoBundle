@@ -1,0 +1,28 @@
+{% extends sonata_block.templates.block_base %}
+
+{% block block %}
+    {% spaceless %}
+        <script type="text/javascript">
+          var _paq = _paq || [];
+          {% if settings.domaintitle %}
+            _paq.push(["setDocumentTitle", document.domain + "/" + document.title]);
+          {% endif %}
+          {% if settings.donottrack %}
+            _paq.push(['setDoNotTrack', true]);
+          {% endif %}
+          {% if settings.nocookies %}
+            _paq.push(['disableCookies']);
+          {% endif %}
+          _paq.push(['trackPageView']);
+          _paq.push(['enableLinkTracking']);
+          (function() {
+            var u="{{ settings.host }}";
+            _paq.push(['setTrackerUrl', u+'/piwik.php']);
+            _paq.push(['setSiteId', {{ settings.site }}]);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+          })();
+        </script>
+        <noscript><p><img src="{{ settings.host }}/piwik.php?idsite={{ settings.site }}" style="border:0;" alt="" /></p></noscript>
+    {% endspaceless %}
+{% endblock %}

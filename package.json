@@ -1,0 +1,8 @@
+{
+  "name": "@core23/matomo-bundle",
+  "homepage": "http://ni-ju-san.de/",
+  "author": "Christian Gripp <mail@core23.de>",
+  "dependencies": {
+    "chartist": "^0.10"
+  }
+}
