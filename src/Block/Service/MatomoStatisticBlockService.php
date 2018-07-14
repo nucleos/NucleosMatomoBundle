@@ -39,8 +39,6 @@ final class MatomoStatisticBlockService extends AbstractAdminBlockService implem
     private $factory;
 
     /**
-     * MatomoStatisticBlockService constructor.
-     *
      * @param string                 $name
      * @param EngineInterface        $templating
      * @param ClientFactoryInterface $factory

@@ -16,8 +16,6 @@ use Throwable;
 final class MatomoException extends \Exception
 {
     /**
-     * MatomoException constructor.
-     *
      * @param string         $message
      * @param int            $code
      * @param Throwable|null $previous
