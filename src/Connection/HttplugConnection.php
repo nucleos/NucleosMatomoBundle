@@ -83,11 +83,11 @@ final class HttplugConnection implements ConnectionInterface
     {
         $query = [];
         foreach ($params as $key => $val) {
-            if (is_array($val)) {
+            if (\is_array($val)) {
                 $val = implode(',', $val);
             } elseif ($val instanceof \DateTime) {
                 $val = $val->format('Y-m-d');
-            } elseif (is_bool($val)) {
+            } elseif (\is_bool($val)) {
                 if ($val) {
                     $val = 1;
                 } else {
