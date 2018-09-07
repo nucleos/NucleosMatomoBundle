@@ -31,9 +31,10 @@ final class MatomoTrackerBlockService extends AbstractAdminBlockService
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
         return $this->renderResponse($blockContext->getTemplate(), [
-            'context'  => $blockContext,
-            'settings' => $blockContext->getSettings(),
-            'block'    => $blockContext->getBlock(),
+            'context'    => $blockContext,
+            'settings'   => $blockContext->getSettings(),
+            'block'      => $blockContext->getBlock(),
+            'statusCode' => null === $response ? 200 : $response->getStatusCode(),
         ], $response);
     }
 

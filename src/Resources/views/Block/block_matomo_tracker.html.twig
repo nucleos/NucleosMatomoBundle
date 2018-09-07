@@ -13,6 +13,9 @@
           {% if settings.nocookies %}
             _paq.push(['disableCookies']);
           {% endif %}
+          {% if statusCode == 404 %}
+            _paq.push(['setDocumentTitle',  '404/URL = ' +  encodeURIComponent(document.location.pathname+document.location.search) + '/From = ' + encodeURIComponent(document.referrer)]);
+          {% endif %}
           _paq.push(['trackPageView']);
           _paq.push(['enableLinkTracking']);
           (function() {
