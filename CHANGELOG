@@ -1,0 +1,17 @@
+23/09/2018 14:21  1.1.0  Symfony 4 support
+83e3092 Added missing dependencies
+3a3f69b Added php-http/client-implementation dependency
+cdd4f35 Fixed httplug dependencies
+0487d06 Added missing httplug dependencies
+5de096b Removed templating dependency
+3af2fb5 Updated .editorconfig
+42cd1c6 Send error pages to piwik
+e1972ee Fixed CS
+72056a2 TRAVIS: Moved dependencies check to allow failures
+e1c2972 Added missing dependencies
+a1bc380 Removed useless PHPDoc
+9266b71 Sync config
+955ab60 Added composer-require-checker to build
+fbf166f Sync phpstan config
+f035d60 phpstan findings
+c5bd347 Require latest phpstan version
