@@ -2,7 +2,7 @@ import jQuery from 'jquery';
 import Chartist from 'chartist';
 
 // Styles
-import 'chartist/dist/chartist.css'
+import 'chartist/dist/chartist.css';
 
 
 (function (jQuery) {
