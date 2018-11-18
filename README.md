@@ -38,6 +38,13 @@ return [
 ];
 ```
 
+### Assets
+
+It is recommended to use [webpack](https://webpack.js.org/) / [webpack-encore](https://github.com/symfony/webpack-encore) 
+to include the `MatomoTable.js` file in your page. These file is located in the `assets` folder.
+
+You can use [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) to load the library:
+
 ## Usage
 
 Define a [HTTPlug] client in your configuration.

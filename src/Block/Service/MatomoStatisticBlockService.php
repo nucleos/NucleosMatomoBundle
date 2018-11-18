@@ -157,27 +157,6 @@ final class MatomoStatisticBlockService extends AbstractAdminBlockService implem
     /**
      * {@inheritdoc}
      */
-    public function getJavascripts($media)
-    {
-        return [
-            '/assets/javascript/chartist.js',
-            '/assets/javascript/jquery.matomoTable.js',
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getStylesheets($media)
-    {
-        return [
-            '/assets/stylesheet/chartist.css',
-        ];
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockMetadata($code = null)
     {
         return new Metadata($this->getName(), $code ?? $this->getName(), false, 'Core23MatomoBundle', [

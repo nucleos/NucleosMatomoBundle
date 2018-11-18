@@ -1,8 +1,13 @@
 {
   "name": "@core23/matomo-bundle",
+  "version": "1.0.0",
   "homepage": "https://core23.de",
   "author": "Christian Gripp <mail@core23.de>",
   "dependencies": {
     "chartist": "^0.10"
-  }
+  },
+  "main": "assets/npm.js",
+  "files": [
+    "assets/"
+  ]
 }
