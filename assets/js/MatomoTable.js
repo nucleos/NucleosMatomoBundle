@@ -1,57 +1,78 @@
-import jQuery from 'jquery';
 import Chartist from 'chartist';
 
 // Styles
 import 'chartist/dist/chartist.css';
 
+class MatomoTable {
+  constructor(element) {
+    this.element = element;
+    this.table = element.querySelector('table');
 
-(function (jQuery) {
-  jQuery.matomoTable = {version: '1.00'};
+    this.labels = [];
+    this.data = [];
 
-  jQuery.fn.matomoTable = function () {
-    return jQuery(this).each(function () {
-      const table = jQuery('table', this);
+    this.getData();
+    this.createGraph();
+  }
 
-      let labels = [];
-      let data = [];
+  getData() {
+    this.labels = [];
+    this.data = [];
 
-      jQuery('thead tr:first', table).children().each(function (index) {
-        if (index > 0) {
-          data.push([]);
-        }
+    Array.from(this.table.querySelector('thead tr').children)
+      .forEach((item, index) => {
+        if (index > 0)
+          this.data.push([]);
       });
 
-      jQuery('tbody tr', table).each(function () {
-        jQuery(this).children().each(function (index) {
+    this.table.querySelectorAll('tbody tr')
+      .forEach(rowItem => {
+        Array.from(rowItem.children).forEach((item, index) => {
+
           if (index > 0) {
-            data[index - 1].push(parseInt(jQuery(this).text()));
+            this.data[index - 1].push(parseInt(item.textContent));
           } else {
-            labels.push(jQuery(this).text());
+            this.labels.push(item.textContent);
           }
         });
       });
+  }
 
-      const id = 'chartist-' + Math.floor(Math.random() * 99999);
-      const div = jQuery('<div>').attr({class: 'ct-chart', id: id});
+  createGraph() {
+    const id = 'chartist-' + Math.floor(Math.random() * 99999);
+    const div = document.createElement('div');
+    div.id = id;
+    div.classList.add('ct-chart');
 
-      table.hide().after(div);
+    this.element.append(div);
 
-      new Chartist.Line('#' + id, {
-        labels: labels,
-        series: data
-      }, {
-        axisX: {
-          labelInterpolationFnc: function (value, index) {
-            return index % 7 === 0 ? '' + value : null;
-          }
-        },
-        height: 200
-      });
+    new Chartist.Line('#' + id, {
+      labels: this.labels,
+      series: this.data
+    }, {
+      axisX: {
+        labelInterpolationFnc: function (value, index) {
+          return index % 7 === 0 ? '' + value : null;
+        }
+      },
+      height: 200
     });
-  };
 
-  // auto-initialize plugin
-  jQuery(function () {
-    jQuery('[data-matomo]').matomoTable();
+    this.table.classList.add('hidden');
+  }
+}
+
+// Bind
+const weakMap = new WeakMap();
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-matomo]').forEach((element) => {
+    if (weakMap.has(element) && weakMap.get(element).matomoTable) {
+      return;
+    }
+
+    weakMap.set(element, {
+      matomoTable: new MatomoTable(element)
+    });
   });
-})(jQuery);
+});
