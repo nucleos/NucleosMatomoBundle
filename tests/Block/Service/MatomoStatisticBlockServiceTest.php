@@ -44,10 +44,10 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
                 'period' => 'day',
                 'date'   => 'last30',
             ]))
-            ->will($this->returnValue(['bar']));
+            ->willReturn(['bar']);
 
         $this->factory->expects($this->once())->method('createClient')
-            ->will($this->returnValue($client));
+            ->willReturn($client);
 
         $block = new Block();
 
@@ -85,7 +85,7 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
             ->willThrowException(new MatomoException('Offline'));
 
         $this->factory->expects($this->once())->method('createClient')
-            ->will($this->returnValue($client));
+            ->willReturn($client);
 
         $this->logger->expects($this->once())->method('warning');
 
