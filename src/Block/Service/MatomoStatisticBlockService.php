@@ -159,7 +159,7 @@ final class MatomoStatisticBlockService extends AbstractAdminBlockService implem
      */
     public function getBlockMetadata($code = null)
     {
-        return new Metadata($this->getName(), $code ?? $this->getName(), false, 'Core23MatomoBundle', [
+        return new Metadata($this->getName(), $code ?? $this->getName(), null, 'Core23MatomoBundle', [
             'class' => 'fa fa-area-chart',
         ]);
     }
