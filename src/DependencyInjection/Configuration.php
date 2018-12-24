@@ -22,12 +22,16 @@ final class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
+        $treeBuilder = new TreeBuilder('core23_matomo');
 
-        /** @var ArrayNodeDefinition $node */
-        $node = $treeBuilder->root('core23_matomo');
+        // Keep compatibility with symfony/config < 4.2
+        if (!\method_exists($treeBuilder, 'getRootNode')) {
+            $rootNode = $treeBuilder->root('core23_matomo');
+        } else {
+            $rootNode = $treeBuilder->getRootNode();
+        }
 
-        $this->addHttpClientSection($node);
+        $this->addHttpClientSection($rootNode);
 
         return $treeBuilder;
     }
