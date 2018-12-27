@@ -60,9 +60,9 @@ final class HttplugConnection implements ConnectionInterface
         try {
             $response = $this->client->sendRequest($request);
         } catch (\Exception $exception) {
-            throw new MatomoException('Error calling Matomo API.', 0, $exception);
+            throw new MatomoException('Error calling Matomo API.', 500, $exception);
         } catch (Exception $exception) {
-            throw new MatomoException('Error calling Matomo API.', 0, $exception);
+            throw new MatomoException('Error calling Matomo API.', $exception->getCode(), $exception);
         }
 
         if (200 !== $response->getStatusCode()) {
