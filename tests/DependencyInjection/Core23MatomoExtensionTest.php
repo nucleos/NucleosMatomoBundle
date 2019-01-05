@@ -25,7 +25,7 @@ final class Core23MatomoExtensionTest extends AbstractExtensionTestCase
         $this->assertContainerBuilderHasAlias('core23_matomo.http.message_factory', 'httplug.message_factory.default');
     }
 
-    protected function getContainerExtensions(): array
+    protected function getContainerExtensions()
     {
         return [
             new Core23MatomoExtension(),
