@@ -1,9 +1,6 @@
-import Chartist from 'chartist';
+import Chart from 'chart.js';
 
-// Styles
-import 'chartist/dist/chartist.css';
-
-class MatomoTable {
+export default class MatomoTable {
   constructor(element) {
     this.element = element;
     this.table = element.querySelector('table');
@@ -11,18 +8,21 @@ class MatomoTable {
     this.labels = [];
     this.data = [];
 
-    this.getData();
+    this.fetchData();
     this.createGraph();
   }
 
-  getData() {
+  fetchData() {
     this.labels = [];
     this.data = [];
 
     Array.from(this.table.querySelector('thead tr').children)
       .forEach((item, index) => {
         if (index > 0)
-          this.data.push([]);
+          this.data.push({
+            'label': item.textContent,
+            'rows': [],
+          });
       });
 
     this.table.querySelectorAll('tbody tr')
@@ -30,7 +30,7 @@ class MatomoTable {
         Array.from(rowItem.children).forEach((item, index) => {
 
           if (index > 0) {
-            this.data[index - 1].push(parseInt(item.textContent));
+            this.data[index - 1].rows.push(parseInt(item.textContent));
           } else {
             this.labels.push(item.textContent);
           }
@@ -39,23 +39,40 @@ class MatomoTable {
   }
 
   createGraph() {
-    const id = 'chartist-' + Math.floor(Math.random() * 99999);
-    const div = document.createElement('div');
-    div.id = id;
-    div.classList.add('ct-chart');
+    const colors = {
+      red: 'rgb(255, 99, 132)',
+      orange: 'rgb(255, 159, 64)',
+      yellow: 'rgb(255, 205, 86)',
+      green: 'rgb(75, 192, 192)',
+      blue: 'rgb(54, 162, 235)',
+      purple: 'rgb(153, 102, 255)',
+      grey: 'rgb(201, 203, 207)'
+    };
 
-    this.element.append(div);
+    const canvas = document.createElement('canvas');
+    canvas.width = 600;
+    canvas.height = 200;
 
-    new Chartist.Line('#' + id, {
-      labels: this.labels,
-      series: this.data
-    }, {
-      axisX: {
-        labelInterpolationFnc: function (value, index) {
-          return index % 7 === 0 ? '' + value : null;
-        }
-      },
-      height: 200
+    this.element.append(canvas);
+
+    let datasets = [];
+
+    this.data.forEach((item, index) => {
+      datasets.push({
+        data: item.rows,
+        label: item.label,
+        backgroundColor: colors[index % colors.length],
+        borderColor: colors[index % colors.length],
+        borderWidth: 1
+      });
+    });
+
+    new Chart(canvas, {
+      type: 'line',
+      data: {
+        labels: this.labels,
+        datasets: datasets
+      }
     });
 
     this.table.classList.add('hidden');

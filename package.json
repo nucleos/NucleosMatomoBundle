@@ -4,7 +4,7 @@
   "homepage": "https://core23.de",
   "author": "Christian Gripp <mail@core23.de>",
   "dependencies": {
-    "chartist": "^0.10"
+    "chart.js": "^2.7.3"
   },
   "main": "assets/npm.js",
   "files": [
