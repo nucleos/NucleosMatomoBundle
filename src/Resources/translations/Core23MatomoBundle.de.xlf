@@ -119,7 +119,7 @@
       </trans-unit>
       <trans-unit id="statistic_table_value">
         <source>statistic_table_value</source>
-        <target>Wert</target>
+        <target>Besucher</target>
       </trans-unit>
       <trans-unit id="form.label_translation_domain">
         <source>form.label_translation_domain</source>
