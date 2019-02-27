@@ -174,13 +174,11 @@ final class MatomoStatisticBlockService extends AbstractAdminBlockService implem
         try {
             $client = $this->factory->createClient($settings['host'], $settings['token']);
 
-            $response = $client->call($settings['method'], [
+            return $client->call($settings['method'], [
                 'idSite' => $settings['site'],
                 'period' => $settings['period'],
                 'date'   => $settings['date'],
             ]);
-
-            return $response;
         } catch (MatomoException $ce) {
             $this->logger->warning('Error retrieving Matomo url: '.$settings['host'], [
                 'exception' => $ce,
