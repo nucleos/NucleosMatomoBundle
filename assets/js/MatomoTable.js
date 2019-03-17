@@ -53,7 +53,7 @@ export default class MatomoTable {
 
     const canvas = document.createElement('canvas');
     canvas.width = 600;
-    canvas.height = 200;
+    canvas.height = 300;
 
     this.element.append(canvas);
 
