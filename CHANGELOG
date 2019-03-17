@@ -1,3 +1,15 @@
+17/03/2019 12:04  2.1.0  Use chart.js to display visitor statistic
+b7e38c8 [PATCH] Added color to chart
+0c8d079 [BUILD] Added weak_vendors when calling phpunit
+4ec636f [PATCH] Updated CS Fixer config and run
+b32074a [PATCH] Updated translation
+f9e6011 [MINOR] Use chart.js to display visitor statistic
+cb2c027 [BUILD] Updated phpstan version
+27f85aa [BUILD] Fixed symfony test setup
+f060dd2 [MINOR] Removed support for outdated symfony versions
+1212626 Updated cs-fixer config
+5d24fae Use return types
+5478d72 Fixed CS
 30/12/2018 22:56  2.0.0  Moved bundle assets to "assets" folder
 74f728d Fixed phpunit config for release command
 1cc4b8d Use correct error code when wrapping client exceptions
