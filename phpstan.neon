@@ -9,5 +9,9 @@ parameters:
         - vendor-bin/phpstan/vendor/phpstan/phpstan-strict-rules/rules.neon
 
     ignoreErrors:
+        # PHPUnit
+        - '#Parameter \#1 \$formMapper of method Core23\\MatomoBundle\\Block\\Service\\MatomoStatisticBlockService::buildEditForm\(\) expects Sonata\\AdminBundle\\Form\\FormMapper, PHPUnit\\Framework\\MockObject\\MockObject given.#'
+        - '#Parameter \#1 \$formMapper of method Core23\\MatomoBundle\\Block\\Service\\MatomoTrackerBlockService::buildEditForm\(\) expects Sonata\\AdminBundle\\Form\\FormMapper, PHPUnit\\Framework\\MockObject\\MockObject given.#'
+
         # Symfony DI
         - '#Cannot call method scalarNode\(\) on Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\|null.#'
