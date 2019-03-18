@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace Core23\MatomoBundle\Tests\Block\Service;
 
 use Core23\MatomoBundle\Block\Service\MatomoTrackerBlockService;
+use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContext;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Model\BlockInterface;
@@ -55,5 +56,17 @@ final class MatomoTrackerBlockServiceTest extends AbstractBlockServiceTestCase
             'nocookies'   => false,
             'template'    => '@Core23Matomo/Block/block_matomo_tracker.html.twig',
         ], $blockContext);
+    }
+
+    public function testBuildEditForm(): void
+    {
+        $blockService = new MatomoTrackerBlockService('block.service', $this->templating);
+
+        $block = new Block();
+
+        $formMapper = $this->createMock(FormMapper::class);
+        $formMapper->expects($this->once())->method('add');
+
+        $blockService->buildEditForm($formMapper, $block);
     }
 }

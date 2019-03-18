@@ -16,6 +16,7 @@ use Core23\MatomoBundle\Client\ClientFactoryInterface;
 use Core23\MatomoBundle\Client\ClientInterface;
 use Core23\MatomoBundle\Exception\MatomoException;
 use Psr\Log\LoggerInterface;
+use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContext;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Model\BlockInterface;
@@ -137,5 +138,17 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
             'date'               => 'last30',
             'template'           => '@Core23Matomo/Block/block_matomo_statistic.html.twig',
         ], $blockContext);
+    }
+
+    public function testBuildEditForm(): void
+    {
+        $blockService = new MatomoStatisticBlockService('block.service', $this->templating, $this->factory);
+
+        $block = new Block();
+
+        $formMapper = $this->createMock(FormMapper::class);
+        $formMapper->expects($this->once())->method('add');
+
+        $blockService->buildEditForm($formMapper, $block);
     }
 }
