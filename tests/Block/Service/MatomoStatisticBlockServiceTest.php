@@ -140,6 +140,22 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
         ], $blockContext);
     }
 
+    public function testGetBlockMetadata(): void
+    {
+        $blockService = new MatomoStatisticBlockService('block.service', $this->templating, $this->factory);
+
+        $metadata = $blockService->getBlockMetadata('description');
+
+        $this->assertSame('block.service', $metadata->getTitle());
+        $this->assertSame('description', $metadata->getDescription());
+        $this->assertNotNull($metadata->getImage());
+        $this->assertStringStartsWith('data:image/png;base64,', $metadata->getImage() ?? '');
+        $this->assertSame('Core23MatomoBundle', $metadata->getDomain());
+        $this->assertSame([
+            'class' => 'fa fa-area-chart',
+        ], $metadata->getOptions());
+    }
+
     public function testBuildEditForm(): void
     {
         $blockService = new MatomoStatisticBlockService('block.service', $this->templating, $this->factory);

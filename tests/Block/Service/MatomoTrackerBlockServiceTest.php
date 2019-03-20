@@ -58,6 +58,22 @@ final class MatomoTrackerBlockServiceTest extends AbstractBlockServiceTestCase
         ], $blockContext);
     }
 
+    public function testGetBlockMetadata(): void
+    {
+        $blockService = new MatomoTrackerBlockService('block.service', $this->templating);
+
+        $metadata = $blockService->getBlockMetadata('description');
+
+        $this->assertSame('block.service', $metadata->getTitle());
+        $this->assertSame('description', $metadata->getDescription());
+        $this->assertNotNull($metadata->getImage());
+        $this->assertStringStartsWith('data:image/png;base64,', $metadata->getImage() ?? '');
+        $this->assertSame('Core23MatomoBundle', $metadata->getDomain());
+        $this->assertSame([
+            'class' => 'fa fa-code',
+        ], $metadata->getOptions());
+    }
+
     public function testBuildEditForm(): void
     {
         $blockService = new MatomoTrackerBlockService('block.service', $this->templating);
