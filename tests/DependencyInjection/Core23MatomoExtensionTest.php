@@ -11,6 +11,8 @@ declare(strict_types=1);
 
 namespace Core23\MatomoBundle\Tests\DependencyInjection;
 
+use Core23\MatomoBundle\Block\Service\MatomoStatisticBlockService;
+use Core23\MatomoBundle\Block\Service\MatomoTrackerBlockService;
 use Core23\MatomoBundle\DependencyInjection\Core23MatomoExtension;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
 
@@ -23,6 +25,15 @@ final class Core23MatomoExtensionTest extends AbstractExtensionTestCase
 
         $this->assertContainerBuilderHasAlias('core23_matomo.http.client', 'httplug.client.default');
         $this->assertContainerBuilderHasAlias('core23_matomo.http.message_factory', 'httplug.message_factory.default');
+    }
+
+    public function testLoadWithBlockBundle(): void
+    {
+        $this->setParameter('kernel.bundles', ['SonataBlockBundle' => true]);
+        $this->load();
+
+        $this->assertContainerBuilderHasService('core23_matomo.block.statistic', MatomoStatisticBlockService::class);
+        $this->assertContainerBuilderHasService('core23_matomo.block.tracker', MatomoTrackerBlockService::class);
     }
 
     protected function getContainerExtensions()
