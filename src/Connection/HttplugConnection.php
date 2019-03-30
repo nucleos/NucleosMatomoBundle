@@ -12,7 +12,9 @@ declare(strict_types=1);
 namespace Core23\MatomoBundle\Connection;
 
 use Core23\MatomoBundle\Exception\MatomoException;
-use Http\Client\Exception;
+use DateTime;
+use Exception;
+use Http\Client\Exception as ClientException;
 use Http\Client\HttpClient;
 use Http\Message\MessageFactory;
 
@@ -59,9 +61,9 @@ final class HttplugConnection implements ConnectionInterface
 
         try {
             $response = $this->client->sendRequest($request);
-        } catch (\Exception $exception) {
-            throw new MatomoException('Error calling Matomo API.', 500, $exception);
         } catch (Exception $exception) {
+            throw new MatomoException('Error calling Matomo API.', 500, $exception);
+        } catch (ClientException $exception) {
             throw new MatomoException('Error calling Matomo API.', $exception->getCode(), $exception);
         }
 
@@ -85,7 +87,7 @@ final class HttplugConnection implements ConnectionInterface
         foreach ($params as $key => $val) {
             if (\is_array($val)) {
                 $val = implode(',', $val);
-            } elseif ($val instanceof \DateTime) {
+            } elseif ($val instanceof DateTime) {
                 $val = $val->format('Y-m-d');
             } elseif (\is_bool($val)) {
                 if ($val) {
