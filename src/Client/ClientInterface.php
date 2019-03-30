@@ -20,6 +20,8 @@ interface ClientInterface
      * Set Matomo API token.
      *
      * @param string $token auth token
+     *
+     * @deprecated use constructor to set client token
      */
     public function setToken(string $token);
 
@@ -40,6 +42,8 @@ interface ClientInterface
      * Return active connection.
      *
      * @return ConnectionInterface
+     *
+     * @deprecated without any replacement
      */
     public function getConnection(): ConnectionInterface;
 }
