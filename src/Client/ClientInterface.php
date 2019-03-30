@@ -36,7 +36,7 @@ interface ClientInterface
      *
      * @return mixed
      */
-    public function call(string $method, array $params = [], $format = 'php');
+    public function call(string $method, array $params = [], string $format = 'php');
 
     /**
      * Return active connection.

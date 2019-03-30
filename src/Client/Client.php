@@ -49,7 +49,7 @@ final class Client implements ClientInterface
     /**
      * {@inheritdoc}
      */
-    public function call(string $method, array $params = [], $format = 'php')
+    public function call(string $method, array $params = [], string $format = 'php')
     {
         $params['method']     = $method;
         $params['token_auth'] = $this->token;
