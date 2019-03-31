@@ -12,6 +12,7 @@ namespace Core23\MatomoBundle\Tests\Connection;
 use Core23\MatomoBundle\Connection\ConnectionInterface;
 use Core23\MatomoBundle\Connection\HttplugConnection;
 use Core23\MatomoBundle\Exception\MatomoException;
+use Core23\MatomoBundle\Tests\Fixtures\ClientException;
 use DateTime;
 use Exception;
 use Http\Client\HttpClient;
@@ -98,6 +99,25 @@ class HttplugConnectionTest extends TestCase
         $this->assertSame('my content', $client->send(['active' => true, 'inactive' => false]));
     }
 
+    public function testSendWithArrayParameter(): void
+    {
+        $client = new HttplugConnection($this->client->reveal(), $this->messageFactory->reveal(), 'http://api.url');
+
+        $request =  $this->prophesize(RequestInterface::class);
+
+        $this->messageFactory->createRequest('GET', 'http://api.url?foo=bar,baz&module=API')
+            ->willReturn($request)
+        ;
+
+        $response =$this->prepareResponse('my content');
+
+        $this->client->sendRequest($request)
+            ->willReturn($response)
+        ;
+
+        $this->assertSame('my content', $client->send(['foo' => ['bar', 'baz']]));
+    }
+
     public function testSendWithException(): void
     {
         $this->expectException(Exception::class);
@@ -113,6 +133,26 @@ class HttplugConnectionTest extends TestCase
 
         $this->client->sendRequest($request)
             ->willThrow(Exception::class)
+        ;
+
+        $client->send(['foo' => 'bar']);
+    }
+
+    public function testSendWithClientException(): void
+    {
+        $this->expectException(MatomoException::class);
+        $this->expectExceptionMessage('Error calling Matomo API.');
+
+        $client = new HttplugConnection($this->client->reveal(), $this->messageFactory->reveal(), 'http://api.url');
+
+        $request =  $this->prophesize(RequestInterface::class);
+
+        $this->messageFactory->createRequest('GET', 'http://api.url?foo=bar&module=API')
+            ->willReturn($request)
+        ;
+
+        $this->client->sendRequest($request)
+            ->willThrow(ClientException::class)
         ;
 
         $client->send(['foo' => 'bar']);
