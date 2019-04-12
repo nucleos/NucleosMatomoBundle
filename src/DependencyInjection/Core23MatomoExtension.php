@@ -31,6 +31,7 @@ final class Core23MatomoExtension extends Extension
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
         $loader->load('services.xml');
+        $loader->load('twig.xml');
 
         if (isset($bundles['SonataBlockBundle'])) {
             $loader->load('block.xml');

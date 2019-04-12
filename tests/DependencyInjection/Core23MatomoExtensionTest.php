@@ -14,6 +14,7 @@ namespace Core23\MatomoBundle\Tests\DependencyInjection;
 use Core23\MatomoBundle\Block\Service\MatomoStatisticBlockService;
 use Core23\MatomoBundle\Block\Service\MatomoTrackerBlockService;
 use Core23\MatomoBundle\DependencyInjection\Core23MatomoExtension;
+use Core23\MatomoBundle\Twig\Extension\MatomoTwigExtension;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
 
 final class Core23MatomoExtensionTest extends AbstractExtensionTestCase
@@ -22,6 +23,8 @@ final class Core23MatomoExtensionTest extends AbstractExtensionTestCase
     {
         $this->setParameter('kernel.bundles', []);
         $this->load();
+
+        $this->assertContainerBuilderHasService(MatomoTwigExtension::class);
 
         $this->assertContainerBuilderHasAlias('core23_matomo.http.client', 'httplug.client.default');
         $this->assertContainerBuilderHasAlias('core23_matomo.http.message_factory', 'httplug.message_factory.default');
