@@ -39,7 +39,7 @@ class HttplugConnectionTest extends TestCase
     {
         $client = new HttplugConnection($this->client->reveal(), $this->messageFactory->reveal(), 'http://api.url');
 
-        $this->assertInstanceOf(ConnectionInterface::class, $client);
+        static::assertInstanceOf(ConnectionInterface::class, $client);
     }
 
     public function testSend(): void
@@ -58,7 +58,7 @@ class HttplugConnectionTest extends TestCase
             ->willReturn($response)
         ;
 
-        $this->assertSame('my content', $client->send(['foo' => 'bar']));
+        static::assertSame('my content', $client->send(['foo' => 'bar']));
     }
 
     public function testSendWithDateParameter(): void
@@ -77,7 +77,7 @@ class HttplugConnectionTest extends TestCase
             ->willReturn($response)
         ;
 
-        $this->assertSame('my content', $client->send(['date' => new DateTime('2010-02-10')]));
+        static::assertSame('my content', $client->send(['date' => new DateTime('2010-02-10')]));
     }
 
     public function testSendWithBooleanParameter(): void
@@ -96,7 +96,7 @@ class HttplugConnectionTest extends TestCase
             ->willReturn($response)
         ;
 
-        $this->assertSame('my content', $client->send(['active' => true, 'inactive' => false]));
+        static::assertSame('my content', $client->send(['active' => true, 'inactive' => false]));
     }
 
     public function testSendWithArrayParameter(): void
@@ -115,7 +115,7 @@ class HttplugConnectionTest extends TestCase
             ->willReturn($response)
         ;
 
-        $this->assertSame('my content', $client->send(['foo' => ['bar', 'baz']]));
+        static::assertSame('my content', $client->send(['foo' => ['bar', 'baz']]));
     }
 
     public function testSendWithException(): void

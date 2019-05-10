@@ -32,13 +32,13 @@ class HttplugClientFactoryTest extends TestCase
     {
         $factory = new HttplugClientFactory($this->client->reveal(), $this->messageFactory->reveal());
 
-        $this->assertInstanceOf(ClientFactoryInterface::class, $factory);
+        static::assertInstanceOf(ClientFactoryInterface::class, $factory);
     }
 
     public function testGetConnection(): void
     {
         $factory = new HttplugClientFactory($this->client->reveal(), $this->messageFactory->reveal());
 
-        $this->assertInstanceOf(ClientInterface::class, $factory->createClient('http://localhost', 'MY_TOKEN'));
+        static::assertInstanceOf(ClientInterface::class, $factory->createClient('http://localhost', 'MY_TOKEN'));
     }
 }

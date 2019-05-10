@@ -39,8 +39,8 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
     public function testExecute(): void
     {
         $client = $this->createMock(ClientInterface::class);
-        $client->expects($this->once())->method('call')
-            ->with($this->equalTo('VisitsSummary.getVisits'), $this->equalTo([
+        $client->expects(static::once())->method('call')
+            ->with(static::equalTo('VisitsSummary.getVisits'), static::equalTo([
                 'idSite' => 'foo',
                 'period' => 'day',
                 'date'   => 'last30',
@@ -48,7 +48,7 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
             ->willReturn(['bar'])
         ;
 
-        $this->factory->expects($this->once())->method('createClient')
+        $this->factory->expects(static::once())->method('createClient')
             ->willReturn($client)
         ;
 
@@ -68,19 +68,19 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
         $blockService = new MatomoStatisticBlockService('block.service', $this->templating, $this->factory);
         $blockService->execute($blockContext);
 
-        $this->assertSame('@Core23Matomo/Block/block_matomo_statistic.html.twig', $this->templating->view);
+        static::assertSame('@Core23Matomo/Block/block_matomo_statistic.html.twig', $this->templating->view);
 
-        $this->assertSame($blockContext, $this->templating->parameters['context']);
-        $this->assertInternalType('array', $this->templating->parameters['settings']);
-        $this->assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
-        $this->assertSame(['bar'], $this->templating->parameters['data']);
+        static::assertSame($blockContext, $this->templating->parameters['context']);
+        static::assertInternalType('array', $this->templating->parameters['settings']);
+        static::assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
+        static::assertSame(['bar'], $this->templating->parameters['data']);
     }
 
     public function testExecuteOffline(): void
     {
         $client = $this->createMock(ClientInterface::class);
-        $client->expects($this->once())->method('call')
-            ->with($this->equalTo('VisitsSummary.getVisits'), $this->equalTo([
+        $client->expects(static::once())->method('call')
+            ->with(static::equalTo('VisitsSummary.getVisits'), static::equalTo([
                 'idSite' => 'foo',
                 'period' => 'day',
                 'date'   => 'last30',
@@ -88,11 +88,11 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
             ->willThrowException(new MatomoException('Offline'))
         ;
 
-        $this->factory->expects($this->once())->method('createClient')
+        $this->factory->expects(static::once())->method('createClient')
             ->willReturn($client)
         ;
 
-        $this->logger->expects($this->once())->method('warning');
+        $this->logger->expects(static::once())->method('warning');
 
         $block = new Block();
 
@@ -111,12 +111,12 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
         $blockService->setLogger($this->logger);
         $blockService->execute($blockContext);
 
-        $this->assertSame('@Core23Matomo/Block/block_matomo_statistic.html.twig', $this->templating->view);
+        static::assertSame('@Core23Matomo/Block/block_matomo_statistic.html.twig', $this->templating->view);
 
-        $this->assertSame($blockContext, $this->templating->parameters['context']);
-        $this->assertInternalType('array', $this->templating->parameters['settings']);
-        $this->assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
-        $this->assertNull($this->templating->parameters['data']);
+        static::assertSame($blockContext, $this->templating->parameters['context']);
+        static::assertInternalType('array', $this->templating->parameters['settings']);
+        static::assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
+        static::assertNull($this->templating->parameters['data']);
     }
 
     public function testDefaultSettings(): void
@@ -146,12 +146,12 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
 
         $metadata = $blockService->getBlockMetadata('description');
 
-        $this->assertSame('block.service', $metadata->getTitle());
-        $this->assertSame('description', $metadata->getDescription());
-        $this->assertNotNull($metadata->getImage());
-        $this->assertStringStartsWith('data:image/png;base64,', $metadata->getImage() ?? '');
-        $this->assertSame('Core23MatomoBundle', $metadata->getDomain());
-        $this->assertSame([
+        static::assertSame('block.service', $metadata->getTitle());
+        static::assertSame('description', $metadata->getDescription());
+        static::assertNotNull($metadata->getImage());
+        static::assertStringStartsWith('data:image/png;base64,', $metadata->getImage() ?? '');
+        static::assertSame('Core23MatomoBundle', $metadata->getDomain());
+        static::assertSame([
             'class' => 'fa fa-area-chart',
         ], $metadata->getOptions());
     }
@@ -163,7 +163,7 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
         $block = new Block();
 
         $formMapper = $this->createMock(FormMapper::class);
-        $formMapper->expects($this->once())->method('add');
+        $formMapper->expects(static::once())->method('add');
 
         $blockService->buildEditForm($formMapper, $block);
     }

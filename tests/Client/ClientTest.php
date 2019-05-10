@@ -28,14 +28,14 @@ class ClientTest extends TestCase
     {
         $client = new Client($this->connection->reveal());
 
-        $this->assertInstanceOf(ClientInterface::class, $client);
+        static::assertInstanceOf(ClientInterface::class, $client);
     }
 
     public function testGetConnection(): void
     {
         $client = new Client($this->connection->reveal());
 
-        $this->assertSame($this->connection->reveal(), $client->getConnection());
+        static::assertSame($this->connection->reveal(), $client->getConnection());
     }
 
     public function testCall(): void
@@ -52,7 +52,7 @@ class ClientTest extends TestCase
         $client = new Client($this->connection->reveal(), 'MY_TOKEN');
         $result = $client->call('foo/method', ['foo' => 'bar']);
 
-        $this->assertSame(['result' => 'data'], $result);
+        static::assertSame(['result' => 'data'], $result);
     }
 
     public function testCallWithCustomFormat(): void
@@ -69,7 +69,7 @@ class ClientTest extends TestCase
         $client = new Client($this->connection->reveal(), 'MY_TOKEN');
         $result = $client->call('foo/method', ['foo' => 'bar'], 'custom');
 
-        $this->assertSame('The result', $result);
+        static::assertSame('The result', $result);
     }
 
     public function testCallWithApiError(): void

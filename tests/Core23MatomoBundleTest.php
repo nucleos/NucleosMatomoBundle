@@ -19,6 +19,6 @@ class Core23MatomoBundleTest extends TestCase
     {
         $bundle = new Core23MatomoBundle();
 
-        $this->assertInstanceOf(BundleInterface::class, $bundle);
+        static::assertInstanceOf(BundleInterface::class, $bundle);
     }
 }
