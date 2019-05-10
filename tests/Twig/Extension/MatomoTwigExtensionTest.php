@@ -33,11 +33,11 @@ class MatomoTwigExtensionTest extends TestCase
 
         $functions = $extension->getFunctions();
 
-        $this->assertCount(1, $functions);
+        static::assertCount(1, $functions);
 
         foreach ($functions as $function) {
-            $this->assertInstanceOf(TwigFunction::class, $function);
-            $this->assertIsCallable($function->getCallable());
+            static::assertInstanceOf(TwigFunction::class, $function);
+            static::assertIsCallable($function->getCallable());
         }
     }
 
@@ -53,7 +53,7 @@ class MatomoTwigExtensionTest extends TestCase
 
         $extension = new MatomoTwigExtension($this->environment->reveal());
 
-        $this->assertSame('HTML CONTENT', $extension->renderTracker([
+        static::assertSame('HTML CONTENT', $extension->renderTracker([
             'site_id' => 13,
         ]));
     }
@@ -66,6 +66,6 @@ class MatomoTwigExtensionTest extends TestCase
             ->shouldNotBeCalled()
         ;
 
-        $this->assertSame('', $extension->renderTracker());
+        static::assertSame('', $extension->renderTracker());
     }
 }
