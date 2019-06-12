@@ -1,3 +1,25 @@
+11/06/2019 19:46  2.2.0  Added twig function to render the tracker code
+2a01518 [BUILD] Replaced deprecated "weak_vendors" option
+28dc032 Added GitHub sponsoring information
+761ec2d [PATCH] Fixed CS
+2c4fb23 [BUILD] Updated export-ignore files
+24157d9 [MINOR] Removed version from virtual dependency
+afc2220 [MINOR] Use latest Httplug version
+e235be7 [BUILD] Updated build tools
+c4d32b4 [MINOR] Added twig function to render the tracker code
+3011cb7 [BUILD] Removed dependency stage from build matrix
+d7945e6 [TEST] Increased test coverage
+552b35a [PATCH] Catch most specific exceptions first
+8dab724 [TEST] Increased test converage
+ed7bc7f [PATCH] Added imports for all classes
+bbce8ba [MINOR] Added explicit string type to format parameter in ClientInterface::call
+3ece8e1 [MINOR] Deprecated ClientInterface::setToken and ClientInterface::getConnection
+9a9b752 [BUILD] Removed current copyright date
+bfb6d8f [BUILD] Cleanup phpstan errors
+94c0e8a [BUILD] Added more tests
+904293b [BUILD] Fixed phpstan ignore list
+b9c8314 [BUILD] Added more tests
+0b86be1 [PATCH] Increased graph height
 17/03/2019 12:04  2.1.0  Use chart.js to display visitor statistic
 b7e38c8 [PATCH] Added color to chart
 0c8d079 [BUILD] Added weak_vendors when calling phpunit
