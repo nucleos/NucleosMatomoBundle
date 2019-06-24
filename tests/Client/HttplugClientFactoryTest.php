@@ -16,7 +16,7 @@ use Http\Client\HttpClient;
 use Http\Message\MessageFactory;
 use PHPUnit\Framework\TestCase;
 
-class HttplugClientFactoryTest extends TestCase
+final class HttplugClientFactoryTest extends TestCase
 {
     private $client;
 

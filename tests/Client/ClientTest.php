@@ -15,7 +15,7 @@ use Core23\MatomoBundle\Connection\ConnectionInterface;
 use Core23\MatomoBundle\Exception\MatomoException;
 use PHPUnit\Framework\TestCase;
 
-class ClientTest extends TestCase
+final class ClientTest extends TestCase
 {
     private $connection;
 

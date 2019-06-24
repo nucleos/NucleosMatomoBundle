@@ -13,7 +13,7 @@ use Core23\MatomoBundle\Core23MatomoBundle;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
-class Core23MatomoBundleTest extends TestCase
+final class Core23MatomoBundleTest extends TestCase
 {
     public function testItIsInstantiable(): void
     {
