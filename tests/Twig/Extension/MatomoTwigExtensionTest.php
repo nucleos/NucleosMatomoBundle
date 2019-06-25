@@ -15,7 +15,7 @@ use Prophecy\Argument;
 use Twig\Environment;
 use Twig\TwigFunction;
 
-class MatomoTwigExtensionTest extends TestCase
+final class MatomoTwigExtensionTest extends TestCase
 {
     private $environment;
 

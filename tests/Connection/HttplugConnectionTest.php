@@ -23,7 +23,7 @@ use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 
-class HttplugConnectionTest extends TestCase
+final class HttplugConnectionTest extends TestCase
 {
     private $client;
 
