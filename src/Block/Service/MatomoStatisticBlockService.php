@@ -38,11 +38,6 @@ final class MatomoStatisticBlockService extends AbstractAdminBlockService implem
      */
     private $factory;
 
-    /**
-     * @param string                 $name
-     * @param EngineInterface        $templating
-     * @param ClientFactoryInterface $factory
-     */
     public function __construct(string $name, EngineInterface $templating, ClientFactoryInterface $factory)
     {
         parent::__construct($name, $templating);
@@ -164,11 +159,6 @@ final class MatomoStatisticBlockService extends AbstractAdminBlockService implem
         ]);
     }
 
-    /**
-     * @param array $settings
-     *
-     * @return array|null
-     */
     protected function getData(array $settings = []): ?array
     {
         try {

@@ -15,11 +15,6 @@ interface ClientFactoryInterface
 {
     /**
      * Creates new Matomo Client.
-     *
-     * @param string $host
-     * @param string $token
-     *
-     * @return ClientInterface
      */
     public function createClient(string $host, string $token): ClientInterface;
 }

@@ -40,10 +40,6 @@ final class Core23MatomoExtension extends Extension
         $this->configureHttpClient($container, $config);
     }
 
-    /**
-     * @param ContainerBuilder $container
-     * @param array            $config
-     */
     private function configureHttpClient(ContainerBuilder $container, array $config): void
     {
         $container->setAlias('core23_matomo.http.client', $config['http']['client']);

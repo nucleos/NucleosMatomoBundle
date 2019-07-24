@@ -38,9 +38,7 @@ final class HttplugConnection implements ConnectionInterface
     /**
      * Initialize client.
      *
-     * @param HttpClient     $client
-     * @param MessageFactory $messageFactory
-     * @param string         $apiUrl         base API URL
+     * @param string $apiUrl base API URL
      */
     public function __construct(HttpClient $client, MessageFactory $messageFactory, string $apiUrl)
     {
@@ -76,8 +74,6 @@ final class HttplugConnection implements ConnectionInterface
 
     /**
      * Converts a set of parameters to a query string.
-     *
-     * @param array $params
      *
      * @return string query string
      */

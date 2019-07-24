@@ -33,15 +33,11 @@ interface ClientInterface
      * @param string $format return format (php, json, xml, csv, tsv, html, rss)
      *
      * @throws MatomoException
-     *
-     * @return mixed
      */
     public function call(string $method, array $params = [], string $format = 'php');
 
     /**
      * Return active connection.
-     *
-     * @return ConnectionInterface
      *
      * @deprecated without any replacement
      */
