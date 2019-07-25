@@ -23,9 +23,6 @@ final class MatomoTwigExtension extends AbstractExtension
      */
     private $environment;
 
-    /**
-     * @param Environment $environment
-     */
     public function __construct(Environment $environment)
     {
         $this->environment = $environment;
@@ -44,13 +41,9 @@ final class MatomoTwigExtension extends AbstractExtension
     }
 
     /**
-     * @param array $options
-     *
      * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
-     *
-     * @return string
      */
     public function renderTracker(array $options = []): string
     {

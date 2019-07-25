@@ -37,9 +37,6 @@ final class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
-    /**
-     * @param ArrayNodeDefinition $node
-     */
     private function addHttpClientSection(ArrayNodeDefinition $node): void
     {
         $node

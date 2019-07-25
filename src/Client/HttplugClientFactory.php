@@ -29,9 +29,6 @@ final class HttplugClientFactory implements ClientFactoryInterface
 
     /**
      * Initialize client.
-     *
-     * @param HttpClient     $client
-     * @param MessageFactory $messageFactory
      */
     public function __construct(HttpClient $client, MessageFactory $messageFactory)
     {
