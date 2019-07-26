@@ -25,9 +25,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class MatomoTrackerBlockService extends AbstractAdminBlockService
 {
-    /**
-     * {@inheritdoc}
-     */
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
         return $this->renderResponse($blockContext->getTemplate(), [
@@ -38,9 +35,6 @@ final class MatomoTrackerBlockService extends AbstractAdminBlockService
         ], $response);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block): void
     {
         $formMapper->add('settings', ImmutableArrayType::class, [
@@ -69,9 +63,6 @@ final class MatomoTrackerBlockService extends AbstractAdminBlockService
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
@@ -86,9 +77,6 @@ final class MatomoTrackerBlockService extends AbstractAdminBlockService
         $resolver->setRequired(['site', 'host']);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockMetadata($code = null)
     {
         return new Metadata($this->getName(), $code ?? $this->getName(), null, 'Core23MatomoBundle', [

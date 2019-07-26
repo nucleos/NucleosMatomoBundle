@@ -38,17 +38,11 @@ final class Client implements ClientInterface
         $this->setToken($token);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function setToken(string $token): void
     {
         $this->token = $token;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function call(string $method, array $params = [], string $format = 'php')
     {
         $params['method']     = $method;
@@ -69,9 +63,6 @@ final class Client implements ClientInterface
         return $data;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getConnection(): ConnectionInterface
     {
         return $this->connection;

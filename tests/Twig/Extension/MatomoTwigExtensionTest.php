@@ -19,9 +19,6 @@ final class MatomoTwigExtensionTest extends TestCase
 {
     private $environment;
 
-    /**
-     * {@inheritdoc}
-     */
     protected function setUp(): void
     {
         $this->environment = $this->prophesize(Environment::class);
