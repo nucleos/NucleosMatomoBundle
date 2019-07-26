@@ -47,9 +47,6 @@ final class HttplugConnection implements ConnectionInterface
         $this->messageFactory = $messageFactory;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function send(array $params = []): string
     {
         $params['module'] = 'API';

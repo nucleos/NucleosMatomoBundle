@@ -46,9 +46,6 @@ final class MatomoStatisticBlockService extends AbstractAdminBlockService implem
         $this->logger  = new NullLogger();
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function execute(BlockContextInterface $blockContext, Response $response = null)
     {
         return $this->renderResponse($blockContext->getTemplate(), [
@@ -59,9 +56,6 @@ final class MatomoStatisticBlockService extends AbstractAdminBlockService implem
         ], $response);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function buildEditForm(FormMapper $formMapper, BlockInterface $block): void
     {
         $formMapper->add('settings', ImmutableArrayType::class, [
@@ -127,9 +121,6 @@ final class MatomoStatisticBlockService extends AbstractAdminBlockService implem
         ]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureSettings(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
@@ -149,9 +140,6 @@ final class MatomoStatisticBlockService extends AbstractAdminBlockService implem
         $resolver->setRequired(['site', 'host', 'token']);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getBlockMetadata($code = null)
     {
         return new Metadata($this->getName(), $code ?? $this->getName(), null, 'Core23MatomoBundle', [

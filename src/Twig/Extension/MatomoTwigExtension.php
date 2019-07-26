@@ -28,9 +28,6 @@ final class MatomoTwigExtension extends AbstractExtension
         $this->environment = $environment;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function getFunctions(): array
     {
         return [

@@ -36,9 +36,6 @@ final class HttplugClientFactory implements ClientFactoryInterface
         $this->messageFactory = $messageFactory;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function createClient(string $host, string $token): ClientInterface
     {
         $connection = new HttplugConnection($this->client, $this->messageFactory, $host);
