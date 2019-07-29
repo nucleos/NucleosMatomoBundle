@@ -29,7 +29,7 @@ final class HttplugConnectionTest extends TestCase
 
     private $messageFactory;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->client         = $this->prophesize(HttpClient::class);
         $this->messageFactory = $this->prophesize(MessageFactory::class);
