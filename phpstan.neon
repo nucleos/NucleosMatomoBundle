@@ -5,3 +5,12 @@ parameters:
     ignoreErrors:
         # Symfony DI
         - '#Cannot call method scalarNode\(\) on Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\|null.#'
+        - "/Call to function method_exists.. with 'Symfony.+' and 'getRootNode' will always evaluate to false./"
+
+        # PHPUnit
+        -
+            message: '#Property .*::\$.* has no typehint specified.#'
+            path: tests/
+        -
+            message: "#Call to static method .+Assert::assertInstanceOf.. with 'Twig.+' and Twig.+ will always evaluate to true.#"
+            path: tests/Twig/Extension/
