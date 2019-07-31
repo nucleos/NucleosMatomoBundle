@@ -10,15 +10,15 @@
 namespace Core23\MatomoBundle\Tests;
 
 use Core23\MatomoBundle\Core23MatomoBundle;
+use Core23\MatomoBundle\DependencyInjection\Core23MatomoExtension;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
 final class Core23MatomoBundleTest extends TestCase
 {
-    public function testItIsInstantiable(): void
+    public function testGetContainerExtension(): void
     {
         $bundle = new Core23MatomoBundle();
 
-        static::assertInstanceOf(BundleInterface::class, $bundle);
+        static::assertInstanceOf(Core23MatomoExtension::class, $bundle->getContainerExtension());
     }
 }

@@ -10,7 +10,6 @@
 namespace Core23\MatomoBundle\Tests\Client;
 
 use Core23\MatomoBundle\Client\Client;
-use Core23\MatomoBundle\Client\ClientInterface;
 use Core23\MatomoBundle\Connection\ConnectionInterface;
 use Core23\MatomoBundle\Exception\MatomoException;
 use PHPUnit\Framework\TestCase;
@@ -19,16 +18,9 @@ final class ClientTest extends TestCase
 {
     private $connection;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->connection = $this->prophesize(ConnectionInterface::class);
-    }
-
-    public function testItIsInstantiable(): void
-    {
-        $client = new Client($this->connection->reveal());
-
-        static::assertInstanceOf(ClientInterface::class, $client);
     }
 
     public function testGetConnection(): void

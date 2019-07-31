@@ -9,7 +9,6 @@
 
 namespace Core23\MatomoBundle\Tests\Connection;
 
-use Core23\MatomoBundle\Connection\ConnectionInterface;
 use Core23\MatomoBundle\Connection\HttplugConnection;
 use Core23\MatomoBundle\Exception\MatomoException;
 use Core23\MatomoBundle\Tests\Fixtures\ClientException;
@@ -29,17 +28,10 @@ final class HttplugConnectionTest extends TestCase
 
     private $messageFactory;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->client         = $this->prophesize(HttpClient::class);
         $this->messageFactory = $this->prophesize(MessageFactory::class);
-    }
-
-    public function testItIsInstantiable(): void
-    {
-        $client = new HttplugConnection($this->client->reveal(), $this->messageFactory->reveal(), 'http://api.url');
-
-        static::assertInstanceOf(ConnectionInterface::class, $client);
     }
 
     public function testSend(): void

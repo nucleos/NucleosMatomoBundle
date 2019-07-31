@@ -23,7 +23,7 @@ interface ClientInterface
      *
      * @deprecated use constructor to set client token
      */
-    public function setToken(string $token);
+    public function setToken(string $token): void;
 
     /**
      * Call specific method & return it's response.
@@ -33,6 +33,8 @@ interface ClientInterface
      * @param string $format return format (php, json, xml, csv, tsv, html, rss)
      *
      * @throws MatomoException
+     *
+     * @return array|string
      */
     public function call(string $method, array $params = [], string $format = 'php');
 

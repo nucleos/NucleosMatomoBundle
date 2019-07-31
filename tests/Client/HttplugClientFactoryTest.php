@@ -9,8 +9,7 @@
 
 namespace Core23\MatomoBundle\Tests\Client;
 
-use Core23\MatomoBundle\Client\ClientFactoryInterface;
-use Core23\MatomoBundle\Client\ClientInterface;
+use Core23\MatomoBundle\Client\Client;
 use Core23\MatomoBundle\Client\HttplugClientFactory;
 use Http\Client\HttpClient;
 use Http\Message\MessageFactory;
@@ -22,23 +21,18 @@ final class HttplugClientFactoryTest extends TestCase
 
     private $messageFactory;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         $this->client         = $this->prophesize(HttpClient::class);
         $this->messageFactory = $this->prophesize(MessageFactory::class);
-    }
-
-    public function testItIsInstantiable(): void
-    {
-        $factory = new HttplugClientFactory($this->client->reveal(), $this->messageFactory->reveal());
-
-        static::assertInstanceOf(ClientFactoryInterface::class, $factory);
     }
 
     public function testGetConnection(): void
     {
         $factory = new HttplugClientFactory($this->client->reveal(), $this->messageFactory->reveal());
 
-        static::assertInstanceOf(ClientInterface::class, $factory->createClient('http://localhost', 'MY_TOKEN'));
+        $client = $factory->createClient('http://localhost', 'MY_TOKEN');
+
+        static::assertInstanceOf(Client::class, $client);
     }
 }
