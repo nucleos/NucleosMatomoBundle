@@ -39,7 +39,7 @@ final class Core23MatomoExtensionTest extends AbstractExtensionTestCase
         $this->assertContainerBuilderHasService('core23_matomo.block.tracker', MatomoTrackerBlockService::class);
     }
 
-    protected function getContainerExtensions()
+    protected function getContainerExtensions(): array
     {
         return [
             new Core23MatomoExtension(),
