@@ -26,7 +26,7 @@ composer require php-http/guzzle6-adapter # if you want to use Guzzle
 
 ### Enable the Bundle
 
-Then, enable the bundle by adding it to the list of registered bundles in `bundles.php` file of your project:
+Then, enable the bundle by adding it to the list of registered bundles in `config/bundles.php` file of your project:
 
 ```php
 // config/bundles.php
