@@ -27,7 +27,7 @@
         "php-http/httplug-bundle": "^1.0",
         "php-http/message-factory": "^1.0",
         "psr/log": "^1.0",
-        "sonata-project/block-bundle": "^3.13",
+        "sonata-project/block-bundle": "^3.16.1",
         "sonata-project/core-bundle": "^3.13.5",
         "symfony/config": "^3.4 || ^4.2",
         "symfony/dependency-injection": "^3.4 || ^4.2",
