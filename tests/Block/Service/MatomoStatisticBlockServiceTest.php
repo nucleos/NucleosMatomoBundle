@@ -16,11 +16,11 @@ use Core23\MatomoBundle\Client\ClientFactoryInterface;
 use Core23\MatomoBundle\Client\ClientInterface;
 use Core23\MatomoBundle\Exception\MatomoException;
 use Psr\Log\LoggerInterface;
-use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContext;
+use Sonata\BlockBundle\Form\Mapper\FormMapper;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Model\BlockInterface;
-use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
+use Sonata\BlockBundle\Test\BlockServiceTestCase;
 
 final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
 {
@@ -140,11 +140,11 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
         ], $blockContext);
     }
 
-    public function testGetBlockMetadata(): void
+    public function testGetMetadata(): void
     {
         $blockService = new MatomoStatisticBlockService('block.service', $this->templating, $this->factory);
 
-        $metadata = $blockService->getBlockMetadata('description');
+        $metadata = $blockService->getMetadata();
 
         static::assertSame('block.service', $metadata->getTitle());
         static::assertSame('description', $metadata->getDescription());
@@ -156,7 +156,7 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
         ], $metadata->getOptions());
     }
 
-    public function testBuildEditForm(): void
+    public function testConfigureEditForm(): void
     {
         $blockService = new MatomoStatisticBlockService('block.service', $this->templating, $this->factory);
 
@@ -165,6 +165,6 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
         $formMapper = $this->createMock(FormMapper::class);
         $formMapper->expects(static::once())->method('add');
 
-        $blockService->buildEditForm($formMapper, $block);
+        $blockService->configureEditForm($formMapper, $block);
     }
 }
