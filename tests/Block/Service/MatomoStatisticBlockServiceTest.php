@@ -22,7 +22,7 @@ use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Test\BlockServiceTestCase;
 
-final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
+final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
 {
     private $logger;
 
@@ -71,7 +71,7 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
         static::assertSame('@Core23Matomo/Block/block_matomo_statistic.html.twig', $this->templating->view);
 
         static::assertSame($blockContext, $this->templating->parameters['context']);
-        static::assertInternalType('array', $this->templating->parameters['settings']);
+        static::assertIsArray($this->templating->parameters['settings']);
         static::assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
         static::assertSame(['bar'], $this->templating->parameters['data']);
     }
@@ -114,7 +114,7 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
         static::assertSame('@Core23Matomo/Block/block_matomo_statistic.html.twig', $this->templating->view);
 
         static::assertSame($blockContext, $this->templating->parameters['context']);
-        static::assertInternalType('array', $this->templating->parameters['settings']);
+        static::assertIsArray($this->templating->parameters['settings']);
         static::assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
         static::assertNull($this->templating->parameters['data']);
     }
@@ -147,7 +147,6 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
         $metadata = $blockService->getMetadata();
 
         static::assertSame('block.service', $metadata->getTitle());
-        static::assertSame('description', $metadata->getDescription());
         static::assertNotNull($metadata->getImage());
         static::assertStringStartsWith('data:image/png;base64,', $metadata->getImage() ?? '');
         static::assertSame('Core23MatomoBundle', $metadata->getDomain());

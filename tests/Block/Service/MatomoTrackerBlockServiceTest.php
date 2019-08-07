@@ -18,7 +18,7 @@ use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Test\BlockServiceTestCase;
 
-final class MatomoTrackerBlockServiceTest extends AbstractBlockServiceTestCase
+final class MatomoTrackerBlockServiceTest extends BlockServiceTestCase
 {
     public function testExecute(): void
     {
@@ -39,7 +39,7 @@ final class MatomoTrackerBlockServiceTest extends AbstractBlockServiceTestCase
         static::assertSame('@Core23Matomo/Block/block_matomo_tracker.html.twig', $this->templating->view);
 
         static::assertSame($blockContext, $this->templating->parameters['context']);
-        static::assertInternalType('array', $this->templating->parameters['settings']);
+        static::assertIsArray($this->templating->parameters['settings']);
         static::assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
     }
 
@@ -65,7 +65,6 @@ final class MatomoTrackerBlockServiceTest extends AbstractBlockServiceTestCase
         $metadata = $blockService->getMetadata();
 
         static::assertSame('block.service', $metadata->getTitle());
-        static::assertSame('description', $metadata->getDescription());
         static::assertNotNull($metadata->getImage());
         static::assertStringStartsWith('data:image/png;base64,', $metadata->getImage() ?? '');
         static::assertSame('Core23MatomoBundle', $metadata->getDomain());
