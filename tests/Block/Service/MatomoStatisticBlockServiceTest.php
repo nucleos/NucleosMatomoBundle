@@ -65,7 +65,7 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
             'template' => '@Core23Matomo/Block/block_matomo_statistic.html.twig',
         ]);
 
-        $blockService = new MatomoStatisticBlockService('block.service', $this->templating, $this->factory);
+        $blockService = new MatomoStatisticBlockService($this->templating, $this->factory);
         $blockService->execute($blockContext);
 
         static::assertSame('@Core23Matomo/Block/block_matomo_statistic.html.twig', $this->templating->view);
@@ -107,7 +107,7 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
             'template' => '@Core23Matomo/Block/block_matomo_statistic.html.twig',
         ]);
 
-        $blockService = new MatomoStatisticBlockService('block.service', $this->templating, $this->factory);
+        $blockService = new MatomoStatisticBlockService($this->templating, $this->factory);
         $blockService->setLogger($this->logger);
         $blockService->execute($blockContext);
 
@@ -121,7 +121,7 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
 
     public function testDefaultSettings(): void
     {
-        $blockService = new MatomoStatisticBlockService('block.service', $this->templating, $this->factory);
+        $blockService = new MatomoStatisticBlockService($this->templating, $this->factory);
         $blockService->setLogger($this->logger);
         $blockContext = $this->getBlockContext($blockService);
 
@@ -142,11 +142,11 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
 
     public function testGetMetadata(): void
     {
-        $blockService = new MatomoStatisticBlockService('block.service', $this->templating, $this->factory);
+        $blockService = new MatomoStatisticBlockService($this->templating, $this->factory);
 
         $metadata = $blockService->getMetadata();
 
-        static::assertSame('block.service', $metadata->getTitle());
+        static::assertSame('core23_matomo.block.statistic', $metadata->getTitle());
         static::assertNotNull($metadata->getImage());
         static::assertStringStartsWith('data:image/png;base64,', $metadata->getImage() ?? '');
         static::assertSame('Core23MatomoBundle', $metadata->getDomain());
@@ -157,7 +157,7 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
 
     public function testConfigureEditForm(): void
     {
-        $blockService = new MatomoStatisticBlockService('block.service', $this->templating, $this->factory);
+        $blockService = new MatomoStatisticBlockService($this->templating, $this->factory);
 
         $block = new Block();
 

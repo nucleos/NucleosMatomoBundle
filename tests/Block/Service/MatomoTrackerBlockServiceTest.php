@@ -33,7 +33,7 @@ final class MatomoTrackerBlockServiceTest extends BlockServiceTestCase
             'template'    => '@Core23Matomo/Block/block_matomo_tracker.html.twig',
         ]);
 
-        $blockService = new MatomoTrackerBlockService('block.service', $this->templating);
+        $blockService = new MatomoTrackerBlockService($this->templating);
         $blockService->execute($blockContext);
 
         static::assertSame('@Core23Matomo/Block/block_matomo_tracker.html.twig', $this->templating->view);
@@ -45,7 +45,7 @@ final class MatomoTrackerBlockServiceTest extends BlockServiceTestCase
 
     public function testDefaultSettings(): void
     {
-        $blockService = new MatomoTrackerBlockService('block.service', $this->templating);
+        $blockService = new MatomoTrackerBlockService($this->templating);
         $blockContext = $this->getBlockContext($blockService);
 
         $this->assertSettings([
@@ -60,11 +60,11 @@ final class MatomoTrackerBlockServiceTest extends BlockServiceTestCase
 
     public function testGetMetadata(): void
     {
-        $blockService = new MatomoTrackerBlockService('block.service', $this->templating);
+        $blockService = new MatomoTrackerBlockService($this->templating);
 
         $metadata = $blockService->getMetadata();
 
-        static::assertSame('block.service', $metadata->getTitle());
+        static::assertSame('core23_matomo.block.tracker', $metadata->getTitle());
         static::assertNotNull($metadata->getImage());
         static::assertStringStartsWith('data:image/png;base64,', $metadata->getImage() ?? '');
         static::assertSame('Core23MatomoBundle', $metadata->getDomain());
@@ -75,7 +75,7 @@ final class MatomoTrackerBlockServiceTest extends BlockServiceTestCase
 
     public function testConfigureEditForm(): void
     {
-        $blockService = new MatomoTrackerBlockService('block.service', $this->templating);
+        $blockService = new MatomoTrackerBlockService($this->templating);
 
         $block = new Block();
 

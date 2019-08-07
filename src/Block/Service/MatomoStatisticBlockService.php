@@ -41,9 +41,9 @@ final class MatomoStatisticBlockService extends AbstractBlockService implements 
      */
     private $factory;
 
-    public function __construct(string $name, EngineInterface $templating, ClientFactoryInterface $factory)
+    public function __construct(EngineInterface $templating, ClientFactoryInterface $factory)
     {
-        parent::__construct($name, $templating);
+        parent::__construct($templating);
 
         $this->factory = $factory;
         $this->logger  = new NullLogger();
@@ -154,9 +154,14 @@ final class MatomoStatisticBlockService extends AbstractBlockService implements 
 
     public function getMetadata(): MetadataInterface
     {
-        return new Metadata($this->getName(), null, null, 'Core23MatomoBundle', [
+        return new Metadata('core23_matomo.block.statistic', null, null, 'Core23MatomoBundle', [
             'class' => 'fa fa-area-chart',
         ]);
+    }
+
+    public function getName(): string
+    {
+        return $this->getMetadata()->getTitle();
     }
 
     protected function getData(array $settings = []): ?array

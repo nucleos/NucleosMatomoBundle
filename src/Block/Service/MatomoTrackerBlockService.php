@@ -91,8 +91,13 @@ final class MatomoTrackerBlockService extends AbstractBlockService implements Ed
 
     public function getMetadata(): MetadataInterface
     {
-        return new Metadata($this->getName(), null, null, 'Core23MatomoBundle', [
+        return new Metadata('core23_matomo.block.tracker', null, null, 'Core23MatomoBundle', [
             'class' => 'fa fa-code',
         ]);
+    }
+
+    public function getName(): string
+    {
+        return $this->getMetadata()->getTitle();
     }
 }
