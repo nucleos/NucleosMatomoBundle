@@ -16,12 +16,15 @@ use Core23\MatomoBundle\Exception\MatomoException;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
-use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContextInterface;
-use Sonata\BlockBundle\Block\Service\AbstractAdminBlockService;
+use Sonata\BlockBundle\Block\Service\AbstractBlockService;
+use Sonata\BlockBundle\Block\Service\EditableBlockService;
+use Sonata\BlockBundle\Form\Mapper\FormMapper;
 use Sonata\BlockBundle\Meta\Metadata;
+use Sonata\BlockBundle\Meta\MetadataInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\Form\Type\ImmutableArrayType;
+use Sonata\Form\Validator\ErrorElement;
 use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
@@ -29,7 +32,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-final class MatomoStatisticBlockService extends AbstractAdminBlockService implements LoggerAwareInterface
+final class MatomoStatisticBlockService extends AbstractBlockService implements EditableBlockService, LoggerAwareInterface
 {
     use LoggerAwareTrait;
 
@@ -56,7 +59,12 @@ final class MatomoStatisticBlockService extends AbstractAdminBlockService implem
         ], $response);
     }
 
-    public function buildEditForm(FormMapper $formMapper, BlockInterface $block): void
+    public function configureCreateForm(FormMapper $form, BlockInterface $block): void
+    {
+        $this->configureEditForm($form, $block);
+    }
+
+    public function configureEditForm(FormMapper $formMapper, BlockInterface $block): void
     {
         $formMapper->add('settings', ImmutableArrayType::class, [
             'keys' => [
@@ -140,9 +148,13 @@ final class MatomoStatisticBlockService extends AbstractAdminBlockService implem
         $resolver->setRequired(['site', 'host', 'token']);
     }
 
-    public function getBlockMetadata($code = null)
+    public function validate(ErrorElement $errorElement, BlockInterface $block): void
     {
-        return new Metadata($this->getName(), $code ?? $this->getName(), null, 'Core23MatomoBundle', [
+    }
+
+    public function getMetadata(): MetadataInterface
+    {
+        return new Metadata($this->getName(), null, null, 'Core23MatomoBundle', [
             'class' => 'fa fa-area-chart',
         ]);
     }

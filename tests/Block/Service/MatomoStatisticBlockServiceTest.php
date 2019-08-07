@@ -16,13 +16,13 @@ use Core23\MatomoBundle\Client\ClientFactoryInterface;
 use Core23\MatomoBundle\Client\ClientInterface;
 use Core23\MatomoBundle\Exception\MatomoException;
 use Psr\Log\LoggerInterface;
-use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContext;
+use Sonata\BlockBundle\Form\Mapper\FormMapper;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Model\BlockInterface;
-use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
+use Sonata\BlockBundle\Test\BlockServiceTestCase;
 
-final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
+final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
 {
     private $logger;
 
@@ -71,7 +71,7 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
         static::assertSame('@Core23Matomo/Block/block_matomo_statistic.html.twig', $this->templating->view);
 
         static::assertSame($blockContext, $this->templating->parameters['context']);
-        static::assertInternalType('array', $this->templating->parameters['settings']);
+        static::assertIsArray($this->templating->parameters['settings']);
         static::assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
         static::assertSame(['bar'], $this->templating->parameters['data']);
     }
@@ -114,7 +114,7 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
         static::assertSame('@Core23Matomo/Block/block_matomo_statistic.html.twig', $this->templating->view);
 
         static::assertSame($blockContext, $this->templating->parameters['context']);
-        static::assertInternalType('array', $this->templating->parameters['settings']);
+        static::assertIsArray($this->templating->parameters['settings']);
         static::assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
         static::assertNull($this->templating->parameters['data']);
     }
@@ -140,14 +140,13 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
         ], $blockContext);
     }
 
-    public function testGetBlockMetadata(): void
+    public function testGetMetadata(): void
     {
         $blockService = new MatomoStatisticBlockService('block.service', $this->templating, $this->factory);
 
-        $metadata = $blockService->getBlockMetadata('description');
+        $metadata = $blockService->getMetadata();
 
         static::assertSame('block.service', $metadata->getTitle());
-        static::assertSame('description', $metadata->getDescription());
         static::assertNotNull($metadata->getImage());
         static::assertStringStartsWith('data:image/png;base64,', $metadata->getImage() ?? '');
         static::assertSame('Core23MatomoBundle', $metadata->getDomain());
@@ -156,7 +155,7 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
         ], $metadata->getOptions());
     }
 
-    public function testBuildEditForm(): void
+    public function testConfigureEditForm(): void
     {
         $blockService = new MatomoStatisticBlockService('block.service', $this->templating, $this->factory);
 
@@ -165,6 +164,6 @@ final class MatomoStatisticBlockServiceTest extends AbstractBlockServiceTestCase
         $formMapper = $this->createMock(FormMapper::class);
         $formMapper->expects(static::once())->method('add');
 
-        $blockService->buildEditForm($formMapper, $block);
+        $blockService->configureEditForm($formMapper, $block);
     }
 }

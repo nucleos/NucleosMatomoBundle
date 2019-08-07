@@ -12,13 +12,13 @@ declare(strict_types=1);
 namespace Core23\MatomoBundle\Tests\Block\Service;
 
 use Core23\MatomoBundle\Block\Service\MatomoTrackerBlockService;
-use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\BlockBundle\Block\BlockContext;
+use Sonata\BlockBundle\Form\Mapper\FormMapper;
 use Sonata\BlockBundle\Model\Block;
 use Sonata\BlockBundle\Model\BlockInterface;
-use Sonata\BlockBundle\Test\AbstractBlockServiceTestCase;
+use Sonata\BlockBundle\Test\BlockServiceTestCase;
 
-final class MatomoTrackerBlockServiceTest extends AbstractBlockServiceTestCase
+final class MatomoTrackerBlockServiceTest extends BlockServiceTestCase
 {
     public function testExecute(): void
     {
@@ -39,7 +39,7 @@ final class MatomoTrackerBlockServiceTest extends AbstractBlockServiceTestCase
         static::assertSame('@Core23Matomo/Block/block_matomo_tracker.html.twig', $this->templating->view);
 
         static::assertSame($blockContext, $this->templating->parameters['context']);
-        static::assertInternalType('array', $this->templating->parameters['settings']);
+        static::assertIsArray($this->templating->parameters['settings']);
         static::assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
     }
 
@@ -58,14 +58,13 @@ final class MatomoTrackerBlockServiceTest extends AbstractBlockServiceTestCase
         ], $blockContext);
     }
 
-    public function testGetBlockMetadata(): void
+    public function testGetMetadata(): void
     {
         $blockService = new MatomoTrackerBlockService('block.service', $this->templating);
 
-        $metadata = $blockService->getBlockMetadata('description');
+        $metadata = $blockService->getMetadata();
 
         static::assertSame('block.service', $metadata->getTitle());
-        static::assertSame('description', $metadata->getDescription());
         static::assertNotNull($metadata->getImage());
         static::assertStringStartsWith('data:image/png;base64,', $metadata->getImage() ?? '');
         static::assertSame('Core23MatomoBundle', $metadata->getDomain());
@@ -74,7 +73,7 @@ final class MatomoTrackerBlockServiceTest extends AbstractBlockServiceTestCase
         ], $metadata->getOptions());
     }
 
-    public function testBuildEditForm(): void
+    public function testConfigureEditForm(): void
     {
         $blockService = new MatomoTrackerBlockService('block.service', $this->templating);
 
@@ -83,6 +82,6 @@ final class MatomoTrackerBlockServiceTest extends AbstractBlockServiceTestCase
         $formMapper = $this->createMock(FormMapper::class);
         $formMapper->expects(static::once())->method('add');
 
-        $blockService->buildEditForm($formMapper, $block);
+        $blockService->configureEditForm($formMapper, $block);
     }
 }
