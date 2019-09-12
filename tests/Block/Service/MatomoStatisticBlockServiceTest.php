@@ -147,8 +147,7 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
         $metadata = $blockService->getMetadata();
 
         static::assertSame('core23_matomo.block.statistic', $metadata->getTitle());
-        static::assertNotNull($metadata->getImage());
-        static::assertStringStartsWith('data:image/png;base64,', $metadata->getImage() ?? '');
+        static::assertNull($metadata->getImage());
         static::assertSame('Core23MatomoBundle', $metadata->getDomain());
         static::assertSame([
             'class' => 'fa fa-area-chart',
