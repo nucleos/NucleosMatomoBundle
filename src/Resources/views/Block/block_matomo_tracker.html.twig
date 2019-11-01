@@ -1,7 +1,7 @@
 {% extends sonata_block.templates.block_base %}
 
 {% block block %}
-    {% spaceless %}
+    {% apply spaceless %}
         <script type="text/javascript">
           var _paq = _paq || [];
           {% if settings.domaintitle %}
@@ -27,5 +27,5 @@
           })();
         </script>
         <noscript><p><img src="{{ settings.host }}/piwik.php?idsite={{ settings.site }}" style="border:0;" alt="" /></p></noscript>
-    {% endspaceless %}
+    {% endapply %}
 {% endblock %}
