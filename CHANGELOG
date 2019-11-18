@@ -1,3 +1,32 @@
+18/11/2019 21:46  2.3.0  Add support for new block interfaces
+765c470 [PATCH] Remove deprecated twig calls
+106ba1a [BUILD] Simplify rmt config
+1d75232 [MINOR] Use latest block bundle for auto-registration of blocks
+6d764b1 [MINOR] Removed admin bundle dependency
+126dd2a [BUILD] Remove nightly build from Travis
+df3864b [BUILD] Fixed wrong branch alias
+1ad8cab [BUILD] Added project specific phpstan settings
+9f478f9 [MINOR] Removed deprecated name argument from block constructor
+6dc1364 [TEST] Fixed deprecations in tests
+9311de4 [MINOR] Use new block signatures
+42b3fa4 [DOCS] Updated README
+c0d9a86 [MINOR] Removed explicit private visibility of services
+9c85cab [PATCH] Use latest block bundle for PHPUnit 8 support
+422378d [BUILD] Use phpunit 8
+3aa0db7 [PATCH] Use more precise null and type checks
+1a84800 [TEST] Added return types
+671098c [TEST] Fixed phpstan findings
+dce7f33 [PATCH] Add type hints
+f37e5d0 [TEST] Added return type to setUp method
+a8f5085 [BUILD] Remove include from phpstan config
+a08aade [BUILD] Added more strict phpstan rules
+53aa901 [PATCH] Removed superfluous PHPDoc
+b3ff18e [PATCH] Updated CS config
+58e2f98 [BUILD] Added kodiak config
+09bd71c [BUILD] Include phpstan-prophecy extension
+5e447b4 [BUILD] Removed superfluous phpdoc
+fcd93c8 [BUILD] Added more phpstan checks
+e250b6c [PATCH] Make test classes final
 11/06/2019 19:46  2.2.0  Added twig function to render the tracker code
 2a01518 [BUILD] Replaced deprecated "weak_vendors" option
 28dc032 Added GitHub sponsoring information
