@@ -14,21 +14,21 @@ namespace Core23\MatomoBundle\Connection;
 use Core23\MatomoBundle\Exception\MatomoException;
 use DateTime;
 use Exception;
-use Http\Client\Exception as ClientException;
-use Http\Client\HttpClient;
-use Http\Message\MessageFactory;
+use Psr\Http\Client\ClientExceptionInterface;
+use Psr\Http\Client\ClientInterface as PsrClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 
-final class HttplugConnection implements ConnectionInterface
+final class PsrClientConnection implements ConnectionInterface
 {
     /**
-     * @var HttpClient
+     * @var PsrClientInterface
      */
     private $client;
 
     /**
-     * @var MessageFactory
+     * @var RequestFactoryInterface
      */
-    private $messageFactory;
+    private $requestFactory;
 
     /**
      * @var string
@@ -40,11 +40,11 @@ final class HttplugConnection implements ConnectionInterface
      *
      * @param string $apiUrl base API URL
      */
-    public function __construct(HttpClient $client, MessageFactory $messageFactory, string $apiUrl)
+    public function __construct(PsrClientInterface $client, RequestFactoryInterface $requestFactory, string $apiUrl)
     {
         $this->apiUrl         = $apiUrl;
         $this->client         = $client;
-        $this->messageFactory = $messageFactory;
+        $this->requestFactory = $requestFactory;
     }
 
     public function send(array $params = []): string
@@ -52,12 +52,12 @@ final class HttplugConnection implements ConnectionInterface
         $params['module'] = 'API';
 
         $url      = $this->apiUrl.'?'.$this->getUrlParamString($params);
-        $request  = $this->messageFactory->createRequest('GET', $url);
+        $request  = $this->requestFactory->createRequest('GET', $url);
 
         try {
             $response = $this->client->sendRequest($request);
-        } catch (ClientException $exception) {
-            throw new MatomoException('Error calling Matomo API.', $exception->getCode(), $exception);
+        } catch (ClientExceptionInterface $exception) {
+            throw new MatomoException('Error calling Matomo API.', 500, $exception);
         } catch (Exception $exception) {
             throw new MatomoException('Error calling Matomo API.', 500, $exception);
         }

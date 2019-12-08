@@ -26,8 +26,8 @@ final class ConfigurationTest extends TestCase
 
         $expected = [
             'http' => [
-                'client'          => 'httplug.client.default',
-                'message_factory' => 'httplug.message_factory.default',
+                'client'          => null,
+                'message_factory' => null,
             ],
         ];
 

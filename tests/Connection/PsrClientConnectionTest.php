@@ -11,38 +11,38 @@ declare(strict_types=1);
 
 namespace Core23\MatomoBundle\Tests\Connection;
 
-use Core23\MatomoBundle\Connection\HttplugConnection;
+use Core23\MatomoBundle\Connection\PsrClientConnection;
 use Core23\MatomoBundle\Exception\MatomoException;
-use Core23\MatomoBundle\Tests\Fixtures\ClientException;
 use DateTime;
 use Exception;
-use Http\Client\HttpClient;
-use Http\Message\MessageFactory;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Prophecy\ObjectProphecy;
+use Psr\Http\Client\ClientExceptionInterface;
+use Psr\Http\Client\ClientInterface as PsrClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
 
-final class HttplugConnectionTest extends TestCase
+final class PsrClientConnectionTest extends TestCase
 {
     private $client;
 
-    private $messageFactory;
+    private $requestFactory;
 
     protected function setUp(): void
     {
-        $this->client         = $this->prophesize(HttpClient::class);
-        $this->messageFactory = $this->prophesize(MessageFactory::class);
+        $this->client         = $this->prophesize(PsrClientInterface::class);
+        $this->requestFactory = $this->prophesize(RequestFactoryInterface::class);
     }
 
     public function testSend(): void
     {
-        $client = new HttplugConnection($this->client->reveal(), $this->messageFactory->reveal(), 'http://api.url');
+        $client = new PsrClientConnection($this->client->reveal(), $this->requestFactory->reveal(), 'http://api.url');
 
         $request =  $this->prophesize(RequestInterface::class);
 
-        $this->messageFactory->createRequest('GET', 'http://api.url?foo=bar&module=API')
+        $this->requestFactory->createRequest('GET', 'http://api.url?foo=bar&module=API')
             ->willReturn($request)
         ;
 
@@ -57,11 +57,11 @@ final class HttplugConnectionTest extends TestCase
 
     public function testSendWithDateParameter(): void
     {
-        $client = new HttplugConnection($this->client->reveal(), $this->messageFactory->reveal(), 'http://api.url');
+        $client = new PsrClientConnection($this->client->reveal(), $this->requestFactory->reveal(), 'http://api.url');
 
         $request =  $this->prophesize(RequestInterface::class);
 
-        $this->messageFactory->createRequest('GET', 'http://api.url?date=2010-02-10&module=API')
+        $this->requestFactory->createRequest('GET', 'http://api.url?date=2010-02-10&module=API')
             ->willReturn($request)
         ;
 
@@ -76,11 +76,11 @@ final class HttplugConnectionTest extends TestCase
 
     public function testSendWithBooleanParameter(): void
     {
-        $client = new HttplugConnection($this->client->reveal(), $this->messageFactory->reveal(), 'http://api.url');
+        $client = new PsrClientConnection($this->client->reveal(), $this->requestFactory->reveal(), 'http://api.url');
 
         $request =  $this->prophesize(RequestInterface::class);
 
-        $this->messageFactory->createRequest('GET', 'http://api.url?active=1&module=API')
+        $this->requestFactory->createRequest('GET', 'http://api.url?active=1&module=API')
             ->willReturn($request)
         ;
 
@@ -95,11 +95,11 @@ final class HttplugConnectionTest extends TestCase
 
     public function testSendWithArrayParameter(): void
     {
-        $client = new HttplugConnection($this->client->reveal(), $this->messageFactory->reveal(), 'http://api.url');
+        $client = new PsrClientConnection($this->client->reveal(), $this->requestFactory->reveal(), 'http://api.url');
 
         $request =  $this->prophesize(RequestInterface::class);
 
-        $this->messageFactory->createRequest('GET', 'http://api.url?foo=bar,baz&module=API')
+        $this->requestFactory->createRequest('GET', 'http://api.url?foo=bar,baz&module=API')
             ->willReturn($request)
         ;
 
@@ -117,11 +117,11 @@ final class HttplugConnectionTest extends TestCase
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('Error calling Matomo API.');
 
-        $client = new HttplugConnection($this->client->reveal(), $this->messageFactory->reveal(), 'http://api.url');
+        $client = new PsrClientConnection($this->client->reveal(), $this->requestFactory->reveal(), 'http://api.url');
 
         $request =  $this->prophesize(RequestInterface::class);
 
-        $this->messageFactory->createRequest('GET', 'http://api.url?foo=bar&module=API')
+        $this->requestFactory->createRequest('GET', 'http://api.url?foo=bar&module=API')
             ->willReturn($request)
         ;
 
@@ -137,16 +137,17 @@ final class HttplugConnectionTest extends TestCase
         $this->expectException(MatomoException::class);
         $this->expectExceptionMessage('Error calling Matomo API.');
 
-        $client = new HttplugConnection($this->client->reveal(), $this->messageFactory->reveal(), 'http://api.url');
+        $client = new PsrClientConnection($this->client->reveal(), $this->requestFactory->reveal(), 'http://api.url');
 
         $request =  $this->prophesize(RequestInterface::class);
 
-        $this->messageFactory->createRequest('GET', 'http://api.url?foo=bar&module=API')
+        $this->requestFactory->createRequest('GET', 'http://api.url?foo=bar&module=API')
             ->willReturn($request)
         ;
 
         $this->client->sendRequest($request)
-            ->willThrow(ClientException::class)
+            ->willThrow(new class() extends Exception implements ClientExceptionInterface {
+            })
         ;
 
         $client->send(['foo' => 'bar']);
@@ -157,11 +158,11 @@ final class HttplugConnectionTest extends TestCase
         $this->expectException(MatomoException::class);
         $this->expectExceptionMessage('"http://api.url?foo=bar&module=API" returned an invalid status code: "500"');
 
-        $client = new HttplugConnection($this->client->reveal(), $this->messageFactory->reveal(), 'http://api.url');
+        $client = new PsrClientConnection($this->client->reveal(), $this->requestFactory->reveal(), 'http://api.url');
 
         $request =  $this->prophesize(RequestInterface::class);
 
-        $this->messageFactory->createRequest('GET', 'http://api.url?foo=bar&module=API')
+        $this->requestFactory->createRequest('GET', 'http://api.url?foo=bar&module=API')
             ->willReturn($request)
         ;
 

@@ -22,18 +22,28 @@ final class Core23MatomoExtensionTest extends AbstractExtensionTestCase
     public function testLoadDefault(): void
     {
         $this->setParameter('kernel.bundles', []);
-        $this->load();
+        $this->load([
+            'http' => [
+                'client'          => 'acme.client',
+                'message_factory' => 'acme.message_factory',
+            ],
+        ]);
 
         $this->assertContainerBuilderHasService(MatomoTwigExtension::class);
 
-        $this->assertContainerBuilderHasAlias('core23_matomo.http.client', 'httplug.client.default');
-        $this->assertContainerBuilderHasAlias('core23_matomo.http.message_factory', 'httplug.message_factory.default');
+        $this->assertContainerBuilderHasAlias('core23_matomo.http.client', 'acme.client');
+        $this->assertContainerBuilderHasAlias('core23_matomo.http.message_factory', 'acme.message_factory');
     }
 
     public function testLoadWithBlockBundle(): void
     {
         $this->setParameter('kernel.bundles', ['SonataBlockBundle' => true]);
-        $this->load();
+        $this->load([
+            'http' => [
+                'client'          => 'acme.client',
+                'message_factory' => 'acme.message_factory',
+            ],
+        ]);
 
         $this->assertContainerBuilderHasService('core23_matomo.block.statistic', MatomoStatisticBlockService::class);
         $this->assertContainerBuilderHasService('core23_matomo.block.tracker', MatomoTrackerBlockService::class);
