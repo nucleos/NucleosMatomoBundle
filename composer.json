@@ -1,78 +1,78 @@
 {
-    "name": "core23/matomo-bundle",
-    "type": "symfony-bundle",
-    "description": "This bundle provides a block service for using Matomo inside the sonata-project.",
-    "keywords": [
-        "symfony",
-        "piwik",
-        "matomo",
-        "statistic",
-        "sonata",
-        "block",
-        "widget",
-        "bundle"
-    ],
-    "homepage": "https://core23.de",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Christian Gripp",
-            "email": "mail@core23.de"
-        }
-    ],
-    "require": {
-        "php": "^7.2",
-        "php-http/client-implementation": "*",
-        "php-http/httplug": "^2.0",
-        "php-http/httplug-bundle": "^1.0",
-        "php-http/message-factory": "^1.0",
-        "psr/log": "^1.0",
-        "sonata-project/block-bundle": "^3.18",
-        "sonata-project/core-bundle": "^3.13.5",
-        "symfony/config": "^3.4 || ^4.2",
-        "symfony/dependency-injection": "^3.4 || ^4.2",
-        "symfony/expression-language": "^3.4 || ^4.2",
-        "symfony/form": "^3.4 || ^4.2",
-        "symfony/framework-bundle": "^3.4 || ^4.2",
-        "symfony/http-foundation": "^3.4 || ^4.2",
-        "symfony/http-kernel": "^3.4 || ^4.2",
-        "symfony/options-resolver": "^3.4 || ^4.2",
-        "symfony/twig-bundle": "^3.4 || ^4.2",
-        "twig/twig": "^2.4"
-    },
-    "require-dev": {
-        "bamarni/composer-bin-plugin": "^1.2",
-        "php-http/mock-client": "^1.3",
-        "sllh/composer-lint": "^1.0"
-    },
-    "suggest": {
-        "php-http/buzz-adapter": "Buzz HTTP client implementation",
-        "php-http/guzzle6-adapter": "Guzzle HTTP client implementation"
-    },
-    "config": {
-        "sort-packages": true
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "2.x-dev"
-        }
-    },
-    "autoload": {
-        "psr-4": {
-            "Core23\\MatomoBundle\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Core23\\MatomoBundle\\Tests\\": "tests/"
-        }
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "@composer bin all install --ansi"
-        ],
-        "post-update-cmd": [
-            "@composer bin all update --ansi"
-        ]
+  "name": "core23/matomo-bundle",
+  "type": "symfony-bundle",
+  "description": "This bundle provides a block service for using Matomo inside the sonata-project.",
+  "keywords": [
+    "symfony",
+    "piwik",
+    "matomo",
+    "statistic",
+    "sonata",
+    "block",
+    "widget",
+    "bundle"
+  ],
+  "homepage": "https://core23.de",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Christian Gripp",
+      "email": "mail@core23.de"
     }
+  ],
+  "require": {
+    "php": "^7.2",
+    "php-http/client-implementation": "*",
+    "php-http/httplug": "^2.0",
+    "php-http/httplug-bundle": "^1.0",
+    "php-http/message-factory": "^1.0",
+    "psr/log": "^1.0",
+    "sonata-project/block-bundle": "^3.18",
+    "sonata-project/core-bundle": "^3.13.5",
+    "symfony/config": "^3.4 || ^4.2",
+    "symfony/dependency-injection": "^3.4 || ^4.2",
+    "symfony/expression-language": "^3.4 || ^4.2",
+    "symfony/form": "^3.4 || ^4.2",
+    "symfony/framework-bundle": "^3.4 || ^4.2",
+    "symfony/http-foundation": "^3.4 || ^4.2",
+    "symfony/http-kernel": "^3.4 || ^4.2",
+    "symfony/options-resolver": "^3.4 || ^4.2",
+    "symfony/twig-bundle": "^3.4 || ^4.2",
+    "twig/twig": "^2.4"
+  },
+  "require-dev": {
+    "bamarni/composer-bin-plugin": "^1.3",
+    "localheinz/composer-normalize": "^1.3",
+    "php-http/mock-client": "^1.3"
+  },
+  "suggest": {
+    "php-http/buzz-adapter": "Buzz HTTP client implementation",
+    "php-http/guzzle6-adapter": "Guzzle HTTP client implementation"
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "2.x-dev"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Core23\\MatomoBundle\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Core23\\MatomoBundle\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "@composer bin all install --ansi"
+    ],
+    "post-update-cmd": [
+      "@composer bin all update --ansi"
+    ]
+  }
 }

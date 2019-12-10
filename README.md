@@ -8,10 +8,8 @@ MatomoBundle
 [![Monthly Downloads](https://poser.pugx.org/core23/matomo-bundle/d/monthly)](https://packagist.org/packages/core23/matomo-bundle)
 [![Daily Downloads](https://poser.pugx.org/core23/matomo-bundle/d/daily)](https://packagist.org/packages/core23/matomo-bundle)
 
-[![Build Status](https://travis-ci.org/core23/MatomoBundle.svg)](https://travis-ci.org/core23/MatomoBundle)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/core23/MatomoBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/core23/MatomoBundle)
-[![Code Climate](https://codeclimate.com/github/core23/MatomoBundle/badges/gpa.svg)](https://codeclimate.com/github/core23/MatomoBundle)
-[![Coverage Status](https://coveralls.io/repos/core23/MatomoBundle/badge.svg)](https://coveralls.io/r/core23/MatomoBundle)
+[![Continuous Integration](https://github.com/core23/MatomoBundle/workflows/Continuous%20Integration/badge.svg)](https://github.com/core23/MatomoBundle/actions)
+[![Code Coverage](https://codecov.io/gh/core23/MatomoBundle/branch/master/graph/badge.svg)](https://codecov.io/gh/core23/MatomoBundle)
 
 This bundle provides a wrapper for using the [matomo] (Piwik) statistic inside the symfony sonata-project.
 
@@ -40,7 +38,7 @@ return [
 
 ### Assets
 
-It is recommended to use [webpack](https://webpack.js.org/) / [webpack-encore](https://github.com/symfony/webpack-encore) 
+It is recommended to use [webpack](https://webpack.js.org/) / [webpack-encore](https://github.com/symfony/webpack-encore)
 to include the `MatomoTable.js` file in your page. These file is located in the `assets` folder.
 
 You can use [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) to load the library:
