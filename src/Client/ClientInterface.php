@@ -28,13 +28,13 @@ interface ClientInterface
     /**
      * Call specific method & return it's response.
      *
-     * @param string $method method name
-     * @param array  $params method parameters
-     * @param string $format return format (php, json, xml, csv, tsv, html, rss)
+     * @param string               $method method name
+     * @param array<string, mixed> $params method parameters
+     * @param string               $format return format (php, json, xml, csv, tsv, html, rss)
      *
      * @throws MatomoException
      *
-     * @return array|string
+     * @return array<mixed>|string
      */
     public function call(string $method, array $params = [], string $format = 'php');
 

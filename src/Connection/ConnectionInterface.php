@@ -18,7 +18,7 @@ interface ConnectionInterface
     /**
      * Calls specific method on Matomo API.
      *
-     * @param array $params parameters (associative array)
+     * @param array<string, mixed> $params
      *
      * @throws MatomoException
      *

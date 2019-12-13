@@ -164,12 +164,17 @@ final class MatomoStatisticBlockService extends AbstractBlockService implements 
         return $this->getMetadata()->getTitle();
     }
 
+    /**
+     * @param array<int|string> $settings
+     *
+     * @return array<mixed>
+     */
     protected function getData(array $settings = []): ?array
     {
         try {
-            $client = $this->factory->createClient($settings['host'], $settings['token']);
+            $client = $this->factory->createClient((string) $settings['host'], (string) $settings['token']);
 
-            $result = $client->call($settings['method'], [
+            $result = $client->call((string) $settings['method'], [
                 'idSite' => $settings['site'],
                 'period' => $settings['period'],
                 'date'   => $settings['date'],

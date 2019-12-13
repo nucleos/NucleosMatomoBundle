@@ -72,6 +72,8 @@ final class PsrClientConnection implements ConnectionInterface
     /**
      * Converts a set of parameters to a query string.
      *
+     * @param array<string, mixed> $params
+     *
      * @return string query string
      */
     private function getUrlParamString(array $params): string
