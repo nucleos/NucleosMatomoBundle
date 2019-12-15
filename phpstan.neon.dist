@@ -22,6 +22,16 @@ parameters:
             path: tests/Twig/Extension/
 
         -
+            message: "#^Call to an undefined method Twig\\\\Environment::expects\\(\\)\\.$#"
+            count: 2
+            path: tests/Block/Service/MatomoStatisticBlockServiceTest.php
+
+        -
+            message: "#^Call to an undefined method Twig\\\\Environment::expects\\(\\)\\.$#"
+            count: 1
+            path: tests/Block/Service/MatomoTrackerBlockServiceTest.php
+
+        -
             message: "#^Call to an undefined method Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\TreeBuilder::root\\(\\)\\.$#"
             count: 1
             path: src/DependencyInjection/Configuration.php

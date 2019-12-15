@@ -28,7 +28,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class MatomoTrackerBlockService extends AbstractBlockService implements EditableBlockService
 {
-    public function execute(BlockContextInterface $blockContext, Response $response = null)
+    public function execute(BlockContextInterface $blockContext, ?Response $response = null): Response
     {
         return $this->renderResponse($blockContext->getTemplate(), [
             'context'    => $blockContext,

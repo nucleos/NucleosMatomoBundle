@@ -19,8 +19,8 @@ use Psr\Log\LoggerInterface;
 use Sonata\BlockBundle\Block\BlockContext;
 use Sonata\BlockBundle\Form\Mapper\FormMapper;
 use Sonata\BlockBundle\Model\Block;
-use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\BlockBundle\Test\BlockServiceTestCase;
+use Symfony\Component\HttpFoundation\Response;
 
 final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
 {
@@ -65,15 +65,25 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
             'template' => '@Core23Matomo/Block/block_matomo_statistic.html.twig',
         ]);
 
-        $blockService = new MatomoStatisticBlockService($this->templating, $this->factory);
-        $blockService->execute($blockContext);
+        $response = new Response();
 
-        static::assertSame('@Core23Matomo/Block/block_matomo_statistic.html.twig', $this->templating->view);
+        $this->twig->expects(static::once())->method('render')
+            ->with(
+                '@Core23Matomo/Block/block_matomo_statistic.html.twig',
+                [
+                    'context'    => $blockContext,
+                    'settings'   => $blockContext->getSettings(),
+                    'block'      => $blockContext->getBlock(),
+                    'data'       => ['bar'],
+                ]
+            )
+            ->willReturn('TWIG_CONTENT')
+        ;
 
-        static::assertSame($blockContext, $this->templating->parameters['context']);
-        static::assertIsArray($this->templating->parameters['settings']);
-        static::assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
-        static::assertSame(['bar'], $this->templating->parameters['data']);
+        $blockService = new MatomoStatisticBlockService($this->twig, $this->factory);
+
+        static::assertSame($response, $blockService->execute($blockContext, $response));
+        static::assertSame('TWIG_CONTENT', $response->getContent());
     }
 
     public function testExecuteOffline(): void
@@ -107,21 +117,31 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
             'template' => '@Core23Matomo/Block/block_matomo_statistic.html.twig',
         ]);
 
-        $blockService = new MatomoStatisticBlockService($this->templating, $this->factory);
+        $response = new Response();
+
+        $this->twig->expects(static::once())->method('render')
+            ->with(
+                '@Core23Matomo/Block/block_matomo_statistic.html.twig',
+                [
+                    'context'    => $blockContext,
+                    'settings'   => $blockContext->getSettings(),
+                    'block'      => $blockContext->getBlock(),
+                    'data'       => null,
+                ]
+            )
+            ->willReturn('TWIG_CONTENT')
+        ;
+
+        $blockService = new MatomoStatisticBlockService($this->twig, $this->factory);
         $blockService->setLogger($this->logger);
-        $blockService->execute($blockContext);
 
-        static::assertSame('@Core23Matomo/Block/block_matomo_statistic.html.twig', $this->templating->view);
-
-        static::assertSame($blockContext, $this->templating->parameters['context']);
-        static::assertIsArray($this->templating->parameters['settings']);
-        static::assertInstanceOf(BlockInterface::class, $this->templating->parameters['block']);
-        static::assertNull($this->templating->parameters['data']);
+        static::assertSame($response, $blockService->execute($blockContext, $response));
+        static::assertSame('TWIG_CONTENT', $response->getContent());
     }
 
     public function testDefaultSettings(): void
     {
-        $blockService = new MatomoStatisticBlockService($this->templating, $this->factory);
+        $blockService = new MatomoStatisticBlockService($this->twig, $this->factory);
         $blockService->setLogger($this->logger);
         $blockContext = $this->getBlockContext($blockService);
 
@@ -142,7 +162,7 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
 
     public function testGetMetadata(): void
     {
-        $blockService = new MatomoStatisticBlockService($this->templating, $this->factory);
+        $blockService = new MatomoStatisticBlockService($this->twig, $this->factory);
 
         $metadata = $blockService->getMetadata();
 
@@ -156,7 +176,7 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
 
     public function testConfigureEditForm(): void
     {
-        $blockService = new MatomoStatisticBlockService($this->templating, $this->factory);
+        $blockService = new MatomoStatisticBlockService($this->twig, $this->factory);
 
         $block = new Block();
 

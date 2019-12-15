@@ -25,12 +25,12 @@ use Sonata\BlockBundle\Meta\MetadataInterface;
 use Sonata\BlockBundle\Model\BlockInterface;
 use Sonata\Form\Type\ImmutableArrayType;
 use Sonata\Form\Validator\ErrorElement;
-use Symfony\Bundle\FrameworkBundle\Templating\EngineInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Twig\Environment;
 
 final class MatomoStatisticBlockService extends AbstractBlockService implements EditableBlockService, LoggerAwareInterface
 {
@@ -41,15 +41,15 @@ final class MatomoStatisticBlockService extends AbstractBlockService implements 
      */
     private $factory;
 
-    public function __construct(EngineInterface $templating, ClientFactoryInterface $factory)
+    public function __construct(Environment $twig, ClientFactoryInterface $factory)
     {
-        parent::__construct($templating);
+        parent::__construct($twig);
 
         $this->factory = $factory;
         $this->logger  = new NullLogger();
     }
 
-    public function execute(BlockContextInterface $blockContext, Response $response = null)
+    public function execute(BlockContextInterface $blockContext, ?Response $response = null): Response
     {
         return $this->renderResponse($blockContext->getTemplate(), [
             'context'  => $blockContext,
