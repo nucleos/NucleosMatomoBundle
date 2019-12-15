@@ -11,7 +11,6 @@ parameters:
     ignoreErrors:
         # Symfony DI
         - '#Cannot call method scalarNode\(\) on Symfony\\Component\\Config\\Definition\\Builder\\NodeParentInterface\|null.#'
-        - "/Call to function method_exists.. with 'Symfony.+' and 'getRootNode' will always evaluate to false./"
 
         # PHPUnit
         -
@@ -30,8 +29,3 @@ parameters:
             message: "#^Call to an undefined method Twig\\\\Environment::expects\\(\\)\\.$#"
             count: 1
             path: tests/Block/Service/MatomoTrackerBlockServiceTest.php
-
-        -
-            message: "#^Call to an undefined method Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\TreeBuilder::root\\(\\)\\.$#"
-            count: 1
-            path: src/DependencyInjection/Configuration.php
