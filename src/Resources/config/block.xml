@@ -3,7 +3,7 @@
   <services>
     <service id="core23_matomo.block.statistic" class="Core23\MatomoBundle\Block\Service\MatomoStatisticBlockService">
       <tag name="sonata.block"/>
-      <argument type="service" id="sonata.templating"/>
+      <argument type="service" id="twig"/>
       <argument type="service" id="core23_matomo.client.factory"/>
       <call method="setLogger">
         <argument type="service" id="logger"/>
@@ -11,7 +11,7 @@
     </service>
     <service id="core23_matomo.block.tracker" class="Core23\MatomoBundle\Block\Service\MatomoTrackerBlockService">
       <tag name="sonata.block"/>
-      <argument type="service" id="sonata.templating"/>
+      <argument type="service" id="twig"/>
     </service>
   </services>
 </container>
