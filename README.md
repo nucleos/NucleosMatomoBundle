@@ -19,7 +19,8 @@ Open a command console, enter your project directory and execute the following c
 
 ```
 composer require core23/matomo-bundle
-composer require php-http/guzzle6-adapter # if you want to use Guzzle
+# To define a default http client and message factory
+composer require symfony/http-client nyholm/psr7
 ```
 
 ### Enable the Bundle
@@ -31,7 +32,6 @@ Then, enable the bundle by adding it to the list of registered bundles in `confi
 
 return [
     // ...
-    Http\HttplugBundle\HttplugBundle::class     => ['all' => true],
     Core23\MatomoBundle\Core23MatomoBundle::class => ['all' => true],
 ];
 ```
@@ -45,17 +45,16 @@ You can use [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) to loa
 
 ## Usage
 
-Define a [HTTPlug] client in your configuration.
+Define a http client in your configuration.
 
 ```yaml
-# config/packages/httplug.yaml
+# config/packages/core23_matomo.yaml
 
-httplug:
-    classes:
-        client: Http\Adapter\Guzzle6\Client
-        message_factory: Http\Message\MessageFactory\GuzzleMessageFactory
-        uri_factory: Http\Message\UriFactory\GuzzleUriFactory
-        stream_factory: Http\Message\StreamFactory\GuzzleStreamFactory
+core23_matomo:
+    http:
+        client: 'httplug.client'
+        message_factory: 'nyholm.psr7.psr17_factory'
+
 ```
 
 ```twig
@@ -72,5 +71,4 @@ httplug:
 
 This bundle is under the [MIT license](LICENSE.md).
 
-[HTTPlug]: http://docs.php-http.org/en/latest/index.html
 [matomo]: https://matomo.org

@@ -12,26 +12,26 @@ declare(strict_types=1);
 namespace Core23\MatomoBundle\Tests\Client;
 
 use Core23\MatomoBundle\Client\Client;
-use Core23\MatomoBundle\Client\HttplugClientFactory;
-use Http\Client\HttpClient;
-use Http\Message\MessageFactory;
+use Core23\MatomoBundle\Client\PsrClientFactory;
 use PHPUnit\Framework\TestCase;
+use Psr\Http\Client\ClientInterface as PsrClientInterface;
+use Psr\Http\Message\RequestFactoryInterface;
 
-final class HttplugClientFactoryTest extends TestCase
+final class PsrClientFactoryTest extends TestCase
 {
     private $client;
 
-    private $messageFactory;
+    private $requestFactory;
 
     protected function setUp(): void
     {
-        $this->client         = $this->prophesize(HttpClient::class);
-        $this->messageFactory = $this->prophesize(MessageFactory::class);
+        $this->client         = $this->prophesize(PsrClientInterface::class);
+        $this->requestFactory = $this->prophesize(RequestFactoryInterface::class);
     }
 
     public function testGetConnection(): void
     {
-        $factory = new HttplugClientFactory($this->client->reveal(), $this->messageFactory->reveal());
+        $factory = new PsrClientFactory($this->client->reveal(), $this->requestFactory->reveal());
 
         $client = $factory->createClient('http://localhost', 'MY_TOKEN');
 
