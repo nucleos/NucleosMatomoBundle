@@ -223,4 +223,4 @@ jobs:
         run: composer install --no-interaction --no-progress --no-suggest
 
       - name: "Run mutation tests with pcov and infection/infection"
-        run: vendor/bin/infection --ignore-msi-with-no-mutations --min-covered-msi=61 --min-msi=39
+        run: vendor/bin/infection --ignore-msi-with-no-mutations --min-covered-msi=61 --min-msi=38
