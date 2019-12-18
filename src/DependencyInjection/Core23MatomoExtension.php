@@ -18,6 +18,9 @@ use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 final class Core23MatomoExtension extends Extension
 {
+    /**
+     * @param array<mixed> $configs
+     */
     public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();
@@ -37,6 +40,9 @@ final class Core23MatomoExtension extends Extension
         $this->configureHttpClient($container, $config);
     }
 
+    /**
+     * @param array<mixed> $config
+     */
     private function configureHttpClient(ContainerBuilder $container, array $config): void
     {
         $container->setAlias('core23_matomo.http.client', $config['http']['client']);

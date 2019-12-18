@@ -40,6 +40,8 @@ final class MatomoTwigExtension extends AbstractExtension
     }
 
     /**
+     * @param array<string, mixed> $options
+     *
      * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
