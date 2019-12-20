@@ -1,0 +1,32 @@
+framework:
+    secret: secret
+
+    session:
+        handler_id:  session.handler.native_file
+        save_path:   '%kernel.project_dir%/sessions/%kernel.environment%'
+        cookie_secure: auto
+        cookie_samesite: lax
+
+twig:
+    paths:
+        - '%kernel.project_dir%/templates'
+
+core23_matomo:
+    http:
+        client: 'symfony_http_client'
+        message_factory: 'nyholm.psr7.psr17_factory'
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    Core23\MatomoBundle\Tests\App\Controller\TwigTestController:
+        tags:
+            - controller.service_arguments
+
+    symfony_http_client:
+        class: Symfony\Component\HttpClient\Psr18Client
+
+    nyholm.psr7.psr17_factory:
+        class: Nyholm\Psr7\Factory\Psr17Factory
