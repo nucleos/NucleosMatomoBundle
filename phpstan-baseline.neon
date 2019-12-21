@@ -1,0 +1,67 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Cannot call method scalarNode\\(\\) on Symfony\\\\Component\\\\Config\\\\Definition\\\\Builder\\\\NodeParentInterface\\|null\\.$#"
+			count: 1
+			path: src/DependencyInjection/Configuration.php
+
+		-
+			message: "#^Instantiated class Symfony\\\\Component\\\\HttpKernel\\\\Client not found\\.$#"
+			count: 1
+			path: tests/Block/BlockServiceIntegrationTest.php
+
+		-
+			message: "#^Call to method request\\(\\) on an unknown class Symfony\\\\Component\\\\HttpKernel\\\\Client\\.$#"
+			count: 1
+			path: tests/Block/BlockServiceIntegrationTest.php
+
+		-
+			message: "#^Call to method getResponse\\(\\) on an unknown class Symfony\\\\Component\\\\HttpKernel\\\\Client\\.$#"
+			count: 1
+			path: tests/Block/BlockServiceIntegrationTest.php
+
+		-
+			message: "#^Property Core23\\\\MatomoBundle\\\\Tests\\\\Block\\\\Service\\\\MatomoStatisticBlockServiceTest\\:\\:\\$logger has no typehint specified\\.$#"
+			count: 1
+			path: tests/Block/Service/MatomoStatisticBlockServiceTest.php
+
+		-
+			message: "#^Property Core23\\\\MatomoBundle\\\\Tests\\\\Block\\\\Service\\\\MatomoStatisticBlockServiceTest\\:\\:\\$factory has no typehint specified\\.$#"
+			count: 1
+			path: tests/Block/Service/MatomoStatisticBlockServiceTest.php
+
+		-
+			message: "#^Property Core23\\\\MatomoBundle\\\\Tests\\\\Client\\\\ClientTest\\:\\:\\$connection has no typehint specified\\.$#"
+			count: 1
+			path: tests/Client/ClientTest.php
+
+		-
+			message: "#^Property Core23\\\\MatomoBundle\\\\Tests\\\\Client\\\\PsrClientFactoryTest\\:\\:\\$client has no typehint specified\\.$#"
+			count: 1
+			path: tests/Client/PsrClientFactoryTest.php
+
+		-
+			message: "#^Property Core23\\\\MatomoBundle\\\\Tests\\\\Client\\\\PsrClientFactoryTest\\:\\:\\$requestFactory has no typehint specified\\.$#"
+			count: 1
+			path: tests/Client/PsrClientFactoryTest.php
+
+		-
+			message: "#^Property Core23\\\\MatomoBundle\\\\Tests\\\\Connection\\\\PsrClientConnectionTest\\:\\:\\$client has no typehint specified\\.$#"
+			count: 1
+			path: tests/Connection/PsrClientConnectionTest.php
+
+		-
+			message: "#^Property Core23\\\\MatomoBundle\\\\Tests\\\\Connection\\\\PsrClientConnectionTest\\:\\:\\$requestFactory has no typehint specified\\.$#"
+			count: 1
+			path: tests/Connection/PsrClientConnectionTest.php
+
+		-
+			message: "#^Property Core23\\\\MatomoBundle\\\\Tests\\\\Twig\\\\Extension\\\\MatomoTwigExtensionTest\\:\\:\\$environment has no typehint specified\\.$#"
+			count: 1
+			path: tests/Twig/Extension/MatomoTwigExtensionTest.php
+
+		-
+			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Twig\\\\\\\\TwigFunction' and Twig\\\\TwigFunction will always evaluate to true\\.$#"
+			count: 1
+			path: tests/Twig/Extension/MatomoTwigExtensionTest.php
+
