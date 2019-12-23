@@ -14,11 +14,15 @@ namespace Core23\MatomoBundle\Tests\Twig\Extension;
 use Core23\MatomoBundle\Twig\Extension\MatomoTwigExtension;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
+use Prophecy\Prophecy\ObjectProphecy;
 use Twig\Environment;
 use Twig\TwigFunction;
 
 final class MatomoTwigExtensionTest extends TestCase
 {
+    /**
+     * @var ObjectProphecy
+     */
     private $environment;
 
     protected function setUp(): void

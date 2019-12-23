@@ -15,6 +15,7 @@ use Core23\MatomoBundle\Block\Service\MatomoStatisticBlockService;
 use Core23\MatomoBundle\Client\ClientFactoryInterface;
 use Core23\MatomoBundle\Client\ClientInterface;
 use Core23\MatomoBundle\Exception\MatomoException;
+use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\LoggerInterface;
 use Sonata\BlockBundle\Block\BlockContext;
 use Sonata\BlockBundle\Form\Mapper\FormMapper;
@@ -24,8 +25,14 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
 {
+    /**
+     * @var MockObject&LoggerInterface
+     */
     private $logger;
 
+    /**
+     * @var ClientFactoryInterface&MockObject
+     */
     private $factory;
 
     protected function setUp(): void
