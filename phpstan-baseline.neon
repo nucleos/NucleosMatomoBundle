@@ -21,43 +21,33 @@ parameters:
 			path: tests/Block/BlockServiceIntegrationTest.php
 
 		-
-			message: "#^Property Core23\\\\MatomoBundle\\\\Tests\\\\Block\\\\Service\\\\MatomoStatisticBlockServiceTest\\:\\:\\$logger has no typehint specified\\.$#"
-			count: 1
-			path: tests/Block/Service/MatomoStatisticBlockServiceTest.php
-
-		-
-			message: "#^Property Core23\\\\MatomoBundle\\\\Tests\\\\Block\\\\Service\\\\MatomoStatisticBlockServiceTest\\:\\:\\$factory has no typehint specified\\.$#"
-			count: 1
-			path: tests/Block/Service/MatomoStatisticBlockServiceTest.php
-
-		-
-			message: "#^Property Core23\\\\MatomoBundle\\\\Tests\\\\Client\\\\ClientTest\\:\\:\\$connection has no typehint specified\\.$#"
-			count: 1
+			message: "#^Parameter \\#1 \\$connection of class Core23\\\\MatomoBundle\\\\Client\\\\Client constructor expects Core23\\\\MatomoBundle\\\\Connection\\\\ConnectionInterface, object given\\.$#"
+			count: 4
 			path: tests/Client/ClientTest.php
 
 		-
-			message: "#^Property Core23\\\\MatomoBundle\\\\Tests\\\\Client\\\\PsrClientFactoryTest\\:\\:\\$client has no typehint specified\\.$#"
+			message: "#^Parameter \\#1 \\$client of class Core23\\\\MatomoBundle\\\\Client\\\\PsrClientFactory constructor expects Psr\\\\Http\\\\Client\\\\ClientInterface, object given\\.$#"
 			count: 1
 			path: tests/Client/PsrClientFactoryTest.php
 
 		-
-			message: "#^Property Core23\\\\MatomoBundle\\\\Tests\\\\Client\\\\PsrClientFactoryTest\\:\\:\\$requestFactory has no typehint specified\\.$#"
+			message: "#^Parameter \\#2 \\$requestFactory of class Core23\\\\MatomoBundle\\\\Client\\\\PsrClientFactory constructor expects Psr\\\\Http\\\\Message\\\\RequestFactoryInterface, object given\\.$#"
 			count: 1
 			path: tests/Client/PsrClientFactoryTest.php
 
 		-
-			message: "#^Property Core23\\\\MatomoBundle\\\\Tests\\\\Connection\\\\PsrClientConnectionTest\\:\\:\\$client has no typehint specified\\.$#"
-			count: 1
+			message: "#^Parameter \\#1 \\$client of class Core23\\\\MatomoBundle\\\\Connection\\\\PsrClientConnection constructor expects Psr\\\\Http\\\\Client\\\\ClientInterface, object given\\.$#"
+			count: 7
 			path: tests/Connection/PsrClientConnectionTest.php
 
 		-
-			message: "#^Property Core23\\\\MatomoBundle\\\\Tests\\\\Connection\\\\PsrClientConnectionTest\\:\\:\\$requestFactory has no typehint specified\\.$#"
-			count: 1
+			message: "#^Parameter \\#2 \\$requestFactory of class Core23\\\\MatomoBundle\\\\Connection\\\\PsrClientConnection constructor expects Psr\\\\Http\\\\Message\\\\RequestFactoryInterface, object given\\.$#"
+			count: 7
 			path: tests/Connection/PsrClientConnectionTest.php
 
 		-
-			message: "#^Property Core23\\\\MatomoBundle\\\\Tests\\\\Twig\\\\Extension\\\\MatomoTwigExtensionTest\\:\\:\\$environment has no typehint specified\\.$#"
-			count: 1
+			message: "#^Parameter \\#1 \\$environment of class Core23\\\\MatomoBundle\\\\Twig\\\\Extension\\\\MatomoTwigExtension constructor expects Twig\\\\Environment, object given\\.$#"
+			count: 3
 			path: tests/Twig/Extension/MatomoTwigExtensionTest.php
 
 		-
