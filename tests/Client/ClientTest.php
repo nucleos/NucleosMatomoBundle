@@ -15,10 +15,13 @@ use Core23\MatomoBundle\Client\Client;
 use Core23\MatomoBundle\Connection\ConnectionInterface;
 use Core23\MatomoBundle\Exception\MatomoException;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 
 final class ClientTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ObjectProphecy
      */
