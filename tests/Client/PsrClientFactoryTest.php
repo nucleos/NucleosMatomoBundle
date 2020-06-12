@@ -14,12 +14,15 @@ namespace Core23\MatomoBundle\Tests\Client;
 use Core23\MatomoBundle\Client\Client;
 use Core23\MatomoBundle\Client\PsrClientFactory;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 use Psr\Http\Client\ClientInterface as PsrClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 
 final class PsrClientFactoryTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ObjectProphecy
      */

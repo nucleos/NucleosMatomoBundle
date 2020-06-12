@@ -16,6 +16,7 @@ use Core23\MatomoBundle\Exception\MatomoException;
 use DateTime;
 use Exception;
 use PHPUnit\Framework\TestCase;
+use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface as PsrClientInterface;
@@ -26,6 +27,8 @@ use Psr\Http\Message\StreamInterface;
 
 final class PsrClientConnectionTest extends TestCase
 {
+    use ProphecyTrait;
+
     /**
      * @var ObjectProphecy
      */
