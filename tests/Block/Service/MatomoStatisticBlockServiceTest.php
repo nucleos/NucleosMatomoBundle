@@ -9,12 +9,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\MatomoBundle\Tests\Block\Service;
+namespace Nucleos\MatomoBundle\Tests\Block\Service;
 
-use Core23\MatomoBundle\Block\Service\MatomoStatisticBlockService;
-use Core23\MatomoBundle\Client\ClientFactoryInterface;
-use Core23\MatomoBundle\Client\ClientInterface;
-use Core23\MatomoBundle\Exception\MatomoException;
+use Nucleos\MatomoBundle\Block\Service\MatomoStatisticBlockService;
+use Nucleos\MatomoBundle\Client\ClientFactoryInterface;
+use Nucleos\MatomoBundle\Client\ClientInterface;
+use Nucleos\MatomoBundle\Exception\MatomoException;
 use PHPUnit\Framework\MockObject\MockObject;
 use Psr\Log\LoggerInterface;
 use Sonata\BlockBundle\Block\BlockContext;
@@ -69,14 +69,14 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
             'token'    => '0815',
             'period'   => 'day',
             'date'     => 'last30',
-            'template' => '@Core23Matomo/Block/block_matomo_statistic.html.twig',
+            'template' => '@NucleosMatomo/Block/block_matomo_statistic.html.twig',
         ]);
 
         $response = new Response();
 
         $this->twig->expects(static::once())->method('render')
             ->with(
-                '@Core23Matomo/Block/block_matomo_statistic.html.twig',
+                '@NucleosMatomo/Block/block_matomo_statistic.html.twig',
                 [
                     'context'    => $blockContext,
                     'settings'   => $blockContext->getSettings(),
@@ -121,14 +121,14 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
             'token'    => '0815',
             'period'   => 'day',
             'date'     => 'last30',
-            'template' => '@Core23Matomo/Block/block_matomo_statistic.html.twig',
+            'template' => '@NucleosMatomo/Block/block_matomo_statistic.html.twig',
         ]);
 
         $response = new Response();
 
         $this->twig->expects(static::once())->method('render')
             ->with(
-                '@Core23Matomo/Block/block_matomo_statistic.html.twig',
+                '@NucleosMatomo/Block/block_matomo_statistic.html.twig',
                 [
                     'context'    => $blockContext,
                     'settings'   => $blockContext->getSettings(),
@@ -163,7 +163,7 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
             'token'              => null,
             'period'             => 'day',
             'date'               => 'last30',
-            'template'           => '@Core23Matomo/Block/block_matomo_statistic.html.twig',
+            'template'           => '@NucleosMatomo/Block/block_matomo_statistic.html.twig',
         ], $blockContext);
     }
 
@@ -173,9 +173,9 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
 
         $metadata = $blockService->getMetadata();
 
-        static::assertSame('core23_matomo.block.statistic', $metadata->getTitle());
+        static::assertSame('nucleos_matomo.block.statistic', $metadata->getTitle());
         static::assertNull($metadata->getImage());
-        static::assertSame('Core23MatomoBundle', $metadata->getDomain());
+        static::assertSame('NucleosMatomoBundle', $metadata->getDomain());
         static::assertSame([
             'class' => 'fa fa-area-chart',
         ], $metadata->getOptions());

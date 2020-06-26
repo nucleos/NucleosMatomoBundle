@@ -9,11 +9,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\MatomoBundle\Connection;
+namespace Nucleos\MatomoBundle\Connection;
 
-use Core23\MatomoBundle\Exception\MatomoException;
 use DateTime;
 use Exception;
+use Nucleos\MatomoBundle\Exception\MatomoException;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface as PsrClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;

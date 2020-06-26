@@ -9,10 +9,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\MatomoBundle\Client;
+namespace Nucleos\MatomoBundle\Client;
 
-use Core23\MatomoBundle\Connection\ConnectionInterface;
-use Core23\MatomoBundle\Exception\MatomoException;
+use Nucleos\MatomoBundle\Connection\ConnectionInterface;
+use Nucleos\MatomoBundle\Exception\MatomoException;
 
 interface ClientInterface
 {

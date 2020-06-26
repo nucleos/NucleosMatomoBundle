@@ -9,11 +9,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\MatomoBundle\Tests\Client;
+namespace Nucleos\MatomoBundle\Tests\Client;
 
-use Core23\MatomoBundle\Client\Client;
-use Core23\MatomoBundle\Connection\ConnectionInterface;
-use Core23\MatomoBundle\Exception\MatomoException;
+use Nucleos\MatomoBundle\Client\Client;
+use Nucleos\MatomoBundle\Connection\ConnectionInterface;
+use Nucleos\MatomoBundle\Exception\MatomoException;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;

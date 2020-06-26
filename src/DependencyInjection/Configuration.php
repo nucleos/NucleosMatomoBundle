@@ -9,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\MatomoBundle\DependencyInjection;
+namespace Nucleos\MatomoBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -19,7 +19,7 @@ final class Configuration implements ConfigurationInterface
 {
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder('core23_matomo');
+        $treeBuilder = new TreeBuilder('nucleos_matomo');
 
         $rootNode = $treeBuilder->getRootNode();
 

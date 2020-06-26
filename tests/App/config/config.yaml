@@ -11,7 +11,7 @@ twig:
     paths:
         - '%kernel.project_dir%/templates'
 
-core23_matomo:
+nucleos_matomo:
     http:
         client: 'symfony_http_client'
         message_factory: 'nyholm.psr7.psr17_factory'
@@ -21,7 +21,7 @@ services:
         autowire: true
         autoconfigure: true
 
-    Core23\MatomoBundle\Tests\App\Controller\TwigTestController:
+    Nucleos\MatomoBundle\Tests\App\Controller\TwigTestController:
         tags:
             - controller.service_arguments
 

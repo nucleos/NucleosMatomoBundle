@@ -9,14 +9,14 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\MatomoBundle\DependencyInjection;
+namespace Nucleos\MatomoBundle\DependencyInjection;
 
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-final class Core23MatomoExtension extends Extension
+final class NucleosMatomoExtension extends Extension
 {
     /**
      * @param array<mixed> $configs
@@ -45,7 +45,7 @@ final class Core23MatomoExtension extends Extension
      */
     private function configureHttpClient(ContainerBuilder $container, array $config): void
     {
-        $container->setAlias('core23_matomo.http.client', $config['http']['client']);
-        $container->setAlias('core23_matomo.http.message_factory', $config['http']['message_factory']);
+        $container->setAlias('nucleos_matomo.http.client', $config['http']['client']);
+        $container->setAlias('nucleos_matomo.http.message_factory', $config['http']['message_factory']);
     }
 }

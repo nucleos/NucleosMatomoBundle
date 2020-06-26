@@ -1,15 +1,15 @@
-MatomoBundle
-===========
-[![Latest Stable Version](https://poser.pugx.org/core23/matomo-bundle/v/stable)](https://packagist.org/packages/core23/matomo-bundle)
-[![Latest Unstable Version](https://poser.pugx.org/core23/matomo-bundle/v/unstable)](https://packagist.org/packages/core23/matomo-bundle)
-[![License](https://poser.pugx.org/core23/matomo-bundle/license)](https://packagist.org/packages/core23/matomo-bundle)
+NucleosMatomoBundle
+===================
+[![Latest Stable Version](https://poser.pugx.org/nucleos/matomo-bundle/v/stable)](https://packagist.org/packages/nucleos/matomo-bundle)
+[![Latest Unstable Version](https://poser.pugx.org/nucleos/matomo-bundle/v/unstable)](https://packagist.org/packages/nucleos/matomo-bundle)
+[![License](https://poser.pugx.org/nucleos/matomo-bundle/license)](https://packagist.org/packages/nucleos/matomo-bundle)
 
-[![Total Downloads](https://poser.pugx.org/core23/matomo-bundle/downloads)](https://packagist.org/packages/core23/matomo-bundle)
-[![Monthly Downloads](https://poser.pugx.org/core23/matomo-bundle/d/monthly)](https://packagist.org/packages/core23/matomo-bundle)
-[![Daily Downloads](https://poser.pugx.org/core23/matomo-bundle/d/daily)](https://packagist.org/packages/core23/matomo-bundle)
+[![Total Downloads](https://poser.pugx.org/nucleos/matomo-bundle/downloads)](https://packagist.org/packages/nucleos/matomo-bundle)
+[![Monthly Downloads](https://poser.pugx.org/nucleos/matomo-bundle/d/monthly)](https://packagist.org/packages/nucleos/matomo-bundle)
+[![Daily Downloads](https://poser.pugx.org/nucleos/matomo-bundle/d/daily)](https://packagist.org/packages/nucleos/matomo-bundle)
 
-[![Continuous Integration](https://github.com/core23/MatomoBundle/workflows/Continuous%20Integration/badge.svg)](https://github.com/core23/MatomoBundle/actions)
-[![Code Coverage](https://codecov.io/gh/core23/MatomoBundle/branch/master/graph/badge.svg)](https://codecov.io/gh/core23/MatomoBundle)
+[![Continuous Integration](https://github.com/nucleos/NucleosMatomoBundle/workflows/Continuous%20Integration/badge.svg)](https://github.com/nucleos/NucleosMatomoBundle/actions)
+[![Code Coverage](https://codecov.io/gh/nucleos/NucleosMatomoBundle/branch/master/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosMatomoBundle)
 
 This bundle provides a wrapper for using the [matomo] (Piwik) statistic inside the symfony sonata-project.
 
@@ -18,7 +18,7 @@ This bundle provides a wrapper for using the [matomo] (Piwik) statistic inside t
 Open a command console, enter your project directory and execute the following command to download the latest stable version of this bundle:
 
 ```
-composer require core23/matomo-bundle
+composer require nucleos/matomo-bundle
 # To define a default http client and message factory
 composer require symfony/http-client nyholm/psr7
 ```
@@ -32,7 +32,7 @@ Then, enable the bundle by adding it to the list of registered bundles in `confi
 
 return [
     // ...
-    Core23\MatomoBundle\Core23MatomoBundle::class => ['all' => true],
+    Nucleos\MatomoBundle\NucleosMatomoBundle::class => ['all' => true],
 ];
 ```
 
@@ -48,9 +48,9 @@ You can use [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/) to loa
 Define a http client in your configuration.
 
 ```yaml
-# config/packages/core23_matomo.yaml
+# config/packages/nucleos_matomo.yaml
 
-core23_matomo:
+nucleos_matomo:
     http:
         client: 'httplug.client'
         message_factory: 'nyholm.psr7.psr17_factory'
@@ -60,7 +60,7 @@ core23_matomo:
 ```twig
 {# template.twig #}
 
-{{ sonata_block_render({ 'type': 'core23_matomo.block.statistic' }, {
+{{ sonata_block_render({ 'type': 'nucleos_matomo.block.statistic' }, {
     'host': 'http://matomo.example.com',
     'site': 1,
     'token': 'MATOMO_API_TOKEN'
