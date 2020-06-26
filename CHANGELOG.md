@@ -2,7 +2,7 @@
 
 ## Changes
 
-* Renamed namespace `Core23\MatomoBundle` to `Nucleos\MatomoBundle` after move to [@nucleos]
+- Renamed namespace `Core23\MatomoBundle` to `Nucleos\MatomoBundle` after move to [@nucleos]
 
   Run
 
@@ -34,4 +34,14 @@
 
   to delete backup files created in the previous step.
 
+- Add missing strict file header @core23 (#34)
+- Replace HTTPlug with PSR http client @core23 (#31)
+
+## 📦 Dependencies
+
+- Add missing twig/extra-bundle dependency @core23 (#50)
+- Add missing twig intl extension @core23 (#39)
+- Add support for symfony 5 @core23 (#25)
+- Drop support for symfony 3 @core23 (#36)
+- Drop Sonata CoreBundle dependency @core23 (#35)
 
