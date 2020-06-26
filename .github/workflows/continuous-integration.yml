@@ -11,6 +11,29 @@ on:
 name: "Continuous Integration"
 
 jobs:
+  webpack:
+    name: "Webpack build"
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2.3.1
+
+      - name: "Using Node"
+        uses: actions/setup-node@v2.0.0
+
+      - name: "Install dependencies"
+        run: |
+          yarn
+
+      - name: "Build"
+        run: yarn build
+
+      - name: "Check size"
+        run: |
+          yarn size
+
   coding-standards:
     name: "Coding Standards"
 
@@ -23,10 +46,10 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2.3.1
 
       - name: "Install PHP with extensions"
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@2.3.1
         with:
           coverage: none
           extensions: "mbstring, json"
@@ -36,7 +59,7 @@ jobs:
         run: composer validate --strict
 
       - name: "Cache dependencies installed with composer"
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ~/.composer/cache
           key: php${{ matrix.php-version }}-composer-
@@ -53,7 +76,7 @@ jobs:
         run: mkdir -p .build/php-cs-fixer
 
       - name: "Cache cache directory for friendsofphp/php-cs-fixer"
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: .build/php-cs-fixer
           key: php${{ matrix.php-version }}-php-cs-fixer-
@@ -75,17 +98,17 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2.3.1
 
       - name: "Install PHP with extensions"
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@2.3.1
         with:
           coverage: none
           extensions: "mbstring, json"
           php-version: ${{ matrix.php-version }}
 
       - name: "Cache dependencies installed with composer"
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ~/.composer/cache
           key: ${{ matrix.php-version }}-composer-
@@ -119,17 +142,17 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2.3.1
 
       - name: "Install PHP with extensions"
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@2.3.1
         with:
           coverage: none
           extensions: "mbstring, json"
           php-version: ${{ matrix.php-version }}
 
       - name: "Cache dependencies installed with composer"
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ~/.composer/cache
           key: php${{ matrix.php-version }}-composer-
@@ -162,17 +185,17 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2.3.1
 
       - name: "Install PHP with extensions"
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@2.3.1
         with:
           coverage: pcov
           extensions: "mbstring, json"
           php-version: ${{ matrix.php-version }}
 
       - name: "Cache dependencies installed with composer"
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ~/.composer/cache
           key: php${{ matrix.php-version }}-composer-
@@ -202,17 +225,17 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2.3.1
 
       - name: "Install PHP with extensions"
-        uses: shivammathur/setup-php@v1
+        uses: shivammathur/setup-php@2.3.1
         with:
           coverage: pcov
           extensions: "mbstring"
           php-version: ${{ matrix.php-version }}
 
       - name: "Cache dependencies installed with composer"
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: ~/.composer/cache
           key: php${{ matrix.php-version }}-composer-
