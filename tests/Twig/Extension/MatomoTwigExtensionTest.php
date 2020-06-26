@@ -9,9 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\MatomoBundle\Tests\Twig\Extension;
+namespace Nucleos\MatomoBundle\Tests\Twig\Extension;
 
-use Core23\MatomoBundle\Twig\Extension\MatomoTwigExtension;
+use Nucleos\MatomoBundle\Twig\Extension\MatomoTwigExtension;
 use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 use Prophecy\PhpUnit\ProphecyTrait;
@@ -49,7 +49,7 @@ final class MatomoTwigExtensionTest extends TestCase
 
     public function testRenderTracker(): void
     {
-        $this->environment->render('@Core23Matomo/tracker_code.html.twig', [
+        $this->environment->render('@NucleosMatomo/tracker_code.html.twig', [
             'site_id'       => 13,
             'matomo_host'   => 'localhost',
             'cookie_domain' => null,

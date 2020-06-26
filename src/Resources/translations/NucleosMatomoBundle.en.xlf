@@ -5,12 +5,12 @@
       <tool tool-id="symfony" tool-name="Symfony"/>
     </header>
     <body>
-      <trans-unit id="core23_matomo.block.statistic">
-        <source>core23_matomo.block.statistic</source>
+      <trans-unit id="nucleos_matomo.block.statistic">
+        <source>nucleos_matomo.block.statistic</source>
         <target>Matomo - Statistic</target>
       </trans-unit>
-      <trans-unit id="core23_matomo.block.tracker">
-        <source>core23_matomo.block.tracker</source>
+      <trans-unit id="nucleos_matomo.block.tracker">
+        <source>nucleos_matomo.block.tracker</source>
         <target>Matomo - Tracking Script</target>
       </trans-unit>
       <trans-unit id="form.choice_1_month">

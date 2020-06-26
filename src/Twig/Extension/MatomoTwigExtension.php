@@ -9,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\MatomoBundle\Twig\Extension;
+namespace Nucleos\MatomoBundle\Twig\Extension;
 
 use Twig\Environment;
 use Twig\Error\LoaderError;
@@ -58,6 +58,6 @@ final class MatomoTwigExtension extends AbstractExtension
             return '';
         }
 
-        return $this->environment->render('@Core23Matomo/tracker_code.html.twig', $data);
+        return $this->environment->render('@NucleosMatomo/tracker_code.html.twig', $data);
     }
 }

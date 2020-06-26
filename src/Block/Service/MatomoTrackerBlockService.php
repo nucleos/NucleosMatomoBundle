@@ -9,7 +9,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\MatomoBundle\Block\Service;
+namespace Nucleos\MatomoBundle\Block\Service;
 
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\AbstractBlockService;
@@ -67,7 +67,7 @@ final class MatomoTrackerBlockService extends AbstractBlockService implements Ed
                     'required' => false,
                 ]],
             ],
-            'translation_domain' => 'Core23MatomoBundle',
+            'translation_domain' => 'NucleosMatomoBundle',
         ]);
     }
 
@@ -79,7 +79,7 @@ final class MatomoTrackerBlockService extends AbstractBlockService implements Ed
             'domaintitle' => false,
             'donottrack'  => false,
             'nocookies'   => false,
-            'template'    => '@Core23Matomo/Block/block_matomo_tracker.html.twig',
+            'template'    => '@NucleosMatomo/Block/block_matomo_tracker.html.twig',
         ]);
 
         $resolver->setRequired(['site', 'host']);
@@ -91,7 +91,7 @@ final class MatomoTrackerBlockService extends AbstractBlockService implements Ed
 
     public function getMetadata(): MetadataInterface
     {
-        return new Metadata('core23_matomo.block.tracker', null, null, 'Core23MatomoBundle', [
+        return new Metadata('nucleos_matomo.block.tracker', null, null, 'NucleosMatomoBundle', [
             'class' => 'fa fa-code',
         ]);
     }

@@ -9,9 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\MatomoBundle\Tests\Block;
+namespace Nucleos\MatomoBundle\Tests\Block;
 
-use Core23\MatomoBundle\Tests\App\AppKernel;
+use Nucleos\MatomoBundle\Tests\App\AppKernel;
 use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Component\HttpKernel\Client;

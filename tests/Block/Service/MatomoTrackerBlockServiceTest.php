@@ -9,9 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\MatomoBundle\Tests\Block\Service;
+namespace Nucleos\MatomoBundle\Tests\Block\Service;
 
-use Core23\MatomoBundle\Block\Service\MatomoTrackerBlockService;
+use Nucleos\MatomoBundle\Block\Service\MatomoTrackerBlockService;
 use Sonata\BlockBundle\Block\BlockContext;
 use Sonata\BlockBundle\Form\Mapper\FormMapper;
 use Sonata\BlockBundle\Model\Block;
@@ -30,14 +30,14 @@ final class MatomoTrackerBlockServiceTest extends BlockServiceTestCase
             'domaintitle' => false,
             'donottrack'  => false,
             'nocookies'   => false,
-            'template'    => '@Core23Matomo/Block/block_matomo_tracker.html.twig',
+            'template'    => '@NucleosMatomo/Block/block_matomo_tracker.html.twig',
         ]);
 
         $response = new Response();
 
         $this->twig->expects(static::once())->method('render')
             ->with(
-                '@Core23Matomo/Block/block_matomo_tracker.html.twig',
+                '@NucleosMatomo/Block/block_matomo_tracker.html.twig',
                 [
                     'context'    => $blockContext,
                     'settings'   => $blockContext->getSettings(),
@@ -65,7 +65,7 @@ final class MatomoTrackerBlockServiceTest extends BlockServiceTestCase
             'domaintitle' => false,
             'donottrack'  => false,
             'nocookies'   => false,
-            'template'    => '@Core23Matomo/Block/block_matomo_tracker.html.twig',
+            'template'    => '@NucleosMatomo/Block/block_matomo_tracker.html.twig',
         ], $blockContext);
     }
 
@@ -75,9 +75,9 @@ final class MatomoTrackerBlockServiceTest extends BlockServiceTestCase
 
         $metadata = $blockService->getMetadata();
 
-        static::assertSame('core23_matomo.block.tracker', $metadata->getTitle());
+        static::assertSame('nucleos_matomo.block.tracker', $metadata->getTitle());
         static::assertNull($metadata->getImage());
-        static::assertSame('Core23MatomoBundle', $metadata->getDomain());
+        static::assertSame('NucleosMatomoBundle', $metadata->getDomain());
         static::assertSame([
             'class' => 'fa fa-code',
         ], $metadata->getOptions());

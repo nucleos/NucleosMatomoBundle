@@ -9,9 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\MatomoBundle\Tests\DependencyInjection;
+namespace Nucleos\MatomoBundle\Tests\DependencyInjection;
 
-use Core23\MatomoBundle\DependencyInjection\Configuration;
+use Nucleos\MatomoBundle\DependencyInjection\Configuration;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Config\Definition\Processor;
 
