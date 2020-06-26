@@ -1,7 +1,7 @@
 {
-    "name": "core23/matomo-bundle",
+    "name": "nucleos/matomo-bundle",
     "type": "symfony-bundle",
-    "description": "This bundle provides a block service for using Matomo inside the sonata-project.",
+    "description": "This bundle provides a block service for using Matomo inside symfony applications.",
     "keywords": [
         "symfony",
         "piwik",
@@ -13,7 +13,7 @@
         "widget",
         "bundle"
     ],
-    "homepage": "https://core23.de",
+    "homepage": "https://nucleos.rocks",
     "license": "MIT",
     "authors": [
         {
@@ -57,17 +57,17 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "2.x-dev"
+            "dev-master": "3.x-dev"
         }
     },
     "autoload": {
         "psr-4": {
-            "Core23\\MatomoBundle\\": "src/"
+            "Nucleos\\MatomoBundle\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Core23\\MatomoBundle\\Tests\\": "tests/"
+            "Nucleos\\MatomoBundle\\Tests\\": "tests/"
         }
     },
     "scripts": {

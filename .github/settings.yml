@@ -3,9 +3,9 @@
 _extends: .github
 
 repository:
-  name: MatomoBundle
-  description: This bundle provides a block service for using Matomo inside the sonata-project.
-  homepage: https://core23.de
+  name: NucleosMatomoBundle
+  description: 📊 This bundle provides a block service for using Matomo inside inside symfony applications.
+  homepage: https://nucleos.rocks
   topics: symfony, symfony-bundle, bundle, php, matomo, piwik, statistic, sonata, sonata-block
 
 branches:

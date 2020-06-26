@@ -9,15 +9,15 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\MatomoBundle\Tests\DependencyInjection;
+namespace Nucleos\MatomoBundle\Tests\DependencyInjection;
 
-use Core23\MatomoBundle\Block\Service\MatomoStatisticBlockService;
-use Core23\MatomoBundle\Block\Service\MatomoTrackerBlockService;
-use Core23\MatomoBundle\DependencyInjection\Core23MatomoExtension;
-use Core23\MatomoBundle\Twig\Extension\MatomoTwigExtension;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
+use Nucleos\MatomoBundle\Block\Service\MatomoStatisticBlockService;
+use Nucleos\MatomoBundle\Block\Service\MatomoTrackerBlockService;
+use Nucleos\MatomoBundle\DependencyInjection\NucleosMatomoExtension;
+use Nucleos\MatomoBundle\Twig\Extension\MatomoTwigExtension;
 
-final class Core23MatomoExtensionTest extends AbstractExtensionTestCase
+final class NucleosMatomoExtensionTest extends AbstractExtensionTestCase
 {
     public function testLoadDefault(): void
     {
@@ -31,8 +31,8 @@ final class Core23MatomoExtensionTest extends AbstractExtensionTestCase
 
         $this->assertContainerBuilderHasService(MatomoTwigExtension::class);
 
-        $this->assertContainerBuilderHasAlias('core23_matomo.http.client', 'acme.client');
-        $this->assertContainerBuilderHasAlias('core23_matomo.http.message_factory', 'acme.message_factory');
+        $this->assertContainerBuilderHasAlias('nucleos_matomo.http.client', 'acme.client');
+        $this->assertContainerBuilderHasAlias('nucleos_matomo.http.message_factory', 'acme.message_factory');
     }
 
     public function testLoadWithBlockBundle(): void
@@ -45,14 +45,14 @@ final class Core23MatomoExtensionTest extends AbstractExtensionTestCase
             ],
         ]);
 
-        $this->assertContainerBuilderHasService('core23_matomo.block.statistic', MatomoStatisticBlockService::class);
-        $this->assertContainerBuilderHasService('core23_matomo.block.tracker', MatomoTrackerBlockService::class);
+        $this->assertContainerBuilderHasService('nucleos_matomo.block.statistic', MatomoStatisticBlockService::class);
+        $this->assertContainerBuilderHasService('nucleos_matomo.block.tracker', MatomoTrackerBlockService::class);
     }
 
     protected function getContainerExtensions(): array
     {
         return [
-            new Core23MatomoExtension(),
+            new NucleosMatomoExtension(),
         ];
     }
 }

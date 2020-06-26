@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <services>
-    <service id="core23_matomo.block.statistic" class="Core23\MatomoBundle\Block\Service\MatomoStatisticBlockService">
+    <service id="nucleos_matomo.block.statistic" class="Nucleos\MatomoBundle\Block\Service\MatomoStatisticBlockService">
       <tag name="sonata.block"/>
       <argument type="service" id="twig"/>
-      <argument type="service" id="core23_matomo.client.factory"/>
+      <argument type="service" id="nucleos_matomo.client.factory"/>
       <call method="setLogger">
         <argument type="service" id="logger"/>
       </call>
     </service>
-    <service id="core23_matomo.block.tracker" class="Core23\MatomoBundle\Block\Service\MatomoTrackerBlockService">
+    <service id="nucleos_matomo.block.tracker" class="Nucleos\MatomoBundle\Block\Service\MatomoTrackerBlockService">
       <tag name="sonata.block"/>
       <argument type="service" id="twig"/>
     </service>

@@ -9,10 +9,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\MatomoBundle;
+namespace Nucleos\MatomoBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-final class Core23MatomoBundle extends Bundle
+final class NucleosMatomoBundle extends Bundle
 {
 }

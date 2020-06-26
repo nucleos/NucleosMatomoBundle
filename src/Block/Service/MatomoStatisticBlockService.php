@@ -9,10 +9,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\MatomoBundle\Block\Service;
+namespace Nucleos\MatomoBundle\Block\Service;
 
-use Core23\MatomoBundle\Client\ClientFactoryInterface;
-use Core23\MatomoBundle\Exception\MatomoException;
+use Nucleos\MatomoBundle\Client\ClientFactoryInterface;
+use Nucleos\MatomoBundle\Exception\MatomoException;
 use Psr\Log\LoggerAwareInterface;
 use Psr\Log\LoggerAwareTrait;
 use Psr\Log\NullLogger;
@@ -125,7 +125,7 @@ final class MatomoStatisticBlockService extends AbstractBlockService implements 
                     'label' => 'form.label_date',
                 ]],
             ],
-            'translation_domain' => 'Core23MatomoBundle',
+            'translation_domain' => 'NucleosMatomoBundle',
         ]);
     }
 
@@ -142,7 +142,7 @@ final class MatomoStatisticBlockService extends AbstractBlockService implements 
             'token'              => null,
             'period'             => 'day',
             'date'               => 'last30',
-            'template'           => '@Core23Matomo/Block/block_matomo_statistic.html.twig',
+            'template'           => '@NucleosMatomo/Block/block_matomo_statistic.html.twig',
         ]);
 
         $resolver->setRequired(['site', 'host', 'token']);
@@ -154,7 +154,7 @@ final class MatomoStatisticBlockService extends AbstractBlockService implements 
 
     public function getMetadata(): MetadataInterface
     {
-        return new Metadata('core23_matomo.block.statistic', null, null, 'Core23MatomoBundle', [
+        return new Metadata('nucleos_matomo.block.statistic', null, null, 'NucleosMatomoBundle', [
             'class' => 'fa fa-area-chart',
         ]);
     }

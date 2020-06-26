@@ -9,10 +9,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\MatomoBundle\Tests\App;
+namespace Nucleos\MatomoBundle\Tests\App;
 
-use Core23\MatomoBundle\Core23MatomoBundle;
-use Core23\MatomoBundle\Tests\App\Controller\TwigTestController;
+use Nucleos\MatomoBundle\NucleosMatomoBundle;
+use Nucleos\MatomoBundle\Tests\App\Controller\TwigTestController;
 use Sonata\BlockBundle\SonataBlockBundle;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
@@ -38,7 +38,7 @@ final class AppKernel extends Kernel
         yield new TwigBundle();
         yield new TwigExtraBundle();
         yield new SonataBlockBundle();
-        yield new Core23MatomoBundle();
+        yield new NucleosMatomoBundle();
     }
 
     public function getCacheDir(): string

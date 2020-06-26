@@ -9,9 +9,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\MatomoBundle\Client;
+namespace Nucleos\MatomoBundle\Client;
 
-use Core23\MatomoBundle\Connection\PsrClientConnection;
+use Nucleos\MatomoBundle\Connection\PsrClientConnection;
 use Psr\Http\Client\ClientInterface as PsrClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
 

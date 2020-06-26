@@ -9,10 +9,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Core23\MatomoBundle\Tests\Client;
+namespace Nucleos\MatomoBundle\Tests\Client;
 
-use Core23\MatomoBundle\Client\Client;
-use Core23\MatomoBundle\Client\PsrClientFactory;
+use Nucleos\MatomoBundle\Client\Client;
+use Nucleos\MatomoBundle\Client\PsrClientFactory;
 use PHPUnit\Framework\TestCase;
 use Prophecy\PhpUnit\ProphecyTrait;
 use Prophecy\Prophecy\ObjectProphecy;
