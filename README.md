@@ -57,9 +57,18 @@ nucleos_matomo:
 
 ```
 
-```twig
-{# template.twig #}
+### Render tracking code
 
+```twig
+{{ sonata_block_render({ 'type': 'nucleos_matomo.block.tracker' }, {
+    'host': 'http://matomo.example.com',
+    'site': 1
+}) }}
+```
+
+### Render statistic graph
+
+```twig
 {{ sonata_block_render({ 'type': 'nucleos_matomo.block.statistic' }, {
     'host': 'http://matomo.example.com',
     'site': 1,
