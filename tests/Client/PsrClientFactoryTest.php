@@ -24,12 +24,12 @@ final class PsrClientFactoryTest extends TestCase
     use ProphecyTrait;
 
     /**
-     * @var ObjectProphecy
+     * @var ObjectProphecy<PsrClientInterface>
      */
     private $client;
 
     /**
-     * @var ObjectProphecy
+     * @var ObjectProphecy<RequestFactoryInterface>
      */
     private $requestFactory;
 

@@ -24,7 +24,7 @@ final class MatomoTwigExtensionTest extends TestCase
     use ProphecyTrait;
 
     /**
-     * @var ObjectProphecy
+     * @var ObjectProphecy<Environment>
      */
     private $environment;
 
