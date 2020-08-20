@@ -30,12 +30,12 @@ final class PsrClientConnectionTest extends TestCase
     use ProphecyTrait;
 
     /**
-     * @var ObjectProphecy
+     * @var ObjectProphecy<PsrClientInterface>
      */
     private $client;
 
     /**
-     * @var ObjectProphecy
+     * @var ObjectProphecy<RequestFactoryInterface>
      */
     private $requestFactory;
 
@@ -184,6 +184,9 @@ final class PsrClientConnectionTest extends TestCase
         $client->send(['foo' => 'bar']);
     }
 
+    /**
+     * @return ObjectProphecy<ResponseInterface>
+     */
     private function prepareResponse(string $content, int $code = 200): ObjectProphecy
     {
         $stream = $this->prophesize(StreamInterface::class);

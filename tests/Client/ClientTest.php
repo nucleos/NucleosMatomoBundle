@@ -23,7 +23,7 @@ final class ClientTest extends TestCase
     use ProphecyTrait;
 
     /**
-     * @var ObjectProphecy
+     * @var ObjectProphecy<ConnectionInterface>
      */
     private $connection;
 
