@@ -10,6 +10,7 @@ NucleosMatomoBundle
 
 [![Continuous Integration](https://github.com/nucleos/NucleosMatomoBundle/workflows/Continuous%20Integration/badge.svg)](https://github.com/nucleos/NucleosMatomoBundle/actions)
 [![Code Coverage](https://codecov.io/gh/nucleos/NucleosMatomoBundle/branch/main/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosMatomoBundle)
+[![Type Coverage](https://shepherd.dev/github/nucleos/NucleosMatomoBundle/coverage.svg)](https://shepherd.dev/github/nucleos/NucleosMatomoBundle)
 
 This bundle provides a wrapper for using the [matomo] (Piwik) statistic inside the symfony sonata-project.
 
