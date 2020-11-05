@@ -64,6 +64,9 @@ final class MatomoStatisticBlockService extends AbstractBlockService implements 
         $this->configureEditForm($form, $block);
     }
 
+    /**
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     */
     public function configureEditForm(FormMapper $formMapper, BlockInterface $block): void
     {
         $formMapper->add('settings', ImmutableArrayType::class, [
