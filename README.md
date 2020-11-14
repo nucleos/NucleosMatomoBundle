@@ -8,7 +8,7 @@ NucleosMatomoBundle
 [![Monthly Downloads](https://poser.pugx.org/nucleos/matomo-bundle/d/monthly)](https://packagist.org/packages/nucleos/matomo-bundle)
 [![Daily Downloads](https://poser.pugx.org/nucleos/matomo-bundle/d/daily)](https://packagist.org/packages/nucleos/matomo-bundle)
 
-[![Continuous Integration](https://github.com/nucleos/NucleosMatomoBundle/workflows/Continuous%20Integration/badge.svg)](https://github.com/nucleos/NucleosMatomoBundle/actions)
+[![Continuous Integration](https://github.com/nucleos/NucleosMatomoBundle/workflows/Continuous%20Integration/badge.svg)](https://github.com/nucleos/NucleosMatomoBundle/actions?query=workflow%3A"Continuous+Integration"+branch%3Amain)
 [![Code Coverage](https://codecov.io/gh/nucleos/NucleosMatomoBundle/branch/main/graph/badge.svg)](https://codecov.io/gh/nucleos/NucleosMatomoBundle)
 [![Type Coverage](https://shepherd.dev/github/nucleos/NucleosMatomoBundle/coverage.svg)](https://shepherd.dev/github/nucleos/NucleosMatomoBundle)
 
