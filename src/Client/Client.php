@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Nucleos\MatomoBundle\Client;
 
+use Exception;
 use Nucleos\MatomoBundle\Connection\ConnectionInterface;
 use Nucleos\MatomoBundle\Exception\MatomoException;
 
@@ -47,20 +48,20 @@ final class Client implements ClientInterface
     {
         $params['method']     = $method;
         $params['token_auth'] = $this->token;
-        $params['format']     = $format;
+        $params['format']     = 'json';
         $data                 = $this->getConnection()->send($params);
 
-        if ('php' === $format) {
-            $object = unserialize($data);
-
-            if (isset($object['result']) && 'error' === $object['result']) {
-                throw new MatomoException($object['message']);
-            }
-
-            return $object;
+        if ('php' !== $format) {
+            @trigger_error(sprintf('Argument #3 of %s is deprecated and will be removed in 4.0.', __METHOD__), E_USER_DEPRECATED);
         }
 
-        return $data;
+        try {
+            $object = json_decode($data, true, 512, JSON_THROW_ON_ERROR);
+        } catch (Exception $e) {
+            throw new MatomoException('Invalid server response');
+        }
+
+        return $object;
     }
 
     public function getConnection(): ConnectionInterface

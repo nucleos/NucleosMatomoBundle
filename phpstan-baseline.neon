@@ -21,6 +21,11 @@ parameters:
 			path: tests/Block/BlockServiceIntegrationTest.php
 
 		-
+			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertCount\\(\\) expects Countable\\|iterable, array\\|string given\\.$#"
+			count: 2
+			path: tests/Client/ClientTest.php
+
+		-
 			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Twig\\\\\\\\TwigFunction' and Twig\\\\TwigFunction will always evaluate to true\\.$#"
 			count: 1
 			path: tests/Twig/Extension/MatomoTwigExtensionTest.php

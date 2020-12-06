@@ -30,7 +30,6 @@ interface ClientInterface
      *
      * @param string               $method method name
      * @param array<string, mixed> $params method parameters
-     * @param string               $format return format (php, json, xml, csv, tsv, html, rss)
      *
      * @throws MatomoException
      *
