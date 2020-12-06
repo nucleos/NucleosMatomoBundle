@@ -1,3 +1,12 @@
+# 3.1.0
+
+## Changes
+
+## 🐛 Bug Fixes
+
+- Add support for matomo 4 @core23 (#212)
+- Move configuration to PHP @core23 (#65)
+
 # 3.0.0
 
 ## Changes
