@@ -2,28 +2,29 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.2.0 - TBD
+## 3.2.0 - 2021-02-09
 
-### Added
 
-- Nothing.
 
-### Changed
+-----
 
-- Nothing.
+### Release Notes for [3.2.0](https://github.com/nucleos/NucleosMatomoBundle/milestone/1)
 
-### Deprecated
 
-- Nothing.
 
-### Removed
+### 3.2.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **2**
+- Total contributors: **1**
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [298: Fix minor phpstan findings](https://github.com/nucleos/NucleosMatomoBundle/pull/298) thanks to @core23
 
+#### dependency
+
+ - [204: Add support for PHP 8](https://github.com/nucleos/NucleosMatomoBundle/pull/204) thanks to @core23
 
 ## 3.1.0
 
