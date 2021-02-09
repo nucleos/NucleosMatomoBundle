@@ -33,6 +33,7 @@ final class NucleosMatomoExtension extends Extension
         $loader->load('services.php');
         $loader->load('twig.php');
 
+        /** @var array<string, mixed> $bundles */
         if (isset($bundles['SonataBlockBundle'])) {
             $loader->load('block.php');
         }
