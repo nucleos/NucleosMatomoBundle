@@ -1,15 +1,42 @@
-# 3.1.0
+# Changelog
 
-## Changes
+All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 🐛 Bug Fixes
+## 3.2.0 - TBD
+
+### Added
+
+- Nothing.
+
+### Changed
+
+- Nothing.
+
+### Deprecated
+
+- Nothing.
+
+### Removed
+
+- Nothing.
+
+### Fixed
+
+- Nothing.
+
+
+## 3.1.0
+
+### Changes
+
+### 🐛 Bug Fixes
 
 - Add support for matomo 4 [@core23] ([#212])
 - Move configuration to PHP [@core23] ([#65])
 
-# 3.0.0
+## 3.0.0
 
-## Changes
+### Changes
 
 - Renamed namespace `Core23\MatomoBundle` to `Nucleos\MatomoBundle` after move to [@nucleos]
 
@@ -46,7 +73,7 @@
 - Add missing strict file header [@core23] ([#34])
 - Replace HTTPlug with PSR http client [@core23] ([#31])
 
-## 📦 Dependencies
+### 📦 Dependencies
 
 - Add missing twig/extra-bundle dependency [@core23] ([#50])
 - Add missing twig intl extension [@core23] ([#39])
