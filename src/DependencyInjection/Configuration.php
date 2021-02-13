@@ -23,8 +23,6 @@ final class Configuration implements ConfigurationInterface
 
         $rootNode = $treeBuilder->getRootNode();
 
-        \assert($rootNode instanceof ArrayNodeDefinition);
-
         $this->addHttpClientSection($rootNode);
 
         return $treeBuilder;
