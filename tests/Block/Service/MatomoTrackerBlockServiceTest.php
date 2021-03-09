@@ -11,6 +11,7 @@ declare(strict_types=1);
 
 namespace Nucleos\MatomoBundle\Tests\Block\Service;
 
+use LogicException;
 use Nucleos\MatomoBundle\Block\Service\MatomoTrackerBlockService;
 use Sonata\BlockBundle\Block\BlockContext;
 use Sonata\BlockBundle\Form\Mapper\FormMapper;
@@ -52,6 +53,23 @@ final class MatomoTrackerBlockServiceTest extends BlockServiceTestCase
 
         static::assertSame($response, $blockService->execute($blockContext, $response));
         static::assertSame('TWIG_CONTENT', $response->getContent());
+    }
+
+    public function testExecuteWithNullTemplate(): void
+    {
+        $this->expectException(LogicException::class);
+        $this->expectExceptionMessage('Cannot render block without template');
+
+        $block = new Block();
+
+        $blockContext = new BlockContext($block, [
+            'template'    => null,
+        ]);
+
+        $response = new Response();
+
+        $blockService = new MatomoTrackerBlockService($this->twig);
+        $blockService->execute($blockContext, $response);
     }
 
     public function testDefaultSettings(): void
