@@ -38,7 +38,7 @@
         {
             "path": "src/Resources/public/widget.js",
             "gzip": false,
-            "limit": "460 KB"
+            "limit": "465 KB"
         }
     ]
 }
