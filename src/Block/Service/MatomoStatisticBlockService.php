@@ -15,7 +15,7 @@ use LogicException;
 use Nucleos\MatomoBundle\Client\ClientFactoryInterface;
 use Nucleos\MatomoBundle\Exception\MatomoException;
 use Psr\Log\LoggerAwareInterface;
-use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\AbstractBlockService;
@@ -35,7 +35,10 @@ use Twig\Environment;
 
 final class MatomoStatisticBlockService extends AbstractBlockService implements EditableBlockService, LoggerAwareInterface
 {
-    use LoggerAwareTrait;
+    /**
+     * @var LoggerInterface
+     */
+    private $logger;
 
     /**
      * @var ClientFactoryInterface
@@ -165,6 +168,11 @@ final class MatomoStatisticBlockService extends AbstractBlockService implements 
         return new Metadata('nucleos_matomo.block.statistic', null, null, 'NucleosMatomoBundle', [
             'class' => 'fa fa-area-chart',
         ]);
+    }
+
+    public function setLogger(LoggerInterface $logger): void
+    {
+        $this->logger = $logger;
     }
 
     public function getName(): string
