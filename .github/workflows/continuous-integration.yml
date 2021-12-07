@@ -1,16 +1,13 @@
-# https://help.github.com/en/categories/automating-your-workflow-with-github-actions
+name: 'Continuous Integration'
 
 on:
   create:
   pull_request:
-    types: [opened, synchronize, reopened]
   push:
     branches:
       - "*.x"
     tags:
       - "**"
-
-name: "Continuous Integration"
 
 jobs:
   webpack:
@@ -44,7 +41,7 @@ jobs:
     strategy:
       matrix:
         php-version:
-          - 8.0
+          - 8.1
 
     steps:
       - name: "Checkout"
@@ -54,11 +51,8 @@ jobs:
         uses: shivammathur/setup-php@2.16.0
         with:
           coverage: none
-          extensions: "mbstring, json"
+          extensions: "mbstring"
           php-version: ${{ matrix.php-version }}
-
-      - name: "Validate composer.json and composer.lock"
-        run: composer validate --strict
 
       - name: "Cache dependencies installed with composer"
         uses: actions/cache@v2.1.7
@@ -69,10 +63,10 @@ jobs:
             php${{ matrix.php-version }}-composer-
 
       - name: "Install locked dependencies with composer"
-        run: composer install --no-interaction --no-progress --no-suggest
+        run: composer install --no-interaction --no-progress
 
-      - name: "Run localheinz/composer-normalize"
-        run: composer normalize --dry-run
+      - name: "Run composer lint"
+        run: make lint-composer
 
       - name: "Create cache directory for friendsofphp/php-cs-fixer"
         run: mkdir -p .build/php-cs-fixer
@@ -86,7 +80,9 @@ jobs:
             php${{ matrix.php-version }}-php-cs-fixer-
 
       - name: "Run friendsofphp/php-cs-fixer"
-        run: composer cs-diff
+        env:
+            PHP_CS_FIXER_IGNORE_ENV: 1
+        run: make cs
 
   static-code-analysis:
     name: "Static Code Analysis"
@@ -106,7 +102,7 @@ jobs:
         uses: shivammathur/setup-php@2.16.0
         with:
           coverage: none
-          extensions: "mbstring, json"
+          extensions: "mbstring"
           php-version: ${{ matrix.php-version }}
 
       - name: "Cache dependencies installed with composer"
@@ -118,16 +114,16 @@ jobs:
             ${{ matrix.php-version }}-composer-
 
       - name: "Install locked dependencies with composer"
-        run: composer install --no-interaction --no-progress --no-suggest
+        run: composer install --no-interaction --no-progress
 
       - name: "Run phpstan/phpstan"
-        run: composer phpstan
+        run: make phpstan
 
       - name: "Run psalm"
-        run: vendor/bin/psalm --config=psalm.xml --diff --shepherd --show-info=false --stats --threads=4
+        run: make psalm
 
       - name: "Run phpmd"
-        run: composer phpmd
+        run: make phpmd
 
   tests:
     name: "Test (PHP ${{ matrix.php-version }}, symfony ${{ matrix.symfony }}, ${{ matrix.dependencies }})"
@@ -156,11 +152,12 @@ jobs:
         uses: shivammathur/setup-php@2.16.0
         with:
           coverage: none
-          extensions: "mbstring, json"
+          extensions: "mbstring"
           php-version: ${{ matrix.php-version }}
 
       - name: 'Install Symfony Flex'
-        run: composer global require --prefer-dist --no-progress --no-suggest --ansi symfony/flex
+        run: |
+          composer global require --prefer-dist --no-progress --ansi symfony/flex
 
       - name: "Cache dependencies installed with composer"
         uses: actions/cache@v2.1.7
@@ -175,57 +172,17 @@ jobs:
 
       - name: "Install lowest dependencies with composer"
         if: matrix.dependencies == 'lowest'
-        run: composer update --no-interaction --no-progress --no-suggest --prefer-lowest
+        run: composer update --no-interaction --no-progress --prefer-lowest
 
       - name: "Install highest dependencies with composer"
         if: matrix.dependencies == 'highest'
-        run: composer update --no-interaction --no-progress --no-suggest
+        run: composer update --no-interaction --no-progress
 
       - name: "Run tests with phpunit/phpunit"
-        run: composer test
+        run: make test
 
   code-coverage:
     name: "Code Coverage"
-
-    runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        php-version:
-          - 8.1
-
-    steps:
-      - name: "Checkout"
-        uses: actions/checkout@v2.4.0
-
-      - name: "Install PHP with extensions"
-        uses: shivammathur/setup-php@2.16.0
-        with:
-          coverage: pcov
-          extensions: "mbstring, json"
-          php-version: ${{ matrix.php-version }}
-
-      - name: "Cache dependencies installed with composer"
-        uses: actions/cache@v2.1.7
-        with:
-          path: ~/.composer/cache
-          key: php${{ matrix.php-version }}-composer-
-          restore-keys: |
-            php${{ matrix.php-version }}-composer-
-
-      - name: "Install locked dependencies with composer"
-        run: composer install --no-interaction --no-progress --no-suggest
-
-      - name: "Collect code coverage with pcov and phpunit/phpunit"
-        run: composer coverage
-
-      - name: "Send code coverage report to Codecov.io"
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        run: bash <(curl -s https://codecov.io/bash)
-
-  mutation-tests:
-    name: "Mutation Tests"
 
     runs-on: ubuntu-latest
 
@@ -254,10 +211,47 @@ jobs:
             php${{ matrix.php-version }}-composer-
 
       - name: "Install locked dependencies with composer"
-        run: composer install --no-interaction --no-progress --no-suggest
+        run: composer install --no-interaction --no-progress
 
-      - name: "Download infection"
-        run: wget -O infection https://github.com/infection/infection/releases/download/0.19.0/infection.phar && chmod +x infection
+      - name: "Collect code coverage with pcov and phpunit/phpunit"
+        run: make coverage
+
+      - name: "Send code coverage report to Codecov.io"
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        run: bash <(curl -s https://codecov.io/bash)
+
+  mutation-tests:
+    name: "Mutation Tests"
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-version:
+          - 8.0
+
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2.4.0
+
+      - name: "Install PHP with extensions"
+        uses: shivammathur/setup-php@2.16.0
+        with:
+          coverage: pcov
+          extensions: "mbstring"
+          php-version: ${{ matrix.php-version }}
+
+      - name: "Cache dependencies installed with composer"
+        uses: actions/cache@v2.1.7
+        with:
+          path: ~/.composer/cache
+          key: php${{ matrix.php-version }}-composer-
+          restore-keys: |
+            php${{ matrix.php-version }}-composer-
+
+      - name: "Install locked dependencies with composer"
+        run: composer install --no-interaction --no-progress
 
       - name: "Run mutation tests with pcov and infection/infection"
-        run: ./infection
+        run: make infection
