@@ -2,27 +2,35 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.3.0 - TBD
+## 3.3.0 - 2021-12-08
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.3.0](https://github.com/nucleos/NucleosMatomoBundle/milestone/3)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 3.3.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **6**
+- Total contributors: **1**
 
-### Removed
+#### dependency
 
-- Nothing.
+ - [595: Add symfony 6 support](https://github.com/nucleos/NucleosMatomoBundle/pull/595) thanks to @core23
+ - [594: Drop symfony 4 support](https://github.com/nucleos/NucleosMatomoBundle/pull/594) thanks to @core23
+ - [580: Drop PHP 7 support](https://github.com/nucleos/NucleosMatomoBundle/pull/580) thanks to @core23
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [593: Drop node-sass](https://github.com/nucleos/NucleosMatomoBundle/pull/593) thanks to @core23
+ - [590: Update tools and use make to run them](https://github.com/nucleos/NucleosMatomoBundle/pull/590) thanks to @core23
+
+#### Bug
+
+ - [352:  Throw LogicException when rendering block without template](https://github.com/nucleos/NucleosMatomoBundle/pull/352) thanks to @core23
 
 ## 3.2.0 - 2021-02-09
 
