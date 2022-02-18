@@ -7,7 +7,7 @@
         "chart.js": "^2.7.3"
     },
     "devDependencies": {
-        "@babel/core": "^7.17.4",
+        "@babel/core": "^7.17.5",
         "@babel/preset-env": "^7.16.11",
         "@size-limit/preset-small-lib": "^7.0.8",
         "@size-limit/webpack": "^7.0.8",
