@@ -4,7 +4,7 @@
     "homepage": "https://nucleos.rocks",
     "author": "Christian Gripp <mail@core23.de>",
     "dependencies": {
-        "chart.js": "^2.7.3"
+        "chart.js": "^3.0.0"
     },
     "devDependencies": {
         "@babel/core": "^7.17.12",
