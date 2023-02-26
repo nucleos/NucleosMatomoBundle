@@ -38,12 +38,9 @@ final class MatomoStatisticBlockService extends AbstractBlockService implements 
     /**
      * @var LoggerInterface
      */
-    private $logger;
+    private LoggerInterface|NullLogger $logger;
 
-    /**
-     * @var ClientFactoryInterface
-     */
-    private $factory;
+    private ClientFactoryInterface $factory;
 
     public function __construct(Environment $twig, ClientFactoryInterface $factory)
     {

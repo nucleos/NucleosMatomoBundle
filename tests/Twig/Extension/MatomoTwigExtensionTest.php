@@ -26,7 +26,7 @@ final class MatomoTwigExtensionTest extends TestCase
     /**
      * @var ObjectProphecy<Environment>
      */
-    private $environment;
+    private ObjectProphecy|Environment $environment;
 
     protected function setUp(): void
     {

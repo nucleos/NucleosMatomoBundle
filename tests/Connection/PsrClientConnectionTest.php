@@ -32,12 +32,12 @@ final class PsrClientConnectionTest extends TestCase
     /**
      * @var ObjectProphecy<PsrClientInterface>
      */
-    private $client;
+    private PsrClientInterface|ObjectProphecy $client;
 
     /**
      * @var ObjectProphecy<RequestFactoryInterface>
      */
-    private $requestFactory;
+    private ObjectProphecy|RequestFactoryInterface $requestFactory;
 
     protected function setUp(): void
     {
