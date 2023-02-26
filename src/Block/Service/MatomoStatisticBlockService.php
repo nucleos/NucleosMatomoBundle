@@ -78,7 +78,7 @@ final class MatomoStatisticBlockService extends AbstractBlockService implements 
     public function configureEditForm(FormMapper $formMapper, BlockInterface $block): void
     {
         $formMapper->add('settings', ImmutableArrayType::class, [
-            'keys' => [
+            'keys'               => [
                 ['title', TextType::class, [
                     'required' => false,
                     'label'    => 'form.label_title',
@@ -112,7 +112,7 @@ final class MatomoStatisticBlockService extends AbstractBlockService implements 
                         'form.choice_unique_visitors' => 'VisitsSummary.getUniqueVisitors',
                         'form.choice_hits'            => 'VisitsSummary.getActions ',
                     ],
-                    'label' => 'form.label_method',
+                    'label'   => 'form.label_method',
                 ]],
                 ['period', ChoiceType::class, [
                     'choices' => [
@@ -121,7 +121,7 @@ final class MatomoStatisticBlockService extends AbstractBlockService implements 
                         'form.choice_month' => 'month',
                         'form.choice_year'  => 'year',
                     ],
-                    'label' => 'form.label_period',
+                    'label'   => 'form.label_period',
                 ]],
                 ['date', ChoiceType::class, [
                     'choices' => [
@@ -133,7 +133,7 @@ final class MatomoStatisticBlockService extends AbstractBlockService implements 
                         'form.choice_6_months' => 'last180',
                         'form.choice_1_year'   => 'last360',
                     ],
-                    'label' => 'form.label_date',
+                    'label'   => 'form.label_date',
                 ]],
             ],
             'translation_domain' => 'NucleosMatomoBundle',

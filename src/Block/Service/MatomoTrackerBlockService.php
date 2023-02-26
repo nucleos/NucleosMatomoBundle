@@ -51,7 +51,7 @@ final class MatomoTrackerBlockService extends AbstractBlockService implements Ed
     public function configureEditForm(FormMapper $formMapper, BlockInterface $block): void
     {
         $formMapper->add('settings', ImmutableArrayType::class, [
-            'keys' => [
+            'keys'               => [
                 ['host', TextType::class, [
                     'required' => false,
                     'label'    => 'form.label_host',
