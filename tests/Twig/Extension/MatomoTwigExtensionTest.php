@@ -12,30 +12,26 @@ declare(strict_types=1);
 namespace Nucleos\MatomoBundle\Tests\Twig\Extension;
 
 use Nucleos\MatomoBundle\Twig\Extension\MatomoTwigExtension;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Prophecy\Argument;
-use Prophecy\PhpUnit\ProphecyTrait;
-use Prophecy\Prophecy\ObjectProphecy;
 use Twig\Environment;
 use Twig\TwigFunction;
 
 final class MatomoTwigExtensionTest extends TestCase
 {
-    use ProphecyTrait;
-
     /**
-     * @var ObjectProphecy<Environment>
+     * @var Environment&MockObject
      */
-    private ObjectProphecy|Environment $environment;
+    private Environment $environment;
 
     protected function setUp(): void
     {
-        $this->environment = $this->prophesize(Environment::class);
+        $this->environment = $this->createMock(Environment::class);
     }
 
     public function testGetFunctions(): void
     {
-        $extension = new MatomoTwigExtension($this->environment->reveal());
+        $extension = new MatomoTwigExtension($this->environment);
 
         $functions = $extension->getFunctions();
 
@@ -49,7 +45,7 @@ final class MatomoTwigExtensionTest extends TestCase
 
     public function testRenderTracker(): void
     {
-        $this->environment->render('@NucleosMatomo/tracker_code.html.twig', [
+        $this->environment->method('render')->with('@NucleosMatomo/tracker_code.html.twig', [
             'site_id'       => 13,
             'matomo_host'   => 'localhost',
             'cookie_domain' => null,
@@ -57,7 +53,7 @@ final class MatomoTwigExtensionTest extends TestCase
             ->willReturn('HTML CONTENT')
         ;
 
-        $extension = new MatomoTwigExtension($this->environment->reveal());
+        $extension = new MatomoTwigExtension($this->environment);
 
         static::assertSame('HTML CONTENT', $extension->renderTracker([
             'site_id' => 13,
@@ -66,11 +62,9 @@ final class MatomoTwigExtensionTest extends TestCase
 
     public function testRenderTrackerWithoutSiteId(): void
     {
-        $extension = new MatomoTwigExtension($this->environment->reveal());
+        $extension = new MatomoTwigExtension($this->environment);
 
-        $this->environment->render(Argument::any())
-            ->shouldNotBeCalled()
-        ;
+        $this->environment->expects(static::never())->method('render');
 
         static::assertSame('', $extension->renderTracker());
     }
