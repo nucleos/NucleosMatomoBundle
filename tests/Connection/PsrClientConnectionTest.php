@@ -15,9 +15,8 @@ use DateTime;
 use Exception;
 use Nucleos\MatomoBundle\Connection\PsrClientConnection;
 use Nucleos\MatomoBundle\Exception\MatomoException;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
-use Prophecy\PhpUnit\ProphecyTrait;
-use Prophecy\Prophecy\ObjectProphecy;
 use Psr\Http\Client\ClientExceptionInterface;
 use Psr\Http\Client\ClientInterface as PsrClientInterface;
 use Psr\Http\Message\RequestFactoryInterface;
@@ -27,37 +26,35 @@ use Psr\Http\Message\StreamInterface;
 
 final class PsrClientConnectionTest extends TestCase
 {
-    use ProphecyTrait;
+    /**
+     * @var MockObject&PsrClientInterface
+     */
+    private PsrClientInterface $client;
 
     /**
-     * @var ObjectProphecy<PsrClientInterface>
+     * @var MockObject&RequestFactoryInterface
      */
-    private PsrClientInterface|ObjectProphecy $client;
-
-    /**
-     * @var ObjectProphecy<RequestFactoryInterface>
-     */
-    private ObjectProphecy|RequestFactoryInterface $requestFactory;
+    private RequestFactoryInterface $requestFactory;
 
     protected function setUp(): void
     {
-        $this->client         = $this->prophesize(PsrClientInterface::class);
-        $this->requestFactory = $this->prophesize(RequestFactoryInterface::class);
+        $this->client         = $this->createMock(PsrClientInterface::class);
+        $this->requestFactory = $this->createMock(RequestFactoryInterface::class);
     }
 
     public function testSend(): void
     {
-        $client = new PsrClientConnection($this->client->reveal(), $this->requestFactory->reveal(), 'http://api.url');
+        $client = new PsrClientConnection($this->client, $this->requestFactory, 'http://api.url');
 
-        $request =  $this->prophesize(RequestInterface::class);
+        $request =  $this->createMock(RequestInterface::class);
 
-        $this->requestFactory->createRequest('GET', 'http://api.url?foo=bar&module=API')
+        $this->requestFactory->method('createRequest')->with('GET', 'http://api.url?foo=bar&module=API')
             ->willReturn($request)
         ;
 
         $response =$this->prepareResponse('my content');
 
-        $this->client->sendRequest($request)
+        $this->client->method('sendRequest')->with($request)
             ->willReturn($response)
         ;
 
@@ -66,17 +63,17 @@ final class PsrClientConnectionTest extends TestCase
 
     public function testSendWithDateParameter(): void
     {
-        $client = new PsrClientConnection($this->client->reveal(), $this->requestFactory->reveal(), 'http://api.url');
+        $client = new PsrClientConnection($this->client, $this->requestFactory, 'http://api.url');
 
-        $request =  $this->prophesize(RequestInterface::class);
+        $request =  $this->createMock(RequestInterface::class);
 
-        $this->requestFactory->createRequest('GET', 'http://api.url?date=2010-02-10&module=API')
+        $this->requestFactory->method('createRequest')->with('GET', 'http://api.url?date=2010-02-10&module=API')
             ->willReturn($request)
         ;
 
         $response =$this->prepareResponse('my content');
 
-        $this->client->sendRequest($request)
+        $this->client->method('sendRequest')->with($request)
             ->willReturn($response)
         ;
 
@@ -85,17 +82,17 @@ final class PsrClientConnectionTest extends TestCase
 
     public function testSendWithBooleanParameter(): void
     {
-        $client = new PsrClientConnection($this->client->reveal(), $this->requestFactory->reveal(), 'http://api.url');
+        $client = new PsrClientConnection($this->client, $this->requestFactory, 'http://api.url');
 
-        $request =  $this->prophesize(RequestInterface::class);
+        $request =  $this->createMock(RequestInterface::class);
 
-        $this->requestFactory->createRequest('GET', 'http://api.url?active=1&module=API')
+        $this->requestFactory->method('createRequest')->with('GET', 'http://api.url?active=1&module=API')
             ->willReturn($request)
         ;
 
         $response =$this->prepareResponse('my content');
 
-        $this->client->sendRequest($request)
+        $this->client->method('sendRequest')->with($request)
             ->willReturn($response)
         ;
 
@@ -104,17 +101,17 @@ final class PsrClientConnectionTest extends TestCase
 
     public function testSendWithArrayParameter(): void
     {
-        $client = new PsrClientConnection($this->client->reveal(), $this->requestFactory->reveal(), 'http://api.url');
+        $client = new PsrClientConnection($this->client, $this->requestFactory, 'http://api.url');
 
-        $request =  $this->prophesize(RequestInterface::class);
+        $request =  $this->createMock(RequestInterface::class);
 
-        $this->requestFactory->createRequest('GET', 'http://api.url?foo=bar,baz&module=API')
+        $this->requestFactory->method('createRequest')->with('GET', 'http://api.url?foo=bar,baz&module=API')
             ->willReturn($request)
         ;
 
         $response =$this->prepareResponse('my content');
 
-        $this->client->sendRequest($request)
+        $this->client->method('sendRequest')->with($request)
             ->willReturn($response)
         ;
 
@@ -126,16 +123,16 @@ final class PsrClientConnectionTest extends TestCase
         $this->expectException(Exception::class);
         $this->expectExceptionMessage('Error calling Matomo API.');
 
-        $client = new PsrClientConnection($this->client->reveal(), $this->requestFactory->reveal(), 'http://api.url');
+        $client = new PsrClientConnection($this->client, $this->requestFactory, 'http://api.url');
 
-        $request =  $this->prophesize(RequestInterface::class);
+        $request =  $this->createMock(RequestInterface::class);
 
-        $this->requestFactory->createRequest('GET', 'http://api.url?foo=bar&module=API')
+        $this->requestFactory->method('createRequest')->with('GET', 'http://api.url?foo=bar&module=API')
             ->willReturn($request)
         ;
 
-        $this->client->sendRequest($request)
-            ->willThrow(Exception::class)
+        $this->client->method('sendRequest')->with($request)
+            ->willThrowException(new Exception())
         ;
 
         $client->send(['foo' => 'bar']);
@@ -146,16 +143,16 @@ final class PsrClientConnectionTest extends TestCase
         $this->expectException(MatomoException::class);
         $this->expectExceptionMessage('Error calling Matomo API.');
 
-        $client = new PsrClientConnection($this->client->reveal(), $this->requestFactory->reveal(), 'http://api.url');
+        $client = new PsrClientConnection($this->client, $this->requestFactory, 'http://api.url');
 
-        $request =  $this->prophesize(RequestInterface::class);
+        $request =  $this->createMock(RequestInterface::class);
 
-        $this->requestFactory->createRequest('GET', 'http://api.url?foo=bar&module=API')
+        $this->requestFactory->method('createRequest')->with('GET', 'http://api.url?foo=bar&module=API')
             ->willReturn($request)
         ;
 
-        $this->client->sendRequest($request)
-            ->willThrow(new class() extends Exception implements ClientExceptionInterface {
+        $this->client->method('sendRequest')->with($request)
+            ->willThrowException(new class() extends Exception implements ClientExceptionInterface {
             })
         ;
 
@@ -167,17 +164,17 @@ final class PsrClientConnectionTest extends TestCase
         $this->expectException(MatomoException::class);
         $this->expectExceptionMessage('"http://api.url?foo=bar&module=API" returned an invalid status code: "500"');
 
-        $client = new PsrClientConnection($this->client->reveal(), $this->requestFactory->reveal(), 'http://api.url');
+        $client = new PsrClientConnection($this->client, $this->requestFactory, 'http://api.url');
 
-        $request =  $this->prophesize(RequestInterface::class);
+        $request =  $this->createMock(RequestInterface::class);
 
-        $this->requestFactory->createRequest('GET', 'http://api.url?foo=bar&module=API')
+        $this->requestFactory->method('createRequest')->with('GET', 'http://api.url?foo=bar&module=API')
             ->willReturn($request)
         ;
 
         $response =$this->prepareResponse('', 500);
 
-        $this->client->sendRequest($request)
+        $this->client->method('sendRequest')->with($request)
             ->willReturn($response)
         ;
 
@@ -185,20 +182,20 @@ final class PsrClientConnectionTest extends TestCase
     }
 
     /**
-     * @return ObjectProphecy<ResponseInterface>
+     * @return MockObject&ResponseInterface
      */
-    private function prepareResponse(string $content, int $code = 200): ObjectProphecy
+    private function prepareResponse(string $content, int $code = 200): ResponseInterface
     {
-        $stream = $this->prophesize(StreamInterface::class);
-        $stream->getContents()
+        $stream = $this->createMock(StreamInterface::class);
+        $stream->method('getContents')
             ->willReturn($content)
         ;
 
-        $response = $this->prophesize(ResponseInterface::class);
-        $response->getBody()
+        $response = $this->createMock(ResponseInterface::class);
+        $response->method('getBody')
             ->willReturn($stream)
         ;
-        $response->getStatusCode()
+        $response->method('getStatusCode')
             ->willReturn($code)
         ;
 
