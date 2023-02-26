@@ -17,15 +17,9 @@ use Psr\Http\Message\RequestFactoryInterface;
 
 final class PsrClientFactory implements ClientFactoryInterface
 {
-    /**
-     * @var PsrClientInterface
-     */
-    private $client;
+    private PsrClientInterface $client;
 
-    /**
-     * @var RequestFactoryInterface
-     */
-    private $requestFactory;
+    private RequestFactoryInterface $requestFactory;
 
     /**
      * Initialize client.

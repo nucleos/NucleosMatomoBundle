@@ -17,15 +17,9 @@ use Nucleos\MatomoBundle\Exception\MatomoException;
 
 final class Client implements ClientInterface
 {
-    /**
-     * @var ConnectionInterface
-     */
-    private $connection;
+    private ConnectionInterface $connection;
 
-    /**
-     * @var string
-     */
-    private $token;
+    private string $token;
 
     /**
      * Initialize Matomo client.

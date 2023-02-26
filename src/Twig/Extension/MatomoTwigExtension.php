@@ -20,10 +20,7 @@ use Twig\TwigFunction;
 
 final class MatomoTwigExtension extends AbstractExtension
 {
-    /**
-     * @var Environment
-     */
-    private $environment;
+    private Environment $environment;
 
     public function __construct(Environment $environment)
     {

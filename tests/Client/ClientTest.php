@@ -25,7 +25,7 @@ final class ClientTest extends TestCase
     /**
      * @var ObjectProphecy<ConnectionInterface>
      */
-    private $connection;
+    private ObjectProphecy|ConnectionInterface $connection;
 
     protected function setUp(): void
     {
