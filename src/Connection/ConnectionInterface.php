@@ -20,9 +20,9 @@ interface ConnectionInterface
      *
      * @param array<string, mixed> $params
      *
-     * @throws MatomoException
-     *
      * @return string response
+     *
+     * @throws MatomoException
      */
     public function send(array $params = []): string;
 }

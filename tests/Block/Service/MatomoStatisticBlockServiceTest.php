@@ -27,7 +27,7 @@ use Symfony\Component\HttpFoundation\Response;
 final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
 {
     /**
-     * @var MockObject&LoggerInterface
+     * @var LoggerInterface&MockObject
      */
     private $logger;
 

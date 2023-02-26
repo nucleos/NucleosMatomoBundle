@@ -31,9 +31,9 @@ interface ClientInterface
      * @param string               $method method name
      * @param array<string, mixed> $params method parameters
      *
-     * @throws MatomoException
-     *
      * @return array<mixed>|string
+     *
+     * @throws MatomoException
      */
     public function call(string $method, array $params = [], string $format = 'php');
 
