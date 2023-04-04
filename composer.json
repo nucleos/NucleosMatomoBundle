@@ -44,7 +44,7 @@
         "ext-json": "*",
         "psr/http-client": "^1.0",
         "psr/http-factory": "^1.0",
-        "psr/http-message": "^1.0",
+        "psr/http-message": "^2.0",
         "psr/log": "^1.0 || ^2.0 || ^3.0",
         "sonata-project/block-bundle": "^3.21 || ^4.5.1",
         "sonata-project/form-extensions": "^1.1",
