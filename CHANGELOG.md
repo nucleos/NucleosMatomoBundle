@@ -2,27 +2,36 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.4.0 - TBD
+## 3.4.0 - 2023-04-29
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.4.0](https://github.com/nucleos/NucleosMatomoBundle/milestone/6)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 3.4.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **10**
+- Total contributors: **2**
 
-### Removed
+#### dependency
 
-- Nothing.
+ - [819: Drop symfony 6.1 support](https://github.com/nucleos/NucleosMatomoBundle/pull/819) thanks to @core23
+ - [817: Update dependency psr/http-message to ^1.0 || ^2.0](https://github.com/nucleos/NucleosMatomoBundle/pull/817) thanks to @renovate[bot]
+ - [815: Update dependency webpack to v5.76.0 &#91;SECURITY&#93;](https://github.com/nucleos/NucleosMatomoBundle/pull/815) thanks to @renovate[bot]
+ - [811: Update frontend dependencies](https://github.com/nucleos/NucleosMatomoBundle/pull/811) thanks to @core23
+ - [809: Drop support for PHP 8.0](https://github.com/nucleos/NucleosMatomoBundle/pull/809) thanks to @core23
+ - [801: Update dependency chart.js to v4](https://github.com/nucleos/NucleosMatomoBundle/pull/801) thanks to @renovate[bot]
+ - [785: Update dependency chart.js to v3](https://github.com/nucleos/NucleosMatomoBundle/pull/785) thanks to @renovate[bot]
+ - [774: Update dependency chart.js to v2.9.4 &#91;SECURITY&#93;](https://github.com/nucleos/NucleosMatomoBundle/pull/774) thanks to @renovate[bot]
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [818: Update build tools](https://github.com/nucleos/NucleosMatomoBundle/pull/818) thanks to @core23
+ - [810: Remove phpspec/prophecy-phpunit](https://github.com/nucleos/NucleosMatomoBundle/pull/810) thanks to @core23
 
 ## 3.3.0 - 2021-12-08
 
