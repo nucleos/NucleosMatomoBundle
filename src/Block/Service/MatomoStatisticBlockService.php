@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Nucleos\MatomoBundle\Block\Service;
 
-use LogicException;
 use Nucleos\MatomoBundle\Client\ClientFactoryInterface;
 use Nucleos\MatomoBundle\Exception\MatomoException;
 use Psr\Log\LoggerAwareInterface;
@@ -52,10 +51,6 @@ final class MatomoStatisticBlockService extends AbstractBlockService implements 
 
     public function execute(BlockContextInterface $blockContext, ?Response $response = null): Response
     {
-        if (!\is_string($blockContext->getTemplate())) {
-            throw new LogicException('Cannot render block without template');
-        }
-
         return $this->renderResponse($blockContext->getTemplate(), [
             'context'  => $blockContext,
             'settings' => $blockContext->getSettings(),

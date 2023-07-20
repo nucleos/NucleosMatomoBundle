@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Nucleos\MatomoBundle\Tests\Block\Service;
 
-use LogicException;
 use Nucleos\MatomoBundle\Block\Service\MatomoStatisticBlockService;
 use Nucleos\MatomoBundle\Client\ClientFactoryInterface;
 use Nucleos\MatomoBundle\Client\ClientInterface;
@@ -86,25 +85,6 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
 
         static::assertSame($response, $blockService->execute($blockContext, $response));
         static::assertSame('TWIG_CONTENT', $response->getContent());
-    }
-
-    public function testExecuteWithNullTemplate(): void
-    {
-        $this->expectException(LogicException::class);
-        $this->expectExceptionMessage('Cannot render block without template');
-
-        $block = new Block();
-
-        $blockContext = new BlockContext($block, [
-            'template'    => null,
-        ]);
-
-        $response = new Response();
-
-        $blockService = new MatomoStatisticBlockService($this->twig, $this->factory);
-
-        static::assertSame($response, $blockService->execute($blockContext, $response));
-        $blockService->execute($blockContext, $response);
     }
 
     public function testExecuteOffline(): void
