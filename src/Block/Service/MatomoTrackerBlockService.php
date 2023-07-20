@@ -11,7 +11,6 @@ declare(strict_types=1);
 
 namespace Nucleos\MatomoBundle\Block\Service;
 
-use LogicException;
 use Sonata\BlockBundle\Block\BlockContextInterface;
 use Sonata\BlockBundle\Block\Service\AbstractBlockService;
 use Sonata\BlockBundle\Block\Service\EditableBlockService;
@@ -31,10 +30,6 @@ final class MatomoTrackerBlockService extends AbstractBlockService implements Ed
 {
     public function execute(BlockContextInterface $blockContext, ?Response $response = null): Response
     {
-        if (!\is_string($blockContext->getTemplate())) {
-            throw new LogicException('Cannot render block without template');
-        }
-
         return $this->renderResponse($blockContext->getTemplate(), [
             'context'    => $blockContext,
             'settings'   => $blockContext->getSettings(),
