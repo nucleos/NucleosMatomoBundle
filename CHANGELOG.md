@@ -2,27 +2,24 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.4.1 - TBD
+## 3.4.1 - 2023-09-03
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.4.1](https://github.com/nucleos/NucleosMatomoBundle/milestone/7)
 
-- Nothing.
+3.4.x bugfix release (patch)
 
-### Deprecated
+### 3.4.1
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **1**
+- Total contributors: **1**
 
-### Removed
+#### Bug
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [829: Fix display of chart with latest chart.js version](https://github.com/nucleos/NucleosMatomoBundle/pull/829) thanks to @core23
 
 ## 3.4.0 - 2023-04-29
 
