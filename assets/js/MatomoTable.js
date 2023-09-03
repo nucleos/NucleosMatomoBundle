@@ -1,4 +1,4 @@
-import Chart from 'chart.js';
+import Chart from 'chart.js/auto';
 
 export default class MatomoTable {
   constructor(element) {
