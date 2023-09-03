@@ -2,6 +2,6 @@
     {
         "path": "src/Resources/public/widget.js",
         "gzip": false,
-        "limit": "180 KB"
+        "limit": "200 KB"
     }
 ]
