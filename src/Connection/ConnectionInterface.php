@@ -16,8 +16,6 @@ use Nucleos\MatomoBundle\Exception\MatomoException;
 interface ConnectionInterface
 {
     /**
-     * Calls specific method on Matomo API.
-     *
      * @param array<string, mixed> $params
      *
      * @return string response

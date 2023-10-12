@@ -17,13 +17,11 @@ use Nucleos\MatomoBundle\Exception\MatomoException;
 
 final class Client implements ClientInterface
 {
-    private ConnectionInterface $connection;
+    private readonly ConnectionInterface $connection;
 
-    private string $token;
+    private readonly string $token;
 
     /**
-     * Initialize Matomo client.
-     *
      * @param ConnectionInterface $connection Matomo active connection
      * @param string              $token      auth token
      */
@@ -33,7 +31,7 @@ final class Client implements ClientInterface
         $this->token      = $token;
     }
 
-    public function call(string $method, array $params = [])
+    public function call(string $method, array $params = []): mixed
     {
         $params['method']     = $method;
         $params['token_auth'] = $this->token;

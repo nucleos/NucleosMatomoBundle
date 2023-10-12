@@ -20,15 +20,13 @@ use Psr\Http\Message\RequestFactoryInterface;
 
 final class PsrClientConnection implements ConnectionInterface
 {
-    private PsrClientInterface $client;
+    private readonly PsrClientInterface $client;
 
-    private RequestFactoryInterface $requestFactory;
+    private readonly RequestFactoryInterface $requestFactory;
 
-    private string $apiUrl;
+    private readonly string $apiUrl;
 
     /**
-     * Initialize client.
-     *
      * @param string $apiUrl base API URL
      */
     public function __construct(PsrClientInterface $client, RequestFactoryInterface $requestFactory, string $apiUrl)
