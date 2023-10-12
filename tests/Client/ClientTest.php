@@ -29,13 +29,6 @@ final class ClientTest extends TestCase
         $this->connection = $this->createMock(ConnectionInterface::class);
     }
 
-    public function testGetConnection(): void
-    {
-        $client = new Client($this->connection);
-
-        static::assertSame($this->connection, $client->getConnection());
-    }
-
     public function testCall(): void
     {
         $this->connection
@@ -72,7 +65,7 @@ final class ClientTest extends TestCase
         ;
 
         $client = new Client($this->connection, 'MY_TOKEN');
-        $result = $client->call('foo/method', ['foo' => 'bar'], 'custom');
+        $result = $client->call('foo/method', ['foo' => 'bar']);
 
         static::assertCount(30, $result);
     }

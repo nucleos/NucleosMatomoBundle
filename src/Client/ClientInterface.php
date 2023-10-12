@@ -11,22 +11,12 @@ declare(strict_types=1);
 
 namespace Nucleos\MatomoBundle\Client;
 
-use Nucleos\MatomoBundle\Connection\ConnectionInterface;
 use Nucleos\MatomoBundle\Exception\MatomoException;
 
 interface ClientInterface
 {
     /**
-     * Set Matomo API token.
-     *
-     * @param string $token auth token
-     *
-     * @deprecated use constructor to set client token
-     */
-    public function setToken(string $token): void;
-
-    /**
-     * Call specific method & return it's response.
+     * Call specific method & return its response.
      *
      * @param string               $method method name
      * @param array<string, mixed> $params method parameters
@@ -35,12 +25,5 @@ interface ClientInterface
      *
      * @throws MatomoException
      */
-    public function call(string $method, array $params = [], string $format = 'php');
-
-    /**
-     * Return active connection.
-     *
-     * @deprecated without any replacement
-     */
-    public function getConnection(): ConnectionInterface;
+    public function call(string $method, array $params = []);
 }
