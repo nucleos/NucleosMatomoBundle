@@ -10,15 +10,15 @@
 namespace Symfony\Component\DependencyInjection\Loader\Configurator;
 
 use Nucleos\MatomoBundle\Twig\Extension\MatomoTwigExtension;
-use Symfony\Component\DependencyInjection\Reference;
+use Nucleos\MatomoBundle\Twig\Runtime\MatomoRuntime;
 
 return static function (ContainerConfigurator $container): void {
     $container->services()
 
         ->set(MatomoTwigExtension::class)
             ->tag('twig.extension')
-            ->args([
-                new Reference('twig'),
-            ])
+
+        ->set(MatomoRuntime::class)
+            ->tag('twig.runtime')
     ;
 };
