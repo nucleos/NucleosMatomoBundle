@@ -34,12 +34,9 @@ use Twig\Environment;
 
 final class MatomoStatisticBlockService extends AbstractBlockService implements EditableBlockService, LoggerAwareInterface
 {
-    /**
-     * @var LoggerInterface
-     */
-    private LoggerInterface|NullLogger $logger;
+    private readonly ClientFactoryInterface $factory;
 
-    private ClientFactoryInterface $factory;
+    private LoggerInterface $logger;
 
     public function __construct(Environment $twig, ClientFactoryInterface $factory)
     {
@@ -67,9 +64,9 @@ final class MatomoStatisticBlockService extends AbstractBlockService implements 
     /**
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
-    public function configureEditForm(FormMapper $formMapper, BlockInterface $block): void
+    public function configureEditForm(FormMapper $form, BlockInterface $block): void
     {
-        $formMapper->add('settings', ImmutableArrayType::class, [
+        $form->add('settings', ImmutableArrayType::class, [
             'keys'               => [
                 ['title', TextType::class, [
                     'required' => false,
@@ -177,7 +174,7 @@ final class MatomoStatisticBlockService extends AbstractBlockService implements 
      *
      * @return array<mixed>
      */
-    protected function getData(array $settings = []): ?array
+    private function getData(array $settings = []): ?array
     {
         try {
             $client = $this->factory->createClient((string) $settings['host'], (string) $settings['token']);

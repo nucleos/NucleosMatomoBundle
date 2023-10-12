@@ -13,8 +13,5 @@ namespace Nucleos\MatomoBundle\Client;
 
 interface ClientFactoryInterface
 {
-    /**
-     * Creates new Matomo Client.
-     */
     public function createClient(string $host, string $token): ClientInterface;
 }

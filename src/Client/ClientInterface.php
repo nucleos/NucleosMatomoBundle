@@ -16,8 +16,6 @@ use Nucleos\MatomoBundle\Exception\MatomoException;
 interface ClientInterface
 {
     /**
-     * Call specific method & return its response.
-     *
      * @param string               $method method name
      * @param array<string, mixed> $params method parameters
      *
@@ -25,5 +23,5 @@ interface ClientInterface
      *
      * @throws MatomoException
      */
-    public function call(string $method, array $params = []);
+    public function call(string $method, array $params = []): mixed;
 }

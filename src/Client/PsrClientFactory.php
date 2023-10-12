@@ -17,13 +17,10 @@ use Psr\Http\Message\RequestFactoryInterface;
 
 final class PsrClientFactory implements ClientFactoryInterface
 {
-    private PsrClientInterface $client;
+    private readonly PsrClientInterface $client;
 
-    private RequestFactoryInterface $requestFactory;
+    private readonly RequestFactoryInterface $requestFactory;
 
-    /**
-     * Initialize client.
-     */
     public function __construct(PsrClientInterface $client, RequestFactoryInterface $requestFactory)
     {
         $this->client         = $client;
