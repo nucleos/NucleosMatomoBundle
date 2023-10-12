@@ -30,24 +30,15 @@ final class Client implements ClientInterface
     public function __construct(ConnectionInterface $connection, string $token = 'anonymous')
     {
         $this->connection = $connection;
-        $this->setToken($token);
+        $this->token      = $token;
     }
 
-    public function setToken(string $token): void
-    {
-        $this->token = $token;
-    }
-
-    public function call(string $method, array $params = [], string $format = 'php')
+    public function call(string $method, array $params = [])
     {
         $params['method']     = $method;
         $params['token_auth'] = $this->token;
         $params['format']     = 'json';
-        $data                 = $this->getConnection()->send($params);
-
-        if ('php' !== $format) {
-            @trigger_error(sprintf('Argument #3 of %s is deprecated and will be removed in 4.0.', __METHOD__), E_USER_DEPRECATED);
-        }
+        $data                 = $this->connection->send($params);
 
         try {
             $object = json_decode($data, true, 512, JSON_THROW_ON_ERROR);
@@ -56,10 +47,5 @@ final class Client implements ClientInterface
         }
 
         return $object;
-    }
-
-    public function getConnection(): ConnectionInterface
-    {
-        return $this->connection;
     }
 }
