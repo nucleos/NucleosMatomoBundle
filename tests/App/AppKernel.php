@@ -20,6 +20,7 @@ use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Routing\Loader\Configurator\RoutingConfigurator;
+use Symfony\UX\StimulusBundle\StimulusBundle;
 use Twig\Extra\TwigExtraBundle\TwigExtraBundle;
 
 final class AppKernel extends Kernel
@@ -38,6 +39,8 @@ final class AppKernel extends Kernel
         yield new TwigBundle();
 
         yield new TwigExtraBundle();
+
+        yield new StimulusBundle();
 
         yield new SonataBlockBundle();
 

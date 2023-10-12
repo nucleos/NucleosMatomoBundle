@@ -1,9 +1,0 @@
-{
-  "entrypoints": {
-    "widget": {
-      "js": [
-        "/bundles/nucleosmatomo/widget.js"
-      ]
-    }
-  }
-}
