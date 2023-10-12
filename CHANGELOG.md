@@ -2,27 +2,27 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 3.5.0 - TBD
+## 3.5.0 - 2023-10-12
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [3.5.0](https://github.com/nucleos/NucleosMatomoBundle/milestone/8)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 3.5.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **4**
+- Total contributors: **2**
 
-### Removed
+#### dependency
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [835: Bump postcss from 8.4.14 to 8.4.31](https://github.com/nucleos/NucleosMatomoBundle/pull/835) thanks to @dependabot[bot]
+ - [825: Add support for latest sonata dependencies](https://github.com/nucleos/NucleosMatomoBundle/pull/825) thanks to @core23
+ - [823: Bump word-wrap from 1.2.3 to 1.2.4](https://github.com/nucleos/NucleosMatomoBundle/pull/823) thanks to @dependabot[bot]
+ - [822: Bump semver from 6.3.0 to 6.3.1](https://github.com/nucleos/NucleosMatomoBundle/pull/822) thanks to @dependabot[bot]
 
 ## 3.4.0 - 2023-04-29
 
