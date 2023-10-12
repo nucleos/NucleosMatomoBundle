@@ -21,7 +21,7 @@
             {% if data is empty %}
                 <p>{{ 'no_statistic_found'|trans({}, 'NucleosMatomoBundle') }}</p>
             {% else %}
-                <div data-matomo>
+                <div {{ stimulus_controller('nucleos/matomo-bundle/matomoGraph') }}>
                     <table class="table table-striped">
                         <thead>
                         <tr>

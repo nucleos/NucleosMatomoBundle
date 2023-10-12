@@ -5,7 +5,7 @@ composer.lock
 phpunit.xml
 /.phpunit.cache/
 /build/
-/node_modules/
+/assets/node_modules/
 /vendor/
 !/vendor-bin/tools/composer.lock
 /vendor-bin/tools/vendor/

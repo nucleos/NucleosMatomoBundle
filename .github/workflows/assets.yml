@@ -16,16 +16,25 @@ jobs:
 
     steps:
       - name: "Checkout"
-        uses: "actions/checkout@v4"
+        uses: "actions/checkout@v3"
 
       - name: "Using Node"
-        uses: "actions/setup-node@v3.8.1"
+        uses: "actions/setup-node@v3.7.0"
 
       - name: "Install dependencies"
-        run: "yarn"
+        run: "yarn --cwd assets"
 
       - name: "Build"
-        run: "yarn build"
+        run: "yarn --cwd assets build"
+
+      - name: "Test"
+        run: "yarn --cwd assets test"
+
+      - name: "Lint"
+        run: "yarn --cwd assets check-lint"
+
+      - name: "Format"
+        run: "yarn --cwd assets check-format"
 
       - name: "Check size"
-        run: "yarn size"
+        run: "yarn --cwd assets size"
