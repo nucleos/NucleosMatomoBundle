@@ -41,15 +41,15 @@ final class MatomoRuntimeTest extends TestCase
             ->willReturn('HTML CONTENT')
         ;
 
-        static::assertSame('HTML CONTENT', $this->runtime->renderTracker($this->environment, [
+        self::assertSame('HTML CONTENT', $this->runtime->renderTracker($this->environment, [
             'site_id' => 13,
         ]));
     }
 
     public function testRenderTrackerWithoutSiteId(): void
     {
-        $this->environment->expects(static::never())->method('render');
+        $this->environment->expects(self::never())->method('render');
 
-        static::assertSame('', $this->runtime->renderTracker($this->environment));
+        self::assertSame('', $this->runtime->renderTracker($this->environment));
     }
 }

@@ -44,7 +44,7 @@ final class ClientTest extends TestCase
         $client = new Client($this->connection, 'MY_TOKEN');
         $result = $client->call('foo/method', ['foo' => 'bar']);
 
-        static::assertCount(30, $result);
+        self::assertCount(30, $result);
     }
 
     /**
@@ -67,7 +67,7 @@ final class ClientTest extends TestCase
         $client = new Client($this->connection, 'MY_TOKEN');
         $result = $client->call('foo/method', ['foo' => 'bar']);
 
-        static::assertCount(30, $result);
+        self::assertCount(30, $result);
     }
 
     public function testCallWithApiError(): void

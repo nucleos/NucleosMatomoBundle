@@ -13,6 +13,4 @@ namespace Nucleos\MatomoBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-final class NucleosMatomoBundle extends Bundle
-{
-}
+final class NucleosMatomoBundle extends Bundle {}

@@ -23,12 +23,12 @@ final class MatomoTwigExtensionTest extends TestCase
 
         $functions = $extension->getFunctions();
 
-        static::assertCount(1, $functions);
+        self::assertCount(1, $functions);
 
         foreach ($functions as $function) {
-            static::assertInstanceOf(TwigFunction::class, $function);
-            static::assertIsArray($callable = $function->getCallable());
-            static::assertTrue(method_exists($callable[0], $callable[1]));
+            self::assertInstanceOf(TwigFunction::class, $function);
+            self::assertIsArray($callable = $function->getCallable());
+            self::assertTrue(method_exists($callable[0], $callable[1]));
         }
     }
 }

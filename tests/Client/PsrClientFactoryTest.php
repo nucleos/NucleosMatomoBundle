@@ -42,6 +42,6 @@ final class PsrClientFactoryTest extends TestCase
 
         $client = $factory->createClient('http://localhost', 'MY_TOKEN');
 
-        static::assertInstanceOf(Client::class, $client);
+        self::assertInstanceOf(Client::class, $client);
     }
 }

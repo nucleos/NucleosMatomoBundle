@@ -148,9 +148,7 @@ final class MatomoStatisticBlockService extends AbstractBlockService implements 
         $resolver->setRequired(['site', 'host', 'token']);
     }
 
-    public function validate(ErrorElement $errorElement, BlockInterface $block): void
-    {
-    }
+    public function validate(ErrorElement $errorElement, BlockInterface $block): void {}
 
     public function getMetadata(): MetadataInterface
     {
