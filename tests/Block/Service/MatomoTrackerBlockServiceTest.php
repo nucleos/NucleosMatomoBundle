@@ -35,7 +35,7 @@ final class MatomoTrackerBlockServiceTest extends BlockServiceTestCase
 
         $response = new Response();
 
-        $this->twig->expects(static::once())->method('render')
+        $this->twig->expects(self::once())->method('render')
             ->with(
                 '@NucleosMatomo/Block/block_matomo_tracker.html.twig',
                 [
@@ -50,8 +50,8 @@ final class MatomoTrackerBlockServiceTest extends BlockServiceTestCase
 
         $blockService = new MatomoTrackerBlockService($this->twig);
 
-        static::assertSame($response, $blockService->execute($blockContext, $response));
-        static::assertSame('TWIG_CONTENT', $response->getContent());
+        self::assertSame($response, $blockService->execute($blockContext, $response));
+        self::assertSame('TWIG_CONTENT', $response->getContent());
     }
 
     public function testDefaultSettings(): void
@@ -75,10 +75,10 @@ final class MatomoTrackerBlockServiceTest extends BlockServiceTestCase
 
         $metadata = $blockService->getMetadata();
 
-        static::assertSame('nucleos_matomo.block.tracker', $metadata->getTitle());
-        static::assertNull($metadata->getImage());
-        static::assertSame('NucleosMatomoBundle', $metadata->getDomain());
-        static::assertSame([
+        self::assertSame('nucleos_matomo.block.tracker', $metadata->getTitle());
+        self::assertNull($metadata->getImage());
+        self::assertSame('NucleosMatomoBundle', $metadata->getDomain());
+        self::assertSame([
             'class' => 'fa fa-code',
         ], $metadata->getOptions());
     }
@@ -90,7 +90,7 @@ final class MatomoTrackerBlockServiceTest extends BlockServiceTestCase
         $block = new Block();
 
         $formMapper = $this->createMock(FormMapper::class);
-        $formMapper->expects(static::once())->method('add');
+        $formMapper->expects(self::once())->method('add');
 
         $blockService->configureEditForm($formMapper, $block);
     }

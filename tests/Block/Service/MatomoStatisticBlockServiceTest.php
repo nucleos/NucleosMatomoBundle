@@ -25,7 +25,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
 {
-    private MockObject&LoggerInterface $logger;
+    private LoggerInterface&MockObject $logger;
 
     private ClientFactoryInterface&MockObject $factory;
 
@@ -40,8 +40,8 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
     public function testExecute(): void
     {
         $client = $this->createMock(ClientInterface::class);
-        $client->expects(static::once())->method('call')
-            ->with(static::equalTo('VisitsSummary.getVisits'), static::equalTo([
+        $client->expects(self::once())->method('call')
+            ->with(self::equalTo('VisitsSummary.getVisits'), self::equalTo([
                 'idSite' => 'foo',
                 'period' => 'day',
                 'date'   => 'last30',
@@ -49,7 +49,7 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
             ->willReturn(['bar'])
         ;
 
-        $this->factory->expects(static::once())->method('createClient')
+        $this->factory->expects(self::once())->method('createClient')
             ->willReturn($client)
         ;
 
@@ -68,7 +68,7 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
 
         $response = new Response();
 
-        $this->twig->expects(static::once())->method('render')
+        $this->twig->expects(self::once())->method('render')
             ->with(
                 '@NucleosMatomo/Block/block_matomo_statistic.html.twig',
                 [
@@ -83,15 +83,15 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
 
         $blockService = new MatomoStatisticBlockService($this->twig, $this->factory);
 
-        static::assertSame($response, $blockService->execute($blockContext, $response));
-        static::assertSame('TWIG_CONTENT', $response->getContent());
+        self::assertSame($response, $blockService->execute($blockContext, $response));
+        self::assertSame('TWIG_CONTENT', $response->getContent());
     }
 
     public function testExecuteOffline(): void
     {
         $client = $this->createMock(ClientInterface::class);
-        $client->expects(static::once())->method('call')
-            ->with(static::equalTo('VisitsSummary.getVisits'), static::equalTo([
+        $client->expects(self::once())->method('call')
+            ->with(self::equalTo('VisitsSummary.getVisits'), self::equalTo([
                 'idSite' => 'foo',
                 'period' => 'day',
                 'date'   => 'last30',
@@ -99,11 +99,11 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
             ->willThrowException(new MatomoException('Offline'))
         ;
 
-        $this->factory->expects(static::once())->method('createClient')
+        $this->factory->expects(self::once())->method('createClient')
             ->willReturn($client)
         ;
 
-        $this->logger->expects(static::once())->method('warning');
+        $this->logger->expects(self::once())->method('warning');
 
         $block = new Block();
 
@@ -120,7 +120,7 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
 
         $response = new Response();
 
-        $this->twig->expects(static::once())->method('render')
+        $this->twig->expects(self::once())->method('render')
             ->with(
                 '@NucleosMatomo/Block/block_matomo_statistic.html.twig',
                 [
@@ -136,8 +136,8 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
         $blockService = new MatomoStatisticBlockService($this->twig, $this->factory);
         $blockService->setLogger($this->logger);
 
-        static::assertSame($response, $blockService->execute($blockContext, $response));
-        static::assertSame('TWIG_CONTENT', $response->getContent());
+        self::assertSame($response, $blockService->execute($blockContext, $response));
+        self::assertSame('TWIG_CONTENT', $response->getContent());
     }
 
     public function testDefaultSettings(): void
@@ -167,10 +167,10 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
 
         $metadata = $blockService->getMetadata();
 
-        static::assertSame('nucleos_matomo.block.statistic', $metadata->getTitle());
-        static::assertNull($metadata->getImage());
-        static::assertSame('NucleosMatomoBundle', $metadata->getDomain());
-        static::assertSame([
+        self::assertSame('nucleos_matomo.block.statistic', $metadata->getTitle());
+        self::assertNull($metadata->getImage());
+        self::assertSame('NucleosMatomoBundle', $metadata->getDomain());
+        self::assertSame([
             'class' => 'fa fa-area-chart',
         ], $metadata->getOptions());
     }
@@ -182,7 +182,7 @@ final class MatomoStatisticBlockServiceTest extends BlockServiceTestCase
         $block = new Block();
 
         $formMapper = $this->createMock(FormMapper::class);
-        $formMapper->expects(static::once())->method('add');
+        $formMapper->expects(self::once())->method('add');
 
         $blockService->configureEditForm($formMapper, $block);
     }

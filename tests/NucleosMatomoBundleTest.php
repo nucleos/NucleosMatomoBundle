@@ -21,6 +21,6 @@ final class NucleosMatomoBundleTest extends TestCase
     {
         $bundle = new NucleosMatomoBundle();
 
-        static::assertInstanceOf(NucleosMatomoExtension::class, $bundle->getContainerExtension());
+        self::assertInstanceOf(NucleosMatomoExtension::class, $bundle->getContainerExtension());
     }
 }

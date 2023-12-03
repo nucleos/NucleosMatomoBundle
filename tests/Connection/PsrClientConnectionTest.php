@@ -58,7 +58,7 @@ final class PsrClientConnectionTest extends TestCase
             ->willReturn($response)
         ;
 
-        static::assertSame('my content', $client->send(['foo' => 'bar']));
+        self::assertSame('my content', $client->send(['foo' => 'bar']));
     }
 
     public function testSendWithDateParameter(): void
@@ -77,7 +77,7 @@ final class PsrClientConnectionTest extends TestCase
             ->willReturn($response)
         ;
 
-        static::assertSame('my content', $client->send(['date' => new DateTime('2010-02-10')]));
+        self::assertSame('my content', $client->send(['date' => new DateTime('2010-02-10')]));
     }
 
     public function testSendWithBooleanParameter(): void
@@ -96,7 +96,7 @@ final class PsrClientConnectionTest extends TestCase
             ->willReturn($response)
         ;
 
-        static::assertSame('my content', $client->send(['active' => true, 'inactive' => false]));
+        self::assertSame('my content', $client->send(['active' => true, 'inactive' => false]));
     }
 
     public function testSendWithArrayParameter(): void
@@ -115,7 +115,7 @@ final class PsrClientConnectionTest extends TestCase
             ->willReturn($response)
         ;
 
-        static::assertSame('my content', $client->send(['foo' => ['bar', 'baz']]));
+        self::assertSame('my content', $client->send(['foo' => ['bar', 'baz']]));
     }
 
     public function testSendWithException(): void
@@ -152,8 +152,7 @@ final class PsrClientConnectionTest extends TestCase
         ;
 
         $this->client->method('sendRequest')->with($request)
-            ->willThrowException(new class() extends Exception implements ClientExceptionInterface {
-            })
+            ->willThrowException(new class() extends Exception implements ClientExceptionInterface {})
         ;
 
         $client->send(['foo' => 'bar']);
