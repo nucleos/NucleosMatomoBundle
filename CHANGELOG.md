@@ -2,27 +2,38 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 4.1.0 - TBD
+## 4.1.0 - 2024-03-25
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [4.1.0](https://github.com/nucleos/NucleosMatomoBundle/milestone/13)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 4.1.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **9**
+- Total contributors: **3**
 
-### Removed
+#### dependency
 
-- Nothing.
+ - [861: Bump webpack-dev-middleware from 5.3.3 to 5.3.4 in /assets](https://github.com/nucleos/NucleosMatomoBundle/pull/861) thanks to @dependabot[bot]
+ - [860: Bump follow-redirects from 1.15.4 to 1.15.6 in /assets](https://github.com/nucleos/NucleosMatomoBundle/pull/860) thanks to @dependabot[bot]
+ - [859: Update dependency psalm/plugin-phpunit to ^0.19.0](https://github.com/nucleos/NucleosMatomoBundle/pull/859) thanks to @renovate[bot]
+ - [858: Update typescript-eslint monorepo to v7 (major)](https://github.com/nucleos/NucleosMatomoBundle/pull/858) thanks to @renovate[bot]
+ - [854: Bump to symfony ^6.4 || ^7.0](https://github.com/nucleos/NucleosMatomoBundle/pull/854) thanks to @core23
+ - [850: Update dependency symfony/phpunit-bridge to v7](https://github.com/nucleos/NucleosMatomoBundle/pull/850) thanks to @renovate[bot]
+ - [849: Update dependency matthiasnoback/symfony-dependency-injection-test to v5](https://github.com/nucleos/NucleosMatomoBundle/pull/849) thanks to @renovate[bot]
 
-### Fixed
+#### dependency,javascript
 
-- Nothing.
+ - [855: Bump follow-redirects from 1.15.3 to 1.15.4 in /assets](https://github.com/nucleos/NucleosMatomoBundle/pull/855) thanks to @dependabot[bot]
+
+#### Enhancement
+
+ - [852: Update tools ](https://github.com/nucleos/NucleosMatomoBundle/pull/852) thanks to @core23
 
 ## 3.6.0 - TBD
 
