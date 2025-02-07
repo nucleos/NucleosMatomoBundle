@@ -152,7 +152,7 @@ final class PsrClientConnectionTest extends TestCase
         ;
 
         $this->client->method('sendRequest')->with($request)
-            ->willThrowException(new class() extends Exception implements ClientExceptionInterface {})
+            ->willThrowException(new class extends Exception implements ClientExceptionInterface {})
         ;
 
         $client->send(['foo' => 'bar']);

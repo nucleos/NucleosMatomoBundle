@@ -16,7 +16,7 @@ use Throwable;
 
 final class MatomoException extends Exception
 {
-    public function __construct(string $message, int $code = 0, Throwable $previous = null)
+    public function __construct(string $message, int $code = 0, ?Throwable $previous = null)
     {
         $message = 'Matomo API error: '.$message;
 

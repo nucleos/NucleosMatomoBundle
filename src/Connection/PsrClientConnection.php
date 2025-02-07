@@ -52,7 +52,7 @@ final class PsrClientConnection implements ConnectionInterface
         }
 
         if (200 !== $response->getStatusCode()) {
-            throw new MatomoException(sprintf('"%s" returned an invalid status code: "%s"', $url, $response->getStatusCode()));
+            throw new MatomoException(\sprintf('"%s" returned an invalid status code: "%s"', $url, $response->getStatusCode()));
         }
 
         return $response->getBody()->getContents();
