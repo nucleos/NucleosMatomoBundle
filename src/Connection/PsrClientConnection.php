@@ -65,7 +65,7 @@ final class PsrClientConnection implements ConnectionInterface
      *
      * @return string query string
      *
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
+     * @SuppressWarnings("PHPMD.CyclomaticComplexity")
      */
     private function getUrlParamString(array $params): string
     {
