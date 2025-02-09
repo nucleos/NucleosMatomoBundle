@@ -1,47 +1,56 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Dead catch \\- Exception is never thrown in the try block\\.$#"
+			message: '#^Dead catch \- Exception is never thrown in the try block\.$#'
+			identifier: catch.neverThrown
 			count: 1
 			path: src/Connection/PsrClientConnection.php
 
 		-
-			message: "#^Method Nucleos\\\\MatomoBundle\\\\Tests\\\\App\\\\AppKernel\\:\\:configureContainer\\(\\) has parameter \\$container with no type specified\\.$#"
+			message: '#^Method Nucleos\\MatomoBundle\\Tests\\App\\AppKernel\:\:configureContainer\(\) has parameter \$container with no type specified\.$#'
+			identifier: missingType.parameter
 			count: 1
 			path: tests/App/AppKernel.php
 
 		-
-			message: "#^Method Nucleos\\\\MatomoBundle\\\\Tests\\\\App\\\\AppKernel\\:\\:configureContainer\\(\\) has parameter \\$loader with no type specified\\.$#"
+			message: '#^Method Nucleos\\MatomoBundle\\Tests\\App\\AppKernel\:\:configureContainer\(\) has parameter \$loader with no type specified\.$#'
+			identifier: missingType.parameter
 			count: 1
 			path: tests/App/AppKernel.php
 
 		-
-			message: "#^Method Nucleos\\\\MatomoBundle\\\\Tests\\\\App\\\\AppKernel\\:\\:configureRoutes\\(\\) has parameter \\$routes with no type specified\\.$#"
+			message: '#^Method Nucleos\\MatomoBundle\\Tests\\App\\AppKernel\:\:configureRoutes\(\) has parameter \$routes with no type specified\.$#'
+			identifier: missingType.parameter
 			count: 1
 			path: tests/App/AppKernel.php
 
 		-
-			message: "#^Call to method getResponse\\(\\) on an unknown class Symfony\\\\Component\\\\HttpKernel\\\\Client\\.$#"
+			message: '#^Call to method getResponse\(\) on an unknown class Symfony\\Component\\HttpKernel\\Client\.$#'
+			identifier: class.notFound
 			count: 1
 			path: tests/Block/BlockServiceIntegrationTest.php
 
 		-
-			message: "#^Call to method request\\(\\) on an unknown class Symfony\\\\Component\\\\HttpKernel\\\\Client\\.$#"
+			message: '#^Call to method request\(\) on an unknown class Symfony\\Component\\HttpKernel\\Client\.$#'
+			identifier: class.notFound
 			count: 1
 			path: tests/Block/BlockServiceIntegrationTest.php
 
 		-
-			message: "#^Instantiated class Symfony\\\\Component\\\\HttpKernel\\\\Client not found\\.$#"
+			message: '#^Instantiated class Symfony\\Component\\HttpKernel\\Client not found\.$#'
+			identifier: class.notFound
 			count: 1
 			path: tests/Block/BlockServiceIntegrationTest.php
 
 		-
-			message: "#^Parameter \\#2 \\$haystack of static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertCount\\(\\) expects Countable\\|iterable, array\\|string given\\.$#"
+			message: '#^Parameter \#2 \$haystack of static method PHPUnit\\Framework\\Assert\:\:assertCount\(\) expects Countable\|iterable, array\<mixed\>\|string given\.$#'
+			identifier: argument.type
 			count: 2
 			path: tests/Client/ClientTest.php
 
 		-
-			message: "#^Call to static method PHPUnit\\\\Framework\\\\Assert\\:\\:assertInstanceOf\\(\\) with 'Twig\\\\\\\\TwigFunction' and Twig\\\\TwigFunction will always evaluate to true\\.$#"
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertInstanceOf\(\) with ''Twig\\\\TwigFunction'' and Twig\\TwigFunction will always evaluate to true\.$#'
+			identifier: staticMethod.alreadyNarrowedType
 			count: 1
 			path: tests/Twig/Extension/MatomoTwigExtensionTest.php
 
