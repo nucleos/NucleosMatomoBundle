@@ -2,27 +2,39 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 4.3.0 - TBD
+## 4.3.0 - 2025-10-12
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [4.3.0](https://github.com/nucleos/NucleosMatomoBundle/milestone/18)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 4.3.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **10**
+- Total contributors: **3**
 
-### Removed
+#### dependency
 
-- Nothing.
+ - [892: Update to phpunit v12](https://github.com/nucleos/NucleosMatomoBundle/pull/892) thanks to @core23
+ - [891: Drop support for PHP 8.2](https://github.com/nucleos/NucleosMatomoBundle/pull/891) thanks to @core23
+ - [877: Update PHPStan packages to v2 (major)](https://github.com/nucleos/NucleosMatomoBundle/pull/877) thanks to @renovate[bot]
+ - [871: Update dependency matthiasnoback/symfony-dependency-injection-test to v6](https://github.com/nucleos/NucleosMatomoBundle/pull/871) thanks to @renovate[bot]
+ - [865: Update dependency eslint to v9](https://github.com/nucleos/NucleosMatomoBundle/pull/865) thanks to @renovate[bot]
 
-### Fixed
+#### Enhancement
 
-- Nothing.
+ - [887: Remove ci pipeline overrides ](https://github.com/nucleos/NucleosMatomoBundle/pull/887) thanks to @core23
+ - [886: Sync tool config ](https://github.com/nucleos/NucleosMatomoBundle/pull/886) thanks to @core23
+ - [885: Remove infection testing ](https://github.com/nucleos/NucleosMatomoBundle/pull/885) thanks to @core23
+ - [883: Remove psalm in favor of phpstan ](https://github.com/nucleos/NucleosMatomoBundle/pull/883) thanks to @core23
+
+#### dependency,javascript
+
+ - [875: Bump express from 4.19.2 to 4.21.0 in /assets](https://github.com/nucleos/NucleosMatomoBundle/pull/875) thanks to @dependabot[bot]
 
 ## 4.2.0 - 2024-08-14
 
