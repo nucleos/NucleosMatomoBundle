@@ -32,7 +32,8 @@ final class ClientTest extends TestCase
     public function testCall(): void
     {
         $this->connection
-            ->method('send')->with([
+            ->expects(self::once())->method('send')
+            ->with([
                 'foo'        => 'bar',
                 'method'     => 'foo/method',
                 'token_auth' => 'MY_TOKEN',
@@ -55,7 +56,8 @@ final class ClientTest extends TestCase
     public function testCallWithCustomFormat(): void
     {
         $this->connection
-            ->method('send')->with([
+            ->expects(self::once())->method('send')
+            ->with([
                 'foo'        => 'bar',
                 'method'     => 'foo/method',
                 'token_auth' => 'MY_TOKEN',
@@ -76,7 +78,8 @@ final class ClientTest extends TestCase
         $this->expectExceptionMessage('Invalid server response');
 
         $this->connection
-            ->method('send')->with([
+            ->expects(self::once())->method('send')
+            ->with([
                 'foo'        => 'bar',
                 'method'     => 'foo/method',
                 'token_auth' => 'MY_TOKEN',

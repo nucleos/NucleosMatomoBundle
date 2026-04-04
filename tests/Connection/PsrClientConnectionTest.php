@@ -48,13 +48,15 @@ final class PsrClientConnectionTest extends TestCase
 
         $request =  $this->createMock(RequestInterface::class);
 
-        $this->requestFactory->method('createRequest')->with('GET', 'http://api.url?foo=bar&module=API')
+        $this->requestFactory->expects(self::once())->method('createRequest')
+            ->with('GET', 'http://api.url?foo=bar&module=API')
             ->willReturn($request)
         ;
 
         $response =$this->prepareResponse('my content');
 
-        $this->client->method('sendRequest')->with($request)
+        $this->client->expects(self::once())->method('sendRequest')
+            ->with($request)
             ->willReturn($response)
         ;
 
@@ -67,13 +69,15 @@ final class PsrClientConnectionTest extends TestCase
 
         $request =  $this->createMock(RequestInterface::class);
 
-        $this->requestFactory->method('createRequest')->with('GET', 'http://api.url?date=2010-02-10&module=API')
+        $this->requestFactory->expects(self::once())->method('createRequest')
+            ->with('GET', 'http://api.url?date=2010-02-10&module=API')
             ->willReturn($request)
         ;
 
         $response =$this->prepareResponse('my content');
 
-        $this->client->method('sendRequest')->with($request)
+        $this->client->expects(self::once())->method('sendRequest')
+            ->with($request)
             ->willReturn($response)
         ;
 
@@ -86,13 +90,15 @@ final class PsrClientConnectionTest extends TestCase
 
         $request =  $this->createMock(RequestInterface::class);
 
-        $this->requestFactory->method('createRequest')->with('GET', 'http://api.url?active=1&module=API')
+        $this->requestFactory->expects(self::once())->method('createRequest')
+            ->with('GET', 'http://api.url?active=1&module=API')
             ->willReturn($request)
         ;
 
         $response =$this->prepareResponse('my content');
 
-        $this->client->method('sendRequest')->with($request)
+        $this->client->expects(self::once())->method('sendRequest')
+            ->with($request)
             ->willReturn($response)
         ;
 
@@ -105,13 +111,15 @@ final class PsrClientConnectionTest extends TestCase
 
         $request =  $this->createMock(RequestInterface::class);
 
-        $this->requestFactory->method('createRequest')->with('GET', 'http://api.url?foo=bar,baz&module=API')
+        $this->requestFactory->expects(self::once())->method('createRequest')
+            ->with('GET', 'http://api.url?foo=bar,baz&module=API')
             ->willReturn($request)
         ;
 
         $response =$this->prepareResponse('my content');
 
-        $this->client->method('sendRequest')->with($request)
+        $this->client->expects(self::once())->method('sendRequest')
+            ->with($request)
             ->willReturn($response)
         ;
 
@@ -127,11 +135,13 @@ final class PsrClientConnectionTest extends TestCase
 
         $request =  $this->createMock(RequestInterface::class);
 
-        $this->requestFactory->method('createRequest')->with('GET', 'http://api.url?foo=bar&module=API')
+        $this->requestFactory->expects(self::once())->method('createRequest')
+            ->with('GET', 'http://api.url?foo=bar&module=API')
             ->willReturn($request)
         ;
 
-        $this->client->method('sendRequest')->with($request)
+        $this->client->expects(self::once())->method('sendRequest')
+            ->with($request)
             ->willThrowException(new Exception())
         ;
 
@@ -147,11 +157,13 @@ final class PsrClientConnectionTest extends TestCase
 
         $request =  $this->createMock(RequestInterface::class);
 
-        $this->requestFactory->method('createRequest')->with('GET', 'http://api.url?foo=bar&module=API')
+        $this->requestFactory->expects(self::once())->method('createRequest')
+            ->with('GET', 'http://api.url?foo=bar&module=API')
             ->willReturn($request)
         ;
 
-        $this->client->method('sendRequest')->with($request)
+        $this->client->expects(self::once())->method('sendRequest')
+            ->with($request)
             ->willThrowException(new class extends Exception implements ClientExceptionInterface {})
         ;
 
@@ -167,13 +179,15 @@ final class PsrClientConnectionTest extends TestCase
 
         $request =  $this->createMock(RequestInterface::class);
 
-        $this->requestFactory->method('createRequest')->with('GET', 'http://api.url?foo=bar&module=API')
+        $this->requestFactory->expects(self::once())->method('createRequest')
+            ->with('GET', 'http://api.url?foo=bar&module=API')
             ->willReturn($request)
         ;
 
         $response =$this->prepareResponse('', 500);
 
-        $this->client->method('sendRequest')->with($request)
+        $this->client->expects(self::once())->method('sendRequest')
+            ->with($request)
             ->willReturn($response)
         ;
 
