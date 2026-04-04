@@ -15,7 +15,7 @@
         }
     },
     "engines": {
-        "node": ">=14"
+        "node": ">=24"
     },
     "dependencies": {
         "chart.js": "^4.3.3"
@@ -30,27 +30,29 @@
         "@babel/plugin-transform-typescript": "^7.22.9",
         "@babel/preset-env": "^7.22.9",
         "@babel/preset-typescript": "^7.22.5",
-        "@eslint/compat": "^1.4.0",
+        "@eslint/compat": "^2.0.4",
+        "@eslint/eslintrc": "^3.3.5",
+        "@eslint/js": "^10.0.1",
         "@hotwired/stimulus": "^3.2.2",
-        "@size-limit/esbuild": "^11.1.4",
-        "@size-limit/preset-small-lib": "^11.1.4",
+        "@size-limit/esbuild": "^12.0.1",
+        "@size-limit/preset-small-lib": "^12.0.1",
         "@symfony/stimulus-testing": "^2.0.1",
-        "@symfony/webpack-encore": "^5.0.0",
+        "@symfony/webpack-encore": "^6.0.0",
         "@typescript-eslint/eslint-plugin": "^8.46.0",
         "@typescript-eslint/parser": "^8.46.0",
         "babel-minify": "^0.5.2",
-        "eslint": "^9.0.0",
+        "eslint": "^10.2.0",
         "eslint-config-prettier": "^10.0.0",
         "eslint-plugin-header": "^3.1.1",
         "eslint-plugin-import": "^2.28.0",
         "eslint-plugin-jest": "^29.0.0",
-        "globals": "^16.0.0",
+        "globals": "^17.4.0",
         "jest-canvas-mock": "^2.5.2",
         "prettier": "^3.0.1",
-        "size-limit": "^11.1.4",
-        "typescript": "^5.1.6",
+        "size-limit": "^12.0.1",
+        "typescript": "^6.0.2",
         "webpack": "^5.72",
-        "webpack-cli": "^6.0.0"
+        "webpack-cli": "^7.0.2"
     },
     "scripts": {
         "build": "babel --extensions \".ts,.tsx\" src -d dist && yarn",

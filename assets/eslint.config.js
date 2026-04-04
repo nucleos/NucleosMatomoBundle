@@ -47,7 +47,7 @@ module.exports = defineConfig([{
     plugins: {
         "@typescript-eslint": fixupPluginRules(typescriptEslint),
         import: fixupPluginRules(_import),
-        header,
+        header: fixupPluginRules(header),
     },
 
     "rules": {
