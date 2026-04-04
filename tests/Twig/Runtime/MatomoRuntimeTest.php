@@ -33,11 +33,12 @@ final class MatomoRuntimeTest extends TestCase
 
     public function testRenderTracker(): void
     {
-        $this->environment->method('render')->with('@NucleosMatomo/tracker_code.html.twig', [
-            'site_id'       => 13,
-            'matomo_host'   => 'localhost',
-            'cookie_domain' => null,
-        ])
+        $this->environment->expects(self::once())->method('render')
+            ->with('@NucleosMatomo/tracker_code.html.twig', [
+                'site_id'       => 13,
+                'matomo_host'   => 'localhost',
+                'cookie_domain' => null,
+            ])
             ->willReturn('HTML CONTENT')
         ;
 
