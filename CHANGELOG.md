@@ -2,27 +2,28 @@
 
 All notable changes to this project will be documented in this file, in reverse chronological order by release.
 
-## 4.4.0 - TBD
+## 4.4.0 - 2026-05-02
 
-### Added
 
-- Nothing.
+-----
 
-### Changed
+### Release Notes for [4.4.0](https://github.com/nucleos/NucleosMatomoBundle/milestone/20)
 
-- Nothing.
+Feature release (minor)
 
-### Deprecated
+### 4.4.0
 
-- Nothing.
+- Total issues resolved: **0**
+- Total pull requests resolved: **5**
+- Total contributors: **2**
 
-### Removed
+#### dependency
 
-- Nothing.
-
-### Fixed
-
-- Nothing.
+ - [911: Update frontend dependencies](https://github.com/nucleos/NucleosMatomoBundle/pull/911) thanks to @core23
+ - [909: Add support for symfony 8](https://github.com/nucleos/NucleosMatomoBundle/pull/909) thanks to @core23
+ - [908: Use phpunit 13 where possible](https://github.com/nucleos/NucleosMatomoBundle/pull/908) thanks to @core23
+ - [900: Update dependency symfony/phpunit-bridge to v8](https://github.com/nucleos/NucleosMatomoBundle/pull/900) thanks to @renovate[bot]
+ - [893: Update dependency globals to v16](https://github.com/nucleos/NucleosMatomoBundle/pull/893) thanks to @renovate[bot]
 
 ## 4.3.0 - 2025-10-12
 
