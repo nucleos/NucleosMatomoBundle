@@ -50,7 +50,7 @@
         "jest-canvas-mock": "^2.5.2",
         "prettier": "^3.0.1",
         "size-limit": "^12.0.1",
-        "typescript": "^6.0.2",
+        "typescript": "^7.0.0",
         "webpack": "^5.72",
         "webpack-cli": "^7.0.2"
     },
